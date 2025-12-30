@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ENTER Konsult</title>
+  <meta name="description" content="Software that stays out of the way. Open source tools for developers.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #0a0a0a;
+      --grey-dark: #404040;
+      --grey-mid: #737373;
+      --grey-light: #e5e5e5;
+      --white: #fafafa;
+      --accent: #171717;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --black: #fafafa;
+        --grey-dark: #a3a3a3;
+        --grey-mid: #737373;
+        --grey-light: #262626;
+        --white: #0a0a0a;
+        --accent: #f5f5f5;
+      }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    /* Header */
+    header {
+      padding: 6rem 0 8rem;
+      text-align: center;
+    }
+
+    .wordmark {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      margin-bottom: 2rem;
+    }
+
+    .wordmark span {
+      font-weight: 300;
+      color: var(--grey-dark);
+      letter-spacing: 0.08em;
+      margin-left: 0.25em;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: var(--grey-mid);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* Divider */
+    hr {
+      border: none;
+      height: 1px;
+      background: var(--grey-light);
+      margin: 4rem 0;
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 4rem;
+      padding: 2rem 0 6rem;
+    }
+
+    .project {
+      padding: 2rem 0;
+    }
+
+    .project h2 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 1rem;
+    }
+
+    .project-type {
+      font-size: 0.75rem;
+      color: var(--grey-mid);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 1.5rem;
+    }
+
+    .project p {
+      font-size: 0.9375rem;
+      color: var(--grey-dark);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .project-stat {
+      font-size: 0.8125rem;
+      color: var(--grey-mid);
+      font-weight: 400;
+      margin-bottom: 2rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8125rem;
+      font-weight: 400;
+      color: var(--black);
+      text-decoration: none;
+      padding: 0.625rem 1rem;
+      border: 1px solid var(--grey-light);
+      transition: all 0.15s ease;
+    }
+
+    .project-link:hover {
+      background: var(--accent);
+      color: var(--white);
+      border-color: var(--accent);
+    }
+
+    .project-link svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    /* Code block */
+    .install {
+      margin: 1.5rem 0 2rem;
+      padding: 1rem 1.25rem;
+      background: var(--grey-light);
+      font-family: 'SF Mono', 'Fira Code', monospace;
+      font-size: 0.8125rem;
+      border-radius: 2px;
+      overflow-x: auto;
+    }
+
+    /* Footer */
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid var(--grey-light);
+    }
+
+    footer p {
+      font-size: 0.75rem;
+      color: var(--grey-mid);
+      letter-spacing: 0.02em;
+    }
+
+    footer a {
+      color: var(--grey-dark);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      color: var(--black);
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      header {
+        padding: 4rem 0 5rem;
+      }
+
+      .projects {
+        gap: 2rem;
+      }
+
+      .project {
+        padding: 1.5rem 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div class="wordmark">ENTER<span>KONSULT</span></div>
+      <p class="tagline">Software that stays out of the way.</p>
+    </header>
+
+    <hr>
+
+    <section class="projects">
+      <article class="project">
+        <div class="project-type">AI Infrastructure</div>
+        <h2>CIPS</h2>
+        <p>Claude Instance Preservation System. Session continuity for Claude Code. Your context survives restarts.</p>
+        <div class="project-stat">60-70k tokens saved per session</div>
+        <div class="install">brew tap CodeTonight-SA/cips<br>brew install cips</div>
+        <a href="https://github.com/CodeTonight-SA/cips" class="project-link">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View Repository
+        </a>
+      </article>
+
+      <article class="project">
+        <div class="project-type">Productivity</div>
+        <h2>Googol Vibe</h2>
+        <p>Unified Google Workspace. Gmail, Calendar, Drive, and Tasks in one cohesive interface. Zero friction.</p>
+        <div class="project-stat">MCP-enabled for AI integration</div>
+        <a href="https://github.com/CodeTonight-SA/google-vibe-os" class="project-link">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          View Repository
+        </a>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>Cape Town, South Africa</p>
+  </footer>
+</body>
+</html>
