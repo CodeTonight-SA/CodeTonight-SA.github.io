@@ -124,8 +124,8 @@
     .project-card__tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
       letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
       margin-bottom: 0.5rem; }
-    .project-card__title { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.75rem; }
-    .project-card__desc { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+    .project-card__title { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.75rem; color: var(--text); }
+    .project-card__desc { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; font-size: 0.95rem; }
     .project-card__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .project-card__links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
       color: var(--accent); text-decoration: none; border: 1px solid var(--accent);
@@ -139,16 +139,27 @@
       padding: 1.25rem; text-align: center; }
     .team-card__sig { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem;
       font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
-    .team-card__name { font-weight: 700; margin-bottom: 0.25rem; }
+    .team-card__name { font-weight: 700; margin-bottom: 0.25rem; color: var(--text); }
     .team-card__role { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
 
     /* Brainrot section */
     .brainrot-card { background: var(--surface); border: 1px solid var(--border);
       padding: 1.5rem; text-align: center; }
-    .brainrot-card__title { font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .brainrot-card__title { font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem; color: var(--text); }
     .brainrot-card__by { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
       color: var(--accent); margin-bottom: 0.75rem; }
     .brainrot-card__desc { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; }
+
+    /* CTA button contrast fix: dark text on light accent backgrounds */
+    .cta { color: var(--bg); }
+    .cta:hover { color: var(--bg); }
+    .cta--outline { color: var(--accent); }
+
+    /* Footer contrast fix — override opacity:0.4 that dims below WCAG */
+    .footer__tagline, .footer__legal span, .footer__legal { color: #8a8a8a !important; opacity: 1 !important; }
+
+    /* Hero subtitle contrast fix — override opacity that dims text below WCAG threshold */
+    .hero__context, .hero__tagline, .hero__subtitle { color: #8a8a8a !important; opacity: 1 !important; }
 
     /* Form interest dropdown */
     .form__select option { background: var(--surface); color: var(--text); }
@@ -186,7 +197,7 @@
   <!-- CONVERGENCE SCORE TRACKER -->
   <div class="score-tracker" id="scoreTracker">
     <div class="score-tracker__inner">
-      <span class="score-tracker__label">SCORE</span>
+      <span class="score-tracker__label" id="scoreLabel">SCORE</span>
       <span class="score-tracker__value" id="scoreValue">0</span>
     </div>
   </div>
@@ -194,6 +205,7 @@
   <!-- ═══════════════════════════════════════════════════════════
        HERO — ENTER Konsult
        ═══════════════════════════════════════════════════════════ -->
+  <main>
   <section id="hero" class="section section--hero" data-score="0">
     <div class="container" style="text-align:center">
       <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:0.75rem">
@@ -207,7 +219,7 @@
       <p class="hero-byline">Officially known as CodeTonight (Pty) Ltd</p>
       <p class="hero-sub">First a solopreneur entity, now a dynamic team.</p>
       <h1 class="hero__title" style="font-size:clamp(2rem,6vw,4rem);margin:1.5rem 0">Software that stays out of the way.</h1>
-      <p class="hero__subtitle" style="font-size:1.1rem;color:var(--text-muted);max-width:600px;margin:0 auto">
+      <p class="hero__subtitle" style="font-size:1.1rem;color:#8a8a8a;max-width:600px;margin:0 auto">
         AI infrastructure, agentic runtimes, and open source tools.<br>
         <em>facta non verba</em> &mdash; deeds, not words.
       </p>
@@ -601,6 +613,7 @@
   </section>
 
   <!-- FOOTER -->
+  </main>
   <footer class="footer">
     <div class="container">
       <div class="footer__top">

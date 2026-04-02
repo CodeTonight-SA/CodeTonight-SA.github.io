@@ -105,7 +105,7 @@ body {
 }
 
 .section__lead {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   opacity: 0.85;
   margin-bottom: var(--space-lg);
   max-width: 600px;
@@ -268,7 +268,7 @@ body {
 }
 
 .feature__desc {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   opacity: 0.8;
   line-height: 1.6;
 }

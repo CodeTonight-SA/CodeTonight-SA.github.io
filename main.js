@@ -17,16 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
 function initScoreTracker() {
   const tracker = document.getElementById('scoreTracker')
   const valueEl = document.getElementById('scoreValue')
+  const labelEl = document.getElementById('scoreLabel')
   if (!tracker || !valueEl) return
 
   const sections = document.querySelectorAll('[data-score]')
   let currentScore = 0
+  let lastScrollY = window.scrollY
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         const target = parseInt(entry.target.dataset.score, 10)
-        if (target > currentScore || target === 0) {
+        if (target !== currentScore) {
           animateValue(valueEl, currentScore, target, 500)
           currentScore = target
 
@@ -42,13 +44,26 @@ function initScoreTracker() {
 
   sections.forEach(s => observer.observe(s))
 
-  // Show tracker after first scroll
+  // Show tracker after first scroll + track direction
   let shown = false
   window.addEventListener('scroll', () => {
-    if (!shown && window.scrollY > 100) {
+    const scrollY = window.scrollY
+    if (!shown && scrollY > 100) {
       tracker.classList.add('score-tracker--visible')
       shown = true
     }
+
+    // Update directional arrow
+    if (labelEl) {
+      if (currentScore >= 90) {
+        labelEl.textContent = 'READY'
+      } else if (scrollY > lastScrollY) {
+        labelEl.textContent = '\u25BC'  // down arrow
+      } else if (scrollY < lastScrollY) {
+        labelEl.textContent = '\u25B2'  // up arrow
+      }
+    }
+    lastScrollY = scrollY
   }, { passive: true })
 }
 
