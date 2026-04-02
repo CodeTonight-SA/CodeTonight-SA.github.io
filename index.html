@@ -1,249 +1,650 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="swiss-dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ENTER Konsult</title>
-  <meta name="description" content="Software that stays out of the way. Open source tools for developers.">
+  <meta name="description"
+    content="ENTER Konsult — Software that stays out of the way. GRIP AI infrastructure, HAL agentic runtime, and open source tools from Cape Town.">
+  <meta name="theme-color" content="#000000">
+  <title>ENTER Konsult — Software that stays out of the way</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <meta property="og:title" content="ENTER Konsult — Software that stays out of the way">
+  <meta property="og:description"
+    content="GRIP AI infrastructure, HAL agentic runtime, and open source tools. CodeTonight (Pty) Ltd.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://codetonight-sa.github.io">
+  <meta name="twitter:card" content="summary">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="preload" as="style"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
+    media="print" onload="this.media='all'">
+
+  <link rel="stylesheet" href="/style.css">
+
   <style>
-    :root {
-      --black: #0a0a0a;
-      --grey-dark: #404040;
-      --grey-mid: #737373;
-      --grey-light: #e5e5e5;
-      --white: #fafafa;
-      --accent: #171717;
+    /* ═══════════════════════════════════════════════════════════════
+       THEME ENGINE — 8 themes from GRIP Commander (subset)
+       CSS custom properties applied via data-theme attribute
+       ═══════════════════════════════════════════════════════════════ */
+
+    [data-theme="swiss-light"] {
+      --bg: #EAEAEA; --surface: #F5F5F5; --border: #d1d5db;
+      --text: #000000; --text-muted: #525252;
+      --accent: #0891b2; --accent-glow: rgba(8, 145, 178, 0.3);
+      --blue: #0891b2; --blue-dark: #065d73;
+    }
+    [data-theme="swiss-dark"] {
+      --bg: #0a0a0a; --surface: #171717; --border: #262626;
+      --text: #e5e5e5; --text-muted: #737373;
+      --accent: #22d3ee; --accent-glow: rgba(34, 211, 238, 0.4);
+      --blue: #22d3ee; --blue-dark: #0891b2;
+    }
+    [data-theme="swiss-neutral"] {
+      --bg: #F0EDE8; --surface: #F7F5F0; --border: #D0C8BC;
+      --text: #1a1a1a; --text-muted: #6b5f50;
+      --accent: #996F00; --accent-glow: rgba(184, 134, 11, 0.3);
+      --blue: #B8860B; --blue-dark: #996F00;
+    }
+    [data-theme="autumn"] {
+      --bg: #FDF6E3; --surface: #FFF8EC; --border: #D8C8A8;
+      --text: #3C2A14; --text-muted: #7A6548;
+      --accent: #D97706; --accent-glow: rgba(217, 119, 6, 0.3);
+      --blue: #D97706; --blue-dark: #B45309;
+    }
+    [data-theme="forest"] {
+      --bg: #0D1B0E; --surface: #152418; --border: #2A3E2C;
+      --text: #D0E8D0; --text-muted: #6A9A6E;
+      --accent: #22C55E; --accent-glow: rgba(34, 197, 94, 0.4);
+      --blue: #22C55E; --blue-dark: #16a34a;
+    }
+    [data-theme="retrowave"] {
+      --bg: #2D1B69; --surface: #3A2580; --border: #4A3098;
+      --text: #F0D0FF; --text-muted: #C8A8E0;
+      --accent: #FF6B9D; --accent-glow: rgba(255, 107, 157, 0.4);
+      --blue: #FF6B9D; --blue-dark: #D84D7F;
+    }
+    [data-theme="matrix"] {
+      --bg: #000000; --surface: #0A0A0A; --border: #003300;
+      --text: #00FF00; --text-muted: #00BB00;
+      --accent: #00FF00; --accent-glow: rgba(0, 255, 0, 0.5);
+      --blue: #00FF00; --blue-dark: #008800;
+    }
+    [data-theme="cyberpunk"] {
+      --bg: #1A1A1A; --surface: #242424; --border: #3A3A3A;
+      --text: #E8E8E0; --text-muted: #999990;
+      --accent: #FACC15; --accent-glow: rgba(250, 204, 21, 0.4);
+      --blue: #FACC15; --blue-dark: #CA9C05;
     }
 
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --black: #fafafa;
-        --grey-dark: #a3a3a3;
-        --grey-mid: #737373;
-        --grey-light: #262626;
-        --white: #0a0a0a;
-        --accent: #f5f5f5;
+    /* Theme switcher panel */
+    .theme-panel {
+      position: fixed; top: 1rem; right: 1rem;
+      z-index: 200; display: flex; flex-direction: row; gap: 6px;
+      padding: 8px 10px; background: var(--surface); border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .theme-dot {
+      width: 16px; height: 16px; border: 2px solid var(--border);
+      cursor: pointer; transition: all 0.15s; position: relative;
+    }
+    .theme-dot:hover { transform: scale(1.3); }
+    .theme-dot.active { border-color: var(--accent); box-shadow: 0 0 8px var(--accent-glow); }
+    .theme-dot[data-theme="swiss-light"] { background: #EAEAEA; }
+    .theme-dot[data-theme="swiss-dark"] { background: #0a0a0a; }
+    .theme-dot[data-theme="swiss-neutral"] { background: #F0EDE8; }
+    .theme-dot[data-theme="autumn"] { background: #D97706; }
+    .theme-dot[data-theme="forest"] { background: #22C55E; }
+    .theme-dot[data-theme="retrowave"] { background: #FF6B9D; }
+    .theme-dot[data-theme="matrix"] { background: #00FF00; }
+    .theme-dot[data-theme="cyberpunk"] { background: #FACC15; }
+
+    /* Logo */
+    .hero-logo { max-width: 400px; width: 80%; margin-bottom: 1.5rem; }
+    .hero-logo svg { width: 100%; height: auto; }
+    .hero-logo svg path, .hero-logo svg polygon { fill: var(--accent); }
+    .hero-logo svg g:first-child path { fill: var(--text); }
+
+    .hero-byline { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+      color: var(--text-muted); letter-spacing: 0.1em; text-transform: uppercase;
+      margin-bottom: 0.5rem; }
+    .hero-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 0.25rem;
+      font-style: italic; }
+
+    /* Project cards */
+    .project-card { background: var(--surface); border: 1px solid var(--border);
+      padding: 1.5rem; transition: all 0.3s; }
+    .project-card:hover { border-color: var(--accent); }
+    .project-card__tag { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent);
+      margin-bottom: 0.5rem; }
+    .project-card__title { font-size: 1.5rem; font-weight: 900; margin-bottom: 0.75rem; }
+    .project-card__desc { color: var(--text-muted); line-height: 1.6; margin-bottom: 1rem; }
+    .project-card__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+    .project-card__links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+      color: var(--accent); text-decoration: none; border: 1px solid var(--accent);
+      padding: 0.4rem 0.8rem; transition: all 0.15s; }
+    .project-card__links a:hover { background: var(--accent); color: var(--bg); }
+
+    /* Team */
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem; }
+    .team-card { background: var(--surface); border: 1px solid var(--border);
+      padding: 1.25rem; text-align: center; }
+    .team-card__sig { font-family: 'JetBrains Mono', monospace; font-size: 1.5rem;
+      font-weight: 700; color: var(--accent); margin-bottom: 0.25rem; }
+    .team-card__name { font-weight: 700; margin-bottom: 0.25rem; }
+    .team-card__role { font-size: 0.8rem; color: var(--text-muted); line-height: 1.4; }
+
+    /* Brainrot section */
+    .brainrot-card { background: var(--surface); border: 1px solid var(--border);
+      padding: 1.5rem; text-align: center; }
+    .brainrot-card__title { font-size: 1.25rem; font-weight: 900; margin-bottom: 0.5rem; }
+    .brainrot-card__by { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      color: var(--accent); margin-bottom: 0.75rem; }
+    .brainrot-card__desc { color: var(--text-muted); margin-bottom: 1rem; font-size: 0.9rem; }
+
+    /* Form interest dropdown */
+    .form__select option { background: var(--surface); color: var(--text); }
+
+    /* Section transitions */
+    body, .project-card, .team-card, .brainrot-card, .cta-card, .stat-card,
+    .gate-item, .evidence-card, .download-card {
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    @media (max-width: 600px) {
+      .theme-panel { top: auto; bottom: 0; right: 0; left: 0;
+        justify-content: center;
+        border: none; border-top: 1px solid var(--border); padding: 6px;
       }
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      font-size: 16px;
-    }
-
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--white);
-      color: var(--black);
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    main {
-      flex: 1;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 2rem;
-      width: 100%;
-    }
-
-    /* Header */
-    header {
-      padding: 6rem 0 8rem;
-      text-align: center;
-    }
-
-    .wordmark {
-      font-size: 1.5rem;
-      font-weight: 600;
-      letter-spacing: -0.02em;
-      margin-bottom: 2rem;
-    }
-
-    .wordmark span {
-      font-weight: 300;
-      color: var(--grey-dark);
-      letter-spacing: 0.08em;
-      margin-left: 0.25em;
-    }
-
-    .tagline {
-      font-size: 1rem;
-      color: var(--grey-mid);
-      font-weight: 300;
-      letter-spacing: 0.02em;
-    }
-
-    /* Divider */
-    hr {
-      border: none;
-      height: 1px;
-      background: var(--grey-light);
-      margin: 4rem 0;
-    }
-
-    /* Projects */
-    .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 4rem;
-      padding: 2rem 0 6rem;
-    }
-
-    .project {
-      padding: 2rem 0;
-    }
-
-    .project h2 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: -0.01em;
-      margin-bottom: 1rem;
-    }
-
-    .project-type {
-      font-size: 0.75rem;
-      color: var(--grey-mid);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      margin-bottom: 1.5rem;
-    }
-
-    .project p {
-      font-size: 0.9375rem;
-      color: var(--grey-dark);
-      margin-bottom: 1.5rem;
-      font-weight: 300;
-    }
-
-    .project-stat {
-      font-size: 0.8125rem;
-      color: var(--grey-mid);
-      font-weight: 400;
-      margin-bottom: 2rem;
-      font-variant-numeric: tabular-nums;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.8125rem;
-      font-weight: 400;
-      color: var(--black);
-      text-decoration: none;
-      padding: 0.625rem 1rem;
-      border: 1px solid var(--grey-light);
-      transition: all 0.15s ease;
-    }
-
-    .project-link:hover {
-      background: var(--accent);
-      color: var(--white);
-      border-color: var(--accent);
-    }
-
-    .project-link svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    /* Code block */
-    .install {
-      margin: 1.5rem 0 2rem;
-      padding: 1rem 1.25rem;
-      background: var(--grey-light);
-      font-family: 'SF Mono', 'Fira Code', monospace;
-      font-size: 0.8125rem;
-      border-radius: 2px;
-      overflow-x: auto;
-    }
-
-    /* Footer */
-    footer {
-      padding: 3rem 2rem;
-      text-align: center;
-      border-top: 1px solid var(--grey-light);
-    }
-
-    footer p {
-      font-size: 0.75rem;
-      color: var(--grey-mid);
-      letter-spacing: 0.02em;
-    }
-
-    footer a {
-      color: var(--grey-dark);
-      text-decoration: none;
-    }
-
-    footer a:hover {
-      color: var(--black);
-    }
-
-    /* Responsive */
-    @media (max-width: 640px) {
-      header {
-        padding: 4rem 0 5rem;
-      }
-
-      .projects {
-        gap: 2rem;
-      }
-
-      .project {
-        padding: 1.5rem 0;
-      }
+      .hero-logo { max-width: 280px; }
     }
   </style>
 </head>
+
 <body>
-  <main>
-    <header>
-      <div class="wordmark">ENTER<span>KONSULT</span></div>
-      <p class="tagline">Software that stays out of the way.</p>
-    </header>
 
-    <hr>
+  <!-- THEME SWITCHER (right edge) -->
+  <div class="theme-panel" id="themePanel">
+    <div class="theme-dot active" data-theme="swiss-dark" title="Swiss Dark"></div>
+    <div class="theme-dot" data-theme="swiss-light" title="Swiss Light"></div>
+    <div class="theme-dot" data-theme="swiss-neutral" title="Swiss Neutral"></div>
+    <div class="theme-dot" data-theme="autumn" title="Autumn"></div>
+    <div class="theme-dot" data-theme="forest" title="Forest"></div>
+    <div class="theme-dot" data-theme="retrowave" title="Retrowave"></div>
+    <div class="theme-dot" data-theme="matrix" title="Matrix"></div>
+    <div class="theme-dot" data-theme="cyberpunk" title="Cyberpunk"></div>
+  </div>
 
-    <section class="projects">
-      <article class="project">
-        <div class="project-type">AI Infrastructure</div>
-        <h2>CIPS</h2>
-        <p>Claude Instance Preservation System. Session continuity for Claude Code. Your context survives restarts.</p>
-        <div class="project-stat">60-70k tokens saved per session</div>
-        <div class="install">brew tap CodeTonight-SA/cips<br>brew install cips</div>
-        <a href="https://github.com/CodeTonight-SA/cips" class="project-link">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          View Repository
-        </a>
-      </article>
+  <!-- CONVERGENCE SCORE TRACKER -->
+  <div class="score-tracker" id="scoreTracker">
+    <div class="score-tracker__inner">
+      <span class="score-tracker__label">SCORE</span>
+      <span class="score-tracker__value" id="scoreValue">0</span>
+    </div>
+  </div>
 
-      <article class="project">
-        <div class="project-type">Productivity</div>
-        <h2>Googol Vibe</h2>
-        <p>Unified Google Workspace. Gmail, Calendar, Drive, and Tasks in one cohesive interface. Zero friction.</p>
-        <div class="project-stat">MCP-enabled for AI integration</div>
-        <a href="https://github.com/CodeTonight-SA/google-vibe-os" class="project-link">
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
-          View Repository
-        </a>
-      </article>
-    </section>
-  </main>
+  <!-- ═══════════════════════════════════════════════════════════
+       HERO — ENTER Konsult
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="hero" class="section section--hero" data-score="0">
+    <div class="container" style="text-align:center">
+      <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:0.75rem">
+        <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto">
+          <polygon fill="var(--accent)" points="113.9 101.2 104.5 110.6 120.2 124.4 59 124.4 59 83.4 46.8 83.4 46.8 136.7 118.3 136.7 104.5 151 113.5 159.9 143.5 130.4"/>
+        </svg>
+        <h1 style="font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-0.02em;line-height:1;text-align:center;width:100%">
+          <span style="color:var(--text)">ENTER </span><span style="color:var(--text-muted)">KONSULT</span>
+        </h1>
+      </div>
+      <p class="hero-byline">Officially known as CodeTonight (Pty) Ltd</p>
+      <p class="hero-sub">First a solopreneur entity, now a dynamic team.</p>
+      <h1 class="hero__title" style="font-size:clamp(2rem,6vw,4rem);margin:1.5rem 0">Software that stays out of the way.</h1>
+      <p class="hero__subtitle" style="font-size:1.1rem;color:var(--text-muted);max-width:600px;margin:0 auto">
+        AI infrastructure, agentic runtimes, and open source tools.<br>
+        <em>facta non verba</em> &mdash; deeds, not words.
+      </p>
+    </div>
+  </section>
 
-  <footer>
-    <p>Cape Town, South Africa</p>
+  <!-- ═══════════════════════════════════════════════════════════
+       GRIP — AI Infrastructure Engine
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="grip" class="section section--dark" data-score="15">
+    <div class="container">
+      <h2 class="section__title">GRIP</h2>
+      <p class="section__lead">AI infrastructure engine for Claude Code. Recursive self-improvement,
+        deterministic safety, and convergence architecture.</p>
+
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <h3>Convergence Architecture</h3>
+          <p>A 37-token function that composes the entire system. Every operation is converge(state, criterion, improve).</p>
+        </div>
+        <div class="feature-card">
+          <h3>Deterministic Safety</h3>
+          <p>Python functions that return DENY. Cannot be argued with, persuaded, or socially engineered.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Scientific Measurement</h3>
+          <p>Every claim registers a falsifiable hypothesis. Effect sizes, not just directions. Shadow metrics guard against Goodhart.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Recursive Self-Improvement</h3>
+          <p>Fibonacci wave sprints. The system improves itself autonomously, with human gates at every phase.</p>
+        </div>
+      </div>
+
+      <div class="terminal reveal">
+        <div class="terminal__header">
+          <span class="terminal__dot" style="background:#ff5f57"></span>
+          <span class="terminal__dot" style="background:#febc2e"></span>
+          <span class="terminal__dot" style="background:#28c840"></span>
+          <span class="terminal__title">convergence_kernel.py</span>
+        </div>
+        <pre class="terminal__body"><span class="kw">def</span> <span class="fn">converge</span>(state, criterion, improve, depth=<span class="num">0</span>, max_depth=<span class="num">11</span>):
+    <span class="cm">"""The entire system in 37 tokens."""</span>
+    <span class="kw">if</span> criterion(state) <span class="kw">or</span> depth >= max_depth:
+        <span class="kw">return</span> state
+    <span class="kw">return</span> <span class="fn">converge</span>(improve(state), criterion, improve, depth+<span class="num">1</span>, max_depth)</pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       HAL — Harness Abstraction Layer
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="hal" class="section" data-score="30">
+    <div class="container">
+      <h2 class="section__title">HAL</h2>
+      <p class="section__lead">Standalone agentic runtime. 100 modules across 8 architectural layers.
+        Multi-provider intelligence with safety-first design.</p>
+
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <h3>Multi-Provider</h3>
+          <p>Claude, GPT, Gemini, Llama. Mixture-of-Experts routing sends each task to the best model.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Safety Enforcement</h3>
+          <p>Hook dispatch, sanitisation, harness detection, agent traps. Safety is mechanical, not aspirational.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Conversation Engine</h3>
+          <p>Context assembly, compaction, branching, search, replay. Sessions persist across weeks.</p>
+        </div>
+        <div class="feature-card">
+          <h3>The Knowledge Engine</h3>
+          <p>Intelligence layer with structured rest periods, attribution, quality scoring, and diagnostic capabilities.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:2rem">
+        <a href="#contact" class="cta">Request Access</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TWR — Coming Soon
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="twr" class="section section--dark" data-score="42">
+    <div class="container" style="text-align:center">
+      <h2 class="section__title">TWR</h2>
+      <p class="section__lead" style="max-width:600px;margin:0 auto 1.5rem">
+        The clipboard, reinvented. A sleek visual interface with version-control patterns
+        that make copy-paste feel like time travel. Every snippet versioned, searchable, and always there.
+      </p>
+      <p style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:0.1em">
+        COMING SOON
+      </p>
+      <p style="color:var(--text-muted);margin-top:1rem;font-size:0.9rem">
+        We're looking for early beta testers.
+      </p>
+      <a href="#contact" class="cta" style="margin-top:1rem;display:inline-block">Sign Up for Beta</a>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       OPEN SOURCE — Projects
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="projects" class="section" data-score="55">
+    <div class="container">
+      <h2 class="section__title">Open Source</h2>
+      <p class="section__lead">Building in the open. Contribute, fork, or just explore.</p>
+
+      <div class="feature-grid reveal">
+        <div class="project-card">
+          <div class="project-card__tag">Anti-Skill-Atrophy</div>
+          <div class="project-card__title">Skill Forge</div>
+          <p class="project-card__desc">Keep your engineering skills sharp while using AI.
+            The sharpest sword is forged through use, not observation.
+            Designed for software engineers who use Claude Code daily.</p>
+          <div class="project-card__links">
+            <a href="https://github.com/CodeTonight-SA/skill-forge" target="_blank">View Repository</a>
+            <a href="https://github.com/CodeTonight-SA/skill-forge/issues" target="_blank">Contribute</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card__tag">Productivity</div>
+          <div class="project-card__title">Googol Vibe</div>
+          <p class="project-card__desc">Unified Google Workspace. Gmail, Calendar, Drive, and Tasks in one
+            desktop app. MCP-enabled for AI integration. Privacy-first, local-only, zero telemetry.</p>
+          <div class="project-card__links">
+            <a href="https://github.com/CodeTonight-SA/google-vibe-os" target="_blank">View Repository</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card__tag">Guild POC</div>
+          <div class="project-card__title">HushBell</div>
+          <p class="project-card__desc">Dog-friendly smart doorbell. 40Hz sub-hearing tactile tone +
+            anti-conditioning frequency randomisation. Thomas Frumkin's design from the AI Craftspeople Guild.</p>
+          <div class="project-card__links">
+            <a href="https://codetonight-sa.github.io/hushbell-poc/" target="_blank">Live Demo</a>
+            <a href="https://aicraftspeopleguild.github.io/showcases.html" target="_blank">Guild Showcases</a>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-card__tag">Lekka Tech</div>
+          <div class="project-card__title">Kwartel</div>
+          <p class="project-card__desc">Afrikaans daily word game. 10,000+ daily players for 3+ years.
+            Vanilla JS, offline-first PWA, zero dependencies. Woordraaispel &mdash; lekker!</p>
+          <div class="project-card__links">
+            <a href="https://kwartel.io" target="_blank">Play Kwartel</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       GUILD — AI Craftspeople
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="guild" class="section section--dark" data-score="65">
+    <div class="container">
+      <h2 class="section__title">AI Craftspeople Guild</h2>
+      <p class="section__lead">Professional community demanding quality, safety, and human protection
+        in AI-assisted software development. No snake oil. No hype. Evidence or silence.</p>
+
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <h3>Innovation</h3>
+          <p>Exploring AI advancement opportunities with rigour and intellectual honesty.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Quality</h3>
+          <p>Opposing inadequately tested AI-generated content. Craftsmanship over convenience.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Safety</h3>
+          <p>Engineering controls, security measures, and legal accountability for AI products.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Human Protection</h3>
+          <p>Psychological safety for humans exposed to AI products. A worship-free zone.</p>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:2rem">
+        <a href="https://codetonight-sa.github.io/guild/" class="cta" target="_blank">Visit the Guild</a>
+        <a href="https://aicraftspeopleguild.github.io/" class="cta cta--outline" target="_blank"
+          style="margin-left:1rem">Read the Manifesto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       ITALIAN BRAINROT — Father & Son Fun
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="brainrot" class="section" data-score="72">
+    <div class="container">
+      <h2 class="section__title">Italian Brainrot</h2>
+      <p class="section__lead">Reality is tough. Rather be absurdist and laugh at funny things.
+        Built by V&gt;&gt; and his son Luka &mdash; being silly, open source, father-son coding.</p>
+
+      <div class="feature-grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="brainrot-card">
+          <div class="brainrot-card__title">Tung Tung Tung Sahur!</div>
+          <div class="brainrot-card__by">By Luka &amp; Pappa</div>
+          <p class="brainrot-card__desc">Tap when "Sahur!" appears. Addictive, all ages, impossible to stop.
+            Minimal code, maximum chaos.</p>
+          <div class="project-card__links" style="justify-content:center">
+            <a href="https://ttt-sahur.vercel.app" target="_blank">Play Now</a>
+            <a href="https://github.com/LaurieScheepers/tung-tung-tung-sahur" target="_blank">Contribute</a>
+          </div>
+        </div>
+
+        <div class="brainrot-card">
+          <div class="brainrot-card__title">Mixing Mod</div>
+          <div class="brainrot-card__by">v0.9.0 &mdash; By Luka &amp; Pappa</div>
+          <p class="brainrot-card__desc">Combine Italian Brainrot meme characters to create hybrid creatures.
+            Become the FINAL BOSS and earn INFINITY COINS!</p>
+          <div class="project-card__links" style="justify-content:center">
+            <a href="https://italian-brainrot-mixing-mod.vercel.app" target="_blank">Play Now</a>
+            <a href="https://github.com/LaurieScheepers/italian-brainrot-mixing-mod" target="_blank">Contribute</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       TEAM
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="team" class="section section--dark" data-score="80">
+    <div class="container">
+      <h2 class="section__title">The Team</h2>
+      <p class="section__lead">Small, focused, opinionated. Cape Town, South Africa.</p>
+
+      <div class="team-grid reveal">
+        <div class="team-card">
+          <div class="team-card__sig">V&gt;&gt;</div>
+          <div class="team-card__name">Laurie Scheepers</div>
+          <div class="team-card__role">Founder. Scientist, engineer, systems thinker.
+            AGI R&amp;D. Sees patterns connecting things that are almost certainly unrelated.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__sig">A&gt;&gt;</div>
+          <div class="team-card__name">Andre Theart</div>
+          <div class="team-card__role">Developer. TWR creator, Googol Vibe architect.
+            Cross-platform desktop engineering. Windows &amp; Electron specialist.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__sig">K&gt;&gt;</div>
+          <div class="team-card__name">Arnold Kinabo</div>
+          <div class="team-card__role">Developer. Methodical refactoring, layered architecture.
+            Backend systems and systematic code improvement.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__sig">F&gt;&gt;</div>
+          <div class="team-card__name">Fabio</div>
+          <div class="team-card__role">Developer. Frontend engineering and UI implementation.
+            React, TypeScript, modern web.</div>
+        </div>
+        <div class="team-card">
+          <div class="team-card__sig">M&gt;&gt;</div>
+          <div class="team-card__name">Mia</div>
+          <div class="team-card__role">Strategic Advisor. Financial modelling, deal structure,
+            and the maths behind the decisions.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       GRIP COMMANDER — Download
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="download" class="section" data-score="85">
+    <div class="container">
+      <h2 class="section__title">GRIP Commander</h2>
+      <p class="section__lead">Desktop experience. Try the starter pack &mdash; 15 skills, 5 agents, 5 safety hooks.</p>
+
+      <div class="download-card reveal">
+        <div class="download-card__inner">
+          <div class="download-card__meta">
+            <span class="download-card__badge">Alpha</span>
+            <span class="download-card__version">v0.1.0-alpha.2</span>
+            <span class="download-card__platform">macOS (Apple Silicon)</span>
+          </div>
+          <a href="https://github.com/CodeTonight-SA/GRIP-GUI/releases/download/v0.1.0-alpha.2/GRIP-Commander-0.1.0-arm64.dmg"
+            class="cta" target="_blank" rel="noopener">Download .dmg</a>
+        </div>
+      </div>
+
+      <div class="feature-grid reveal" style="margin-top:1.5rem">
+        <div class="feature-card" style="padding:1rem">
+          <h3 style="font-size:1rem">Starter Pack</h3>
+          <p style="font-size:0.85rem">15 skills, 5 agents, 5 safety hooks, session context.
+            Works out of the box.</p>
+        </div>
+        <div class="feature-card" style="padding:1rem">
+          <h3 style="font-size:1rem">Full GRIP</h3>
+          <p style="font-size:0.85rem">290 skills, 31 agents, 34 hooks, convergence modules, genome, KONO memory.
+            <a href="#contact" style="color:var(--accent)">Request invitation</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CONTACT — Unified Form
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="contact" class="section section--dark" data-score="92">
+    <div class="container">
+      <h2 class="section__title">Get In Touch</h2>
+      <p class="section__lead">Interested in GRIP, HAL, TWR beta, or consulting? Tell us what you need.</p>
+
+      <form class="invitation-form reveal" id="invitationForm" action="https://formspree.io/f/mrbnkdjd" method="POST">
+        <div class="form__row">
+          <div class="form__field">
+            <label class="form__label" for="contactName">Your Name</label>
+            <input class="form__input" type="text" id="contactName" name="contact_name" required
+              placeholder="Your name">
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="email">Email</label>
+            <input class="form__input" type="email" id="email" name="email" required placeholder="you@company.com">
+          </div>
+        </div>
+        <div class="form__row">
+          <div class="form__field">
+            <label class="form__label" for="interest">I'm interested in</label>
+            <select class="form__input form__select" id="interest" name="interest" required>
+              <option value="" disabled selected>Select</option>
+              <option value="grip">GRIP &mdash; AI Infrastructure</option>
+              <option value="hal">HAL &mdash; Agentic Runtime</option>
+              <option value="twr-beta">TWR &mdash; Early Beta</option>
+              <option value="skill-forge">Skill Forge &mdash; Contributing</option>
+              <option value="konsult">AI Konsult &mdash; Consulting Session</option>
+              <option value="other">Something Else</option>
+            </select>
+          </div>
+          <div class="form__field">
+            <label class="form__label" for="orgName">Organisation (optional)</label>
+            <input class="form__input" type="text" id="orgName" name="org_name" placeholder="Your company or team">
+          </div>
+        </div>
+        <div class="form__field form__field--full">
+          <label class="form__label" for="message">Message</label>
+          <textarea class="form__input form__textarea" id="message" name="message" rows="4"
+            placeholder="What are you working on? What problems are you trying to solve?"></textarea>
+        </div>
+        <input type="hidden" name="_subject" value="ENTER Konsult Enquiry">
+        <button class="cta form__submit" type="submit">Send Message</button>
+        <div class="form__feedback" id="formFeedback"></div>
+      </form>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       CTA — Two Ways to Start
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="cta" class="section section--cta" data-score="97">
+    <div class="container">
+      <div class="converged-status">
+        <span class="converged-label">READY</span>
+        <span class="converged-pipe">|</span>
+        <span class="converged-msg">Two ways to start</span>
+      </div>
+
+      <div class="cta-cards">
+        <div class="cta-card cta-card--primary reveal">
+          <h3 class="cta-card__title">AI Konsult</h3>
+          <div class="cta-card__price">$150 USD</div>
+          <p class="cta-card__desc">90 minutes. Bring your actual work &mdash; the repetitive tasks, the docs nobody
+            writes, the bottlenecks you keep working around. We run GRIP on your problems live.</p>
+          <p class="cta-card__outcome">You leave knowing what to automate first, what it costs, and whether it's worth
+            it.</p>
+          <a href="https://calendly.com/enterkonsult/konsult" class="cta" target="_blank" rel="noopener">Book AI
+            Konsult</a>
+        </div>
+        <div class="cta-card cta-card--secondary reveal">
+          <h3 class="cta-card__title">Meet &amp; Greet</h3>
+          <div class="cta-card__price">Free</div>
+          <p class="cta-card__desc">30 minutes. Not sure yet? Talk to us first. No pitch deck, no sales process. Just a
+            conversation about what you're trying to do and whether GRIP fits.</p>
+          <a href="https://calendly.com/enterkonsult/meet-and-greet" class="cta cta--outline" target="_blank"
+            rel="noopener">Book Free Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <span class="footer__brand">ENTER KONSULT</span>
+        <span class="footer__tagline">Software that stays out of the way</span>
+        <a href="/documentation.html" class="footer__link">Documentation</a>
+        <a href="https://enterkonsult.com" class="footer__link" target="_blank" rel="noopener">Main Site</a>
+        <a href="https://codetonight-sa.github.io/guild/" class="footer__link" target="_blank" rel="noopener">Guild</a>
+        <a href="https://github.com/CodeTonight-SA" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="footer__legal">
+        <span>&copy; 2024-2026 CodeTonight (Pty) Ltd. All rights reserved.</span>
+        <span class="footer__separator">|</span>
+        <span>Made in Cape Town, South Africa</span>
+        <span class="footer__separator">|</span>
+        <span>Patent Pending</span>
+      </div>
+    </div>
   </footer>
+
+  <script src="/main.js"></script>
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // THEME ENGINE
+    // ═══════════════════════════════════════════════════════════
+    const THEME_KEY = 'ek-theme';
+
+    function setTheme(id) {
+      document.documentElement.setAttribute('data-theme', id);
+      localStorage.setItem(THEME_KEY, id);
+      document.querySelectorAll('.theme-dot').forEach(d => {
+        d.classList.toggle('active', d.dataset.theme === id);
+      });
+    }
+
+    document.getElementById('themePanel').addEventListener('click', e => {
+      const dot = e.target.closest('.theme-dot');
+      if (dot && dot.dataset.theme) setTheme(dot.dataset.theme);
+    });
+
+    // Restore saved theme or default to swiss-dark
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved) setTheme(saved);
+  </script>
 </body>
+
 </html>
