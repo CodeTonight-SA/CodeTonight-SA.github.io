@@ -1226,3 +1226,48 @@ body {
     display: none;
   }
 }
+
+/* ─── Novel Delight++ ─────────────────────────────────────────
+   Toast for Konami codec unlock + Tralalero tap easter eggs.
+   Pure CSS, no third-party. Pairs with main.js flashOverlay().
+   ─────────────────────────────────────────────────────────── */
+
+.delight-flash {
+  position: fixed;
+  left: 50%;
+  bottom: 8vh;
+  transform: translate(-50%, 12px);
+  background: rgba(0, 0, 0, 0.92);
+  color: #d4a017;
+  border: 1px solid rgba(212, 160, 23, 0.35);
+  padding: 0.85rem 1.4rem;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 320ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 320ms cubic-bezier(0.4, 0, 0.2, 1);
+  white-space: nowrap;
+  max-width: 92vw;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.delight-flash--on {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .delight-flash {
+    transition: opacity 120ms linear;
+    transform: translate(-50%, 0);
+  }
+  .delight-flash--on {
+    transform: translate(-50%, 0);
+  }
+}
