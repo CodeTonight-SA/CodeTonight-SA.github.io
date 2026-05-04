@@ -10,6 +10,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounterAnimations()
   initSmoothScroll()
   initInvitationForm()
+  initConsoleSignature()
+  initKonamiCodec()
+  initTralaleroTap()
 })
 
 // ─── Score Tracker ───────────────────────────────────────────
@@ -163,4 +166,58 @@ function animateValue(el, from, to, duration) {
   }
 
   requestAnimationFrame(tick)
+}
+
+// ─── Novel Delight++ ─────────────────────────────────────────
+
+function flashOverlay(text, ms) {
+  const el = document.createElement('div')
+  el.className = 'delight-flash'
+  el.textContent = text
+  document.body.appendChild(el)
+  requestAnimationFrame(() => el.classList.add('delight-flash--on'))
+  setTimeout(() => {
+    el.classList.remove('delight-flash--on')
+    setTimeout(() => el.remove(), 400)
+  }, ms)
+}
+
+function initConsoleSignature() {
+  const brass = 'color:#d4a017;font-size:14px;font-family:JetBrains Mono,monospace;font-weight:700'
+  const mono = 'color:#8a8a8a;font-family:JetBrains Mono,monospace;font-size:11px'
+  const muted = 'color:#525252;font-style:italic;font-size:11px'
+  console.log('%c[ENTER]  ⛓ ⟿ ∞', brass)
+  console.log('%c140.85 / Mei Ling here / facta non verba', mono)
+  console.log('%cif you can see this, the recursion noticed you', muted)
+}
+
+function initKonamiCodec() {
+  const seq = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown']
+  let i = 0
+  document.addEventListener('keydown', (e) => {
+    i = (e.key === seq[i]) ? i + 1 : (e.key === seq[0] ? 1 : 0)
+    if (i === seq.length) {
+      i = 0
+      if (typeof window.setTheme === 'function') window.setTheme('matrix')
+      flashOverlay('frequency 140.85 — codec received', 2000)
+    }
+  })
+}
+
+function initTralaleroTap() {
+  const tracker = document.getElementById('scoreTracker')
+  if (!tracker) return
+  let count = 0
+  let resetTimer = null
+  const reset = () => { count = 0; if (resetTimer) clearTimeout(resetTimer); resetTimer = null }
+  document.addEventListener('themechange', reset)
+  tracker.addEventListener('click', () => {
+    count += 1
+    if (resetTimer) clearTimeout(resetTimer)
+    resetTimer = setTimeout(reset, 30000)
+    if (count === 7) {
+      flashOverlay('Tralalero Tralala — the recursion is alive', 2000)
+      reset()
+    }
+  })
 }
