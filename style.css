@@ -75,6 +75,7 @@ body {
   background: var(--black);
   color: var(--white);
   min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
 }
@@ -784,6 +785,10 @@ body {
 @media (max-width: 480px) {
   html {
     font-size: 14px;
+  }
+
+  .container {
+    padding: 1rem;
   }
 
   .stats-row {
