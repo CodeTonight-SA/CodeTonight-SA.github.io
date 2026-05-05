@@ -129,7 +129,8 @@
     .project-card__links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
     .project-card__links a { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
       color: var(--accent); text-decoration: none; border: 1px solid var(--accent);
-      padding: 0.4rem 0.8rem; transition: all 0.15s; }
+      padding: 0.4rem 0.8rem; transition: all 0.15s;
+      min-height: 48px; display: inline-flex; align-items: center; }
     .project-card__links a:hover { background: var(--accent); color: var(--bg); }
 
     /* Team */
@@ -174,6 +175,11 @@
       .theme-panel { top: auto; bottom: 0; right: 0; left: 0;
         justify-content: center;
         border: none; border-top: 1px solid var(--border); padding: 6px;
+      }
+      .theme-dot {
+        min-width: 44px; min-height: 44px;
+        background-clip: content-box;
+        padding: 14px;
       }
       .hero-logo { max-width: 280px; }
     }
