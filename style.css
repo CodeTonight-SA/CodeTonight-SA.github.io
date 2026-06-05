@@ -871,7 +871,7 @@ body {
 
 .form__input {
   font-family: var(--font-sans);
-  font-size: 0.9375rem;
+  font-size: 16px; /* >=16px: prevents iOS Safari auto-zoom on focus (immune to 14px root at <=480px); all inputs/select/textarea carry .form__input */
   padding: 0.75rem var(--space-sm);
   border: 1px solid var(--gray-200);
   background: var(--white);
