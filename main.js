@@ -145,10 +145,10 @@ function initInvitationForm() {
       }
     } catch {
       feedback.className = 'form__feedback form__feedback--error'
-      feedback.textContent = 'Something went wrong. Please email laurie@codetonight.com directly.'
+      feedback.textContent = 'Something went wrong. Please email laurie@codetonight.co.za directly.'
     } finally {
       btn.disabled = false
-      btn.textContent = 'Request Invitation'
+      btn.textContent = 'Send Message'
     }
   })
 }
@@ -186,7 +186,7 @@ function initConsoleSignature() {
   const brass = 'color:#d4a017;font-size:14px;font-family:JetBrains Mono,monospace;font-weight:700'
   const mono = 'color:#8a8a8a;font-family:JetBrains Mono,monospace;font-size:11px'
   const muted = 'color:#525252;font-style:italic;font-size:11px'
-  console.log('%c[ENTER]  ⛓ ⟿ ∞', brass)
+  console.log('%c[CodeTonight]  ⛓ ⟿ ∞', brass)
   console.log('%c140.85 / Mei Ling here / facta non verba', mono)
   console.log('%cif you can see this, the recursion noticed you', muted)
 }
