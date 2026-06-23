@@ -284,7 +284,8 @@ body {
   border: 1px solid var(--gray-700);
   overflow: hidden;
   margin-bottom: var(--space-md);
-  max-width: 650px;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .terminal--light {

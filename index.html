@@ -5,15 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="ENTER Konsult — Software that stays out of the way. GRIP, HAL, happi.md, and the polyglot SDK. Open source AI infrastructure from Cape Town.">
+    content="Open-core AI from Cape Town. The HAPPI standard is free; the GRIP+HAL engine is licensed; the tools around it are open-source and clone-able today.">
   <meta name="theme-color" content="#000000">
-  <title>ENTER Konsult — Software that stays out of the way</title>
+  <title>CodeTonight — we license the AI engine, and open-source the tools around it</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-  <meta property="og:title" content="ENTER Konsult — Software that stays out of the way">
+  <meta property="og:title" content="CodeTonight — we license the AI engine, and open-source the tools around it">
   <meta property="og:description"
-    content="GRIP AI infrastructure, HAL agentic runtime, and open source tools. CodeTonight (Pty) Ltd.">
+    content="Open-core AI from Cape Town. The HAPPI standard is free; the GRIP+HAL engine is licensed; the tools around it are open-source and clone-able today. Deeds, not words.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codetonight-sa.github.io">
   <meta name="twitter:card" content="summary">
@@ -117,6 +117,14 @@
     .hero-sub { font-size: 1rem; color: var(--text-muted); margin-bottom: 0.25rem;
       font-style: italic; }
 
+    /* Principles block (canonical, opens the page) */
+    .principles { display: flex; flex-direction: column; gap: 0.5rem;
+      width: fit-content; max-width: 100%; margin: 2.25rem auto 0; text-align: left;
+      font-family: 'JetBrains Mono', monospace; }
+    .principle { font-size: 0.9rem; color: var(--text); line-height: 1.4;
+      border-left: 2px solid var(--accent); padding-left: 0.9rem; }
+    .principle__num { color: var(--accent); font-weight: 700; margin-right: 0.6rem; }
+
     /* Project cards */
     .project-card { background: var(--surface); border: 1px solid var(--border);
       padding: 1.5rem; transition: all 0.3s; }
@@ -183,6 +191,71 @@
       }
       .hero-logo { max-width: 280px; }
     }
+
+    /* ── W2: open-core pillars ── */
+    .chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .chip { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.1em;
+      text-transform: uppercase; padding: 0.3rem 0.6rem; border: 1px solid var(--border);
+      color: var(--text-muted); white-space: nowrap; }
+    .chip strong { color: var(--accent); font-weight: 700; }
+    .chip--invite { border-color: var(--accent); color: var(--accent); }
+    .claim { display: inline-block; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem;
+      color: var(--text); background: var(--surface); border-left: 2px solid var(--accent);
+      padding: 0.35rem 0.7rem; margin-bottom: 0.75rem; line-height: 1.4; }
+    .clone { font-family: 'JetBrains Mono', monospace; font-size: 0.74rem; color: var(--text);
+      background: var(--bg); border: 1px solid var(--border); padding: 0.55rem 0.8rem;
+      white-space: normal; overflow-wrap: anywhere; word-break: break-all; }
+    .clone .sigil { color: var(--accent); user-select: none; margin-right: 0.5rem; }
+    .engine-cards { display: grid; gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+    .sdk-grid, .work-grid { display: grid; gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); }
+    .project-card--lead { grid-column: 1 / -1; }
+    .sdk-grid .project-card, .work-grid .project-card { display: flex; flex-direction: column; }
+    .sdk-grid .clone, .work-grid .clone { margin-top: auto; }
+    .proof-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; justify-content: center;
+      margin-top: 4rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem;
+      color: var(--text-muted); }
+    .proof-row b { color: var(--accent); }
+    /* syscall before/after */
+    .syscall { display: grid; gap: 1rem; margin-top: 1.5rem; align-items: stretch;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+    .syscall figure { margin: 0; }
+    .syscall figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;
+      text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.4rem; }
+    .syscall .bad { color: #e06c75; }
+    .syscall .good { color: var(--accent); }
+    .syscall pre { background: var(--bg); border: 1px solid var(--border); height: 100%;
+      padding: 0.8rem 1rem; overflow-x: auto; font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; line-height: 1.5; color: var(--text); }
+    /* open-core seam figure */
+    .seam { text-align: center; margin: 4.5rem auto 0; max-width: 720px; }
+    .seam img { width: 100%; height: auto; }
+    .seam figcaption { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;
+      color: var(--text-muted); margin-top: 1.75rem; }
+    /* open-core split-screen glance */
+    .glance { display: grid; gap: 2rem; margin-top: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr)); }
+    .glance__side { background: var(--surface); border: 1px solid var(--border); padding: 1.5rem; }
+    .glance__side--invite { border-color: var(--accent); }
+    .glance__label { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.6rem; }
+    /* what we will NOT do */
+    .notdo-bans { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+    .ban-chip { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; padding: 0.3rem 0.65rem;
+      border: 1px solid var(--border); color: var(--text-muted); text-decoration: line-through;
+      text-decoration-color: var(--accent); }
+
+    /* CTA card + footer centring (single card + footer rows) */
+    .cta-cards { grid-template-columns: 1fr; max-width: 520px; }
+    .cta-card { text-align: center; }
+    .footer .container { justify-content: center; }
+    .footer__link { margin-left: 0; }
+
+    /* Pro-Bono & Play: bottom-align button rows across cards; keep claim chips content-width */
+    #pro-bono .project-card, #pro-bono .brainrot-card { display: flex; flex-direction: column; }
+    #pro-bono .project-card .claim { align-self: flex-start; }
+    #pro-bono .project-card__links { margin-top: auto; }
   </style>
 </head>
 
@@ -209,58 +282,67 @@
   </div>
 
   <!-- ═══════════════════════════════════════════════════════════
-       HERO — ENTER Konsult
+       HERO — CodeTonight
        ═══════════════════════════════════════════════════════════ -->
   <main>
   <section id="hero" class="section section--hero" data-score="0">
     <div class="container" style="text-align:center">
       <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:0.75rem">
-        <svg width="80" height="80" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" style="display:block;margin:0 auto">
-          <polygon fill="var(--accent)" points="113.9 101.2 104.5 110.6 120.2 124.4 59 124.4 59 83.4 46.8 83.4 46.8 136.7 118.3 136.7 104.5 151 113.5 159.9 143.5 130.4"/>
-        </svg>
-        <h1 style="font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-0.02em;line-height:1;text-align:center;width:100%">
-          <span style="color:var(--accent)">ENTER </span><span style="color:#888">KONSULT</span>
+        <!-- temporary typographic wordmark — final logo co-designed with Fabio -->
+        <h1 style="font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-0.03em;line-height:1;text-align:center;width:100%">
+          <span style="color:var(--accent)">Code</span><span style="color:#888">Tonight</span>
         </h1>
       </div>
-      <p class="hero-byline">Officially known as CodeTonight (Pty) Ltd</p>
-      <p class="hero-sub">First a solopreneur entity, now a dynamic team.</p>
-      <h1 class="hero__title" style="font-size:clamp(2rem,6vw,4rem);margin:1.5rem 0">Software that stays out of the way.</h1>
-      <p class="hero__subtitle" style="font-size:1.1rem;color:#8a8a8a;max-width:600px;margin:0 auto">
-        AI infrastructure, agentic runtimes, and open source tools.<br>
-        <em>facta non verba</em> &mdash; deeds, not words.
+      <h2 class="hero__title" style="font-size:clamp(1.4rem,4vw,2.4rem);font-weight:700;line-height:1.25;max-width:1000px;margin:1.75rem auto 0;text-wrap:balance">
+        CodeTonight builds the AI that works for you, not against you &mdash; and licenses the engine behind it.
+      </h2>
+      <p class="hero__subtitle" style="font-size:1.05rem;color:#8a8a8a;max-width:820px;margin:1rem auto 0">
+        Technology that works for you. Not against you.<br>
+        <em>facta non verba</em> &mdash; deeds, not words.<br>Cape Town, South Africa
       </p>
+      <div class="principles">
+        <div class="principle"><span class="principle__num">01</span>We will not build what should not exist</div>
+        <div class="principle"><span class="principle__num">02</span>We transform complexity &mdash; KISS is paramount</div>
+        <div class="principle"><span class="principle__num">03</span>We enforce strict quality control</div>
+        <div class="principle"><span class="principle__num">04</span>We do what is RIGHT</div>
+      </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       GRIP — AI Infrastructure Engine
+       THE ENGINE — GRIP + HAL (the moat, licensed by invitation)
        ═══════════════════════════════════════════════════════════ -->
-  <section id="grip" class="section section--dark" data-score="15">
+  <section id="engine" class="section section--dark" data-score="12">
     <div class="container">
-      <h2 class="section__title">GRIP</h2>
-      <p class="section__lead">AI infrastructure engine for Claude Code. Recursive self-improvement,
-        deterministic safety, and convergence architecture.</p>
+      <h2 class="section__title">The Engine</h2>
+      <p class="section__lead">GRIP brings the reasoning; HAL brings the zero-limit, any-provider runtime.
+        GRIP + HAL are licensed to firms by invitation &mdash; not a download, not a <code>git clone</code>.</p>
 
-      <div class="feature-grid reveal">
-        <div class="feature-card">
-          <h3>Convergence Architecture</h3>
-          <p>A 37-token function that composes the entire system. Every operation is converge(state, criterion, improve).</p>
+      <div class="engine-cards reveal">
+        <div class="project-card">
+          <div class="chips">
+            <span class="chip"><strong>STATUS:</strong>&nbsp;BY INVITATION</span>
+            <span class="chip"><strong>ROLE:</strong>&nbsp;CREATOR</span>
+          </div>
+          <div class="project-card__title">GRIP</div>
+          <p class="project-card__desc">The agentic brain. Convergence architecture &mdash; every operation is
+            <code>converge(state, criterion, improve)</code> &mdash; recursive self-improvement under human gates,
+            and scientific measurement: every claim registers a falsifiable hypothesis, effect sizes over
+            directions, shadow metrics against Goodhart.</p>
         </div>
-        <div class="feature-card">
-          <h3>Deterministic Safety</h3>
-          <p>Python functions that return DENY. Cannot be argued with, persuaded, or socially engineered.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Scientific Measurement</h3>
-          <p>Every claim registers a falsifiable hypothesis. Effect sizes, not just directions. Shadow metrics guard against Goodhart.</p>
-        </div>
-        <div class="feature-card">
-          <h3>Recursive Self-Improvement</h3>
-          <p>Fibonacci wave sprints. The system improves itself autonomously, with human gates at every phase.</p>
+        <div class="project-card">
+          <div class="chips">
+            <span class="chip"><strong>STATUS:</strong>&nbsp;LICENSABLE</span>
+            <span class="chip"><strong>ROLE:</strong>&nbsp;CREATOR</span>
+          </div>
+          <div class="project-card__title">HAL</div>
+          <p class="project-card__desc">The any-model runtime. 100 modules across 8 layers, mixture-of-experts
+            routing across Claude, GPT, Gemini, and Llama, a conversation engine that persists sessions across
+            weeks, and mechanical safety &mdash; hook dispatch, sanitisation, agent traps.</p>
         </div>
       </div>
 
-      <div class="terminal reveal">
+      <div class="terminal reveal" style="margin-top:1.5rem;margin-left:auto;margin-right:auto">
         <div class="terminal__header">
           <span class="terminal__dot" style="background:#ff5f57"></span>
           <span class="terminal__dot" style="background:#febc2e"></span>
@@ -273,124 +355,175 @@
         <span class="kw">return</span> state
     <span class="kw">return</span> <span class="fn">converge</span>(improve(state), criterion, improve, depth+<span class="num">1</span>, max_depth)</pre>
       </div>
+
+      <div class="proof-row reveal">
+        <span><b>~10</b> hard-DENY safety gates</span>
+        <span><b>~30</b> PARAMOUNT doctrines</span>
+        <span><b>cross-model</b> MoE routing</span>
+      </div>
+      <p class="section__lead" style="text-align:center;margin:3rem auto 0">
+        AI safety achieved through mechanisms, not values.</p>
+
+      <div style="text-align:center;margin-top:4.5rem">
+        <a href="mailto:laurie@codetonight.co.za?subject=GRIP%2BHAL%20licensing%20conversation" class="cta">Request a licensing conversation</a>
+      </div>
+
+      <figure class="seam reveal">
+        <img src="/images/open-core-seam.svg"
+          alt="Open-core seam: HAPPI/1.0 is open and free; HAL and GRIP are licensed.">
+        <figcaption>Open-core: the standard is free, the runtime and engine are licensed.</figcaption>
+      </figure>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       HAL — Harness Abstraction Layer
+       THE OPEN STANDARD — HAPPI/1.0 (free; the open half of open-core)
        ═══════════════════════════════════════════════════════════ -->
-  <section id="hal" class="section" data-score="30">
+  <section id="happi" class="section" data-score="24">
     <div class="container">
-      <h2 class="section__title">HAL</h2>
-      <p class="section__lead">Standalone agentic runtime. 100 modules across 8 architectural layers.
-        Multi-provider intelligence with safety-first design.</p>
+      <h2 class="section__title">HAPPI/1.0 &mdash; AI as a syscall</h2>
+      <p class="section__lead">A provider-agnostic envelope contract. Your callers ask for inference;
+        they never bind to a vendor's SDK. The standard is free and public &mdash; the runtime that serves it
+        is licensed.</p>
 
-      <div class="feature-grid reveal">
-        <div class="feature-card">
-          <h3>Multi-Provider</h3>
-          <p>Claude, GPT, Gemini, Llama. Mixture-of-Experts routing sends each task to the best model.</p>
+      <div class="syscall reveal">
+        <figure>
+          <figcaption class="bad">// vendor-locked</figcaption>
+          <pre>client = OpenAI(api_key=...)
+client.chat.completions.create(
+    model="gpt-4o",
+    messages=[...],
+)
+<span style="color:#7a8a99;font-style:italic"># swap providers? rewrite every call.</span></pre>
+        </figure>
+        <figure>
+          <figcaption class="good">// HAPPI/1.0</figcaption>
+          <pre>infer({
+  provider: "any",
+  prompt: "...",
+})
+<span style="color:#7a8a99;font-style:italic"># swap providers? change one field.</span></pre>
+        </figure>
+      </div>
+
+      <p class="section__lead" style="margin-top:2.5rem">Four clone-able SDKs, one envelope contract,
+        identical behaviour:</p>
+      <div class="sdk-grid reveal">
+        <div class="project-card">
+          <div class="project-card__tag">Python</div>
+          <div class="project-card__title">hal-py</div>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-py</div>
         </div>
-        <div class="feature-card">
-          <h3>Safety Enforcement</h3>
-          <p>Hook dispatch, sanitisation, harness detection, agent traps. Safety is mechanical, not aspirational.</p>
+        <div class="project-card">
+          <div class="project-card__tag">JS / TS &mdash; zero-dep</div>
+          <div class="project-card__title">hal-js</div>
+          <p class="project-card__desc" style="font-size:0.85rem">Node, Deno, and Bun. No dependencies.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-js</div>
         </div>
-        <div class="feature-card">
-          <h3>Conversation Engine</h3>
-          <p>Context assembly, compaction, branching, search, replay. Sessions persist across weeks.</p>
+        <div class="project-card">
+          <div class="project-card__tag">Go</div>
+          <div class="project-card__title">hal-go</div>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-go</div>
         </div>
-        <div class="feature-card">
-          <h3>The Knowledge Engine</h3>
-          <p>Intelligence layer with structured rest periods, attribution, quality scoring, and diagnostic capabilities.</p>
+        <div class="project-card">
+          <div class="project-card__tag">Conformance</div>
+          <div class="project-card__title">hal-conformance</div>
+          <p class="project-card__desc" style="font-size:0.85rem">The test suite every SDK must pass.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-conformance</div>
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:2rem">
-        <a href="#contact" class="cta">Request Access</a>
+      <div style="text-align:center;margin-top:4rem">
+        <a href="https://www.happi.md" class="cta cta--outline" target="_blank" rel="noopener">Read the standard &rarr; happi.md</a>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       TWR — Coming Soon
+       THE OPEN WORK — OSS tools (Pillar B; the open core, proven)
        ═══════════════════════════════════════════════════════════ -->
-  <section id="twr" class="section section--dark" data-score="42">
-    <div class="container" style="text-align:center">
-      <h2 class="section__title">TWR</h2>
-      <p class="section__lead" style="max-width:600px;margin:0 auto 1.5rem">
-        The clipboard, reinvented. A sleek visual interface with version-control patterns
-        that make copy-paste feel like time travel. Every snippet versioned, searchable, and always there.
-      </p>
-      <p style="color:var(--accent);font-family:'JetBrains Mono',monospace;font-size:0.85rem;letter-spacing:0.1em">
-        COMING SOON
-      </p>
-      <p style="color:var(--text-muted);margin-top:1rem;font-size:0.9rem">
-        We're looking for early beta testers.
-      </p>
-      <a href="#contact" class="cta" style="margin-top:1rem;display:inline-block">Sign Up for Beta</a>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════════
-       OPEN SOURCE — Projects
-       ═══════════════════════════════════════════════════════════ -->
-  <section id="projects" class="section" data-score="55">
+  <section id="open-work" class="section" data-score="38">
     <div class="container">
-      <h2 class="section__title">Open Source</h2>
-      <p class="section__lead">Building in the open. Contribute, fork, or just explore.</p>
+      <h2 class="section__title">The Open Work</h2>
+      <p class="section__lead">Around the private engine: real open-source tools, each carrying a falsifiable
+        claim &mdash; a proof, a cost model, a live game. They are the engine's quality, shown not told.</p>
 
-      <div class="feature-grid reveal">
-        <div class="project-card">
-          <div class="project-card__tag">Anti-Skill-Atrophy</div>
-          <div class="project-card__title">Skill Forge</div>
-          <p class="project-card__desc">Keep your engineering skills sharp while using AI.
-            The sharpest sword is forged through use, not observation.
-            Designed for software engineers who use Claude Code daily.</p>
-          <div class="project-card__links">
-            <a href="https://github.com/CodeTonight-SA/skill-forge" target="_blank">View Repository</a>
-            <a href="https://github.com/CodeTonight-SA/skill-forge/issues" target="_blank">Contribute</a>
-          </div>
+      <!-- the open-core glance: clone the open work, request the engine -->
+      <div class="glance reveal">
+        <div class="glance__side">
+          <div class="glance__label">The open work &mdash; clone it today</div>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/idr-vision</div>
+        </div>
+        <div class="glance__side glance__side--invite">
+          <div class="glance__label">The engine &mdash; by invitation</div>
+          <p class="project-card__desc" style="margin:0">GRIP + HAL are licensed, never cloned.
+            <a href="mailto:laurie@codetonight.co.za?subject=GRIP%2BHAL%20licensing%20conversation"
+              style="color:var(--accent)">Request a licensing conversation &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="work-grid reveal" style="margin-top:2.5rem">
+        <div class="project-card project-card--lead">
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;BRIDGE</span></div>
+          <div class="project-card__title">idr-vision</div>
+          <span class="claim">signed &middot; chained &middot; replayable</span>
+          <p class="project-card__desc">idr-vision is the only piece of the engine you can read: the same
+            signed-chained-replayable notarisation GRIP runs internally, open-sourced as a standalone tool.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/idr-vision</div>
         </div>
 
         <div class="project-card">
-          <div class="project-card__tag">Productivity</div>
-          <div class="project-card__title">Googol Vibe</div>
-          <p class="project-card__desc">Unified Google Workspace. Gmail, Calendar, Drive, and Tasks in one
-            desktop app. MCP-enabled for AI integration. Privacy-first, local-only, zero telemetry.</p>
-          <div class="project-card__links">
-            <a href="https://github.com/CodeTonight-SA/google-vibe-os" target="_blank">View Repository</a>
-          </div>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
+          <div class="project-card__title">git-solve</div>
+          <span class="claim">Banach fixed-point proof</span>
+          <p class="project-card__desc">Cross-session branch reconciliation as a convergence loop &mdash;
+            divergent parallel work resolved safely, verifiably, replayably.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/git-solve</div>
         </div>
 
         <div class="project-card">
-          <div class="project-card__tag">Guild POC</div>
-          <div class="project-card__title">HushBell</div>
-          <p class="project-card__desc">Dog-friendly smart doorbell. 40Hz sub-hearing tactile tone +
-            anti-conditioning frequency randomisation. Thomas Frumkin's design from the AI Craftspeople Guild.</p>
-          <div class="project-card__links">
-            <a href="https://codetonight-sa.github.io/hushbell-poc/" target="_blank">Live Demo</a>
-            <a href="https://aicraftspeopleguild.github.io/showcases.html" target="_blank">Guild Showcases</a>
-          </div>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
+          <div class="project-card__title">prompt-cache-keepalive</div>
+          <span class="claim">proven cost model</span>
+          <p class="project-card__desc">Keeps the Anthropic prompt cache warm so long sessions stop paying the
+            cold-read tax. The saving is a model you can check, not a promise.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/prompt-cache-keepalive</div>
         </div>
 
         <div class="project-card">
-          <div class="project-card__tag">Lekka Tech</div>
-          <div class="project-card__title">Kwartel</div>
-          <p class="project-card__desc">Afrikaans daily word game. 10,000+ daily players for 3+ years.
-            Vanilla JS, offline-first PWA, zero dependencies. Woordraaispel &mdash; lekker!</p>
-          <div class="project-card__links">
-            <a href="https://kwartel.io" target="_blank">Play Kwartel</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card__tag">LinkedIn Tooling</div>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
           <div class="project-card__title">grip-post</div>
-          <p class="project-card__desc">Unicode formatter and anti-fluff gate for LinkedIn posts.
-            Refuses to write fluff. Browser-extensible. Built for engineers who post about real work.</p>
-          <div class="project-card__links">
-            <a href="https://github.com/CodeTonight-SA/grip-post" target="_blank">View Repository</a>
-            <a href="https://github.com/CodeTonight-SA/grip-post/issues" target="_blank">Contribute</a>
-          </div>
+          <span class="claim">refuses to write fluff</span>
+          <p class="project-card__desc">grip-post is an anti-fluff gate that refuses to write fluff &mdash;
+            we run it on our own copy. Unicode formatter + anti-slop gate for LinkedIn, browser-extensible.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grip-post</div>
+        </div>
+
+        <div class="project-card">
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
+          <div class="project-card__title">grip-session-mesh</div>
+          <span class="claim">three-layer session mesh</span>
+          <p class="project-card__desc">Share a knowledge base across concurrent Claude Code sessions &mdash;
+            inbox, session registry, and live snapshots, garbage-collected by TTL.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grip-session-mesh</div>
+        </div>
+
+        <div class="project-card">
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;GAME</span></div>
+          <div class="project-card__title">ccflex-skibidi</div>
+          <span class="claim">WebGL &middot; ranked &middot; verifiable</span>
+          <p class="project-card__desc">A ranked WebGL game with verifiable scores.
+            <!-- W4: embed the live WebGL as a hero element once the embed URL is confirmed --></p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/ccflex-skibidi</div>
+        </div>
+
+        <div class="project-card">
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
+          <div class="project-card__title">skill-forge</div>
+          <span class="claim">anti-skill-atrophy</span>
+          <p class="project-card__desc">Keep your engineering skills sharp while using AI. The sharpest sword is
+            forged through use, not observation &mdash; for engineers who use Claude Code daily.</p>
+          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/skill-forge</div>
         </div>
       </div>
     </div>
@@ -428,102 +561,116 @@
         </div>
       </div>
 
-      <div style="text-align:center;margin-top:2rem">
+      <div style="display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;margin-top:4rem">
         <a href="https://aicraftspeopleguild.github.io/" class="cta" target="_blank">Visit the Guild</a>
-        <a href="https://codetonight-sa.github.io/guild/" class="cta cta--outline" target="_blank"
-          style="margin-left:1rem">Our Guild Page</a>
+        <a href="https://codetonight-sa.github.io/guild/" class="cta cta--outline" target="_blank">Our Guild Page</a>
       </div>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       GRIP & HAL — Tools cluster
+       PRO-BONO & PLAY — community work + father-son games (Pillar B)
        ═══════════════════════════════════════════════════════════ -->
-  <section id="tools" class="section" data-score="68">
+  <section id="pro-bono" class="section" data-score="68">
     <div class="container">
-      <h2 class="section__title">Toolchain</h2>
-      <p class="section__lead">Public spec, polyglot SDKs, and the live whitepaper. Core engine private.</p>
+      <h2 class="section__title">Pro-Bono &amp; Play</h2>
+      <p class="section__lead">Public good and genuine fun &mdash; games with real players, a Guild design,
+        a privacy-first desktop app. All open, all honest about who built them.</p>
 
       <div class="feature-grid reveal">
         <div class="project-card">
-          <div class="project-card__tag">Overview</div>
-          <div class="project-card__title">about.grip-web.com</div>
-          <p class="project-card__desc">The GRIP whitepaper and design overview.
-            Convergence architecture, deterministic safety, recursive self-improvement &mdash; explained.</p>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;GAME</span></div>
+          <div class="project-card__title">Kwartel</div>
+          <span class="claim">kwartel.io &middot; 3+ years &middot; 100k+ players</span>
+          <p class="project-card__desc">Afrikaans daily word game. Vanilla JS, offline-first PWA, zero
+            dependencies. Woordraaispel &mdash; lekker!</p>
           <div class="project-card__links">
-            <a href="https://about.grip-web.com" target="_blank" rel="noopener">Read the Whitepaper</a>
+            <a href="https://kwartel.io" target="_blank" rel="noopener">Play Kwartel</a>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-card__tag">Spec</div>
-          <div class="project-card__title">happi.md</div>
-          <p class="project-card__desc">The canonical happi.md specification.
-            One Markdown file that boots itself, validates itself, and ships polyglot test suites.
-            Public Gist mirror, byte-identical to source.</p>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;GUILD POC</span></div>
+          <div class="project-card__title">hushbell-poc</div>
+          <span class="claim">40Hz sub-hearing tactile tone</span>
+          <p class="project-card__desc">Dog-friendly smart doorbell with anti-conditioning frequency
+            randomisation. Thomas Frumkin's design from the AI Craftspeople Guild.</p>
           <div class="project-card__links">
-            <a href="https://gist.github.com/LaurieScheepers/2483d5c218c21ecc931130bcee7dee83" target="_blank" rel="noopener">Read the Spec</a>
+            <a href="https://codetonight-sa.github.io/hushbell-poc/" target="_blank" rel="noopener">Live Demo</a>
+            <a href="https://aicraftspeopleguild.github.io/showcases.html" target="_blank" rel="noopener">Guild Showcases</a>
           </div>
         </div>
 
         <div class="project-card">
-          <div class="project-card__tag">SDK &mdash; Polyglot</div>
-          <div class="project-card__title">hal-py / hal-js / hal-go</div>
-          <p class="project-card__desc">Polyglot client libraries for HAL.
-            Same envelope contract across Python, JavaScript/TypeScript, and Go.
-            One spec, three runtimes, identical behaviour.</p>
+          <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;APP</span></div>
+          <div class="project-card__title">google-vibe-os</div>
+          <span class="claim">local-only &middot; zero telemetry</span>
+          <p class="project-card__desc">Unified Google Workspace &mdash; Gmail, Calendar, Drive, and Tasks in one
+            desktop app, MCP-enabled for AI integration. Privacy-first.</p>
           <div class="project-card__links">
-            <a href="https://github.com/CodeTonight-SA/hal-py" target="_blank" rel="noopener">hal-py</a>
-            <a href="https://github.com/CodeTonight-SA/hal-js" target="_blank" rel="noopener">hal-js</a>
-            <a href="https://github.com/CodeTonight-SA/hal-go" target="_blank" rel="noopener">hal-go</a>
-          </div>
-        </div>
-
-        <div class="project-card">
-          <div class="project-card__tag">Side-Project</div>
-          <div class="project-card__title">tralala.grip-web.com</div>
-          <p class="project-card__desc">aura. rizz.
-            The codename for a side-project that lives at tralala.grip-web.com.
-            Built for vibe, not for vanity.</p>
-          <div class="project-card__links">
-            <a href="https://tralala.grip-web.com" target="_blank" rel="noopener">Visit tralala</a>
+            <a href="https://github.com/CodeTonight-SA/google-vibe-os" target="_blank" rel="noopener">View Repository</a>
           </div>
         </div>
       </div>
+
+      <!-- father-son games: personal LaurieScheepers/* repos, presented honestly (not org-owned) -->
+      <p class="section__lead" style="margin-top:3rem">Italian Brainrot &mdash; father-son games by V&gt;&gt; and his
+        son Luka. Personal projects (<code>github.com/LaurieScheepers</code>), open source, built for laughs.</p>
+      <div class="feature-grid reveal">
+        <div class="brainrot-card">
+          <div class="brainrot-card__title">Tung Tung Tung Sahur!</div>
+          <div class="brainrot-card__by">By Luka &amp; Pappa &middot; personal repo</div>
+          <p class="brainrot-card__desc">Tap when "Sahur!" appears. Minimal code, maximum chaos.</p>
+          <div class="project-card__links" style="justify-content:center">
+            <a href="https://ttt-sahur.vercel.app" target="_blank" rel="noopener">Play Now</a>
+            <a href="https://github.com/LaurieScheepers/tung-tung-tung-sahur" target="_blank" rel="noopener">Source</a>
+          </div>
+        </div>
+        <div class="brainrot-card">
+          <div class="brainrot-card__title">Mixing Mod</div>
+          <div class="brainrot-card__by">v0.9.0 &mdash; By Luka &amp; Pappa &middot; personal repo</div>
+          <p class="brainrot-card__desc">Combine meme characters into hybrid creatures. Become the FINAL BOSS.</p>
+          <div class="project-card__links" style="justify-content:center">
+            <a href="https://italian-brainrot-mixing-mod.vercel.app" target="_blank" rel="noopener">Play Now</a>
+            <a href="https://github.com/LaurieScheepers/italian-brainrot-mixing-mod" target="_blank" rel="noopener">Source</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="section__lead" style="margin-top:3rem;font-size:0.95rem">
+        <strong>Also in the lab:</strong> TWR &mdash; a clipboard manager with version-control patterns; shipping soon.<br>
+        <strong>Client work:</strong> REDR, Oculus, VerifiedTalent.<br>
+        <strong>More:</strong> <a href="https://about.grip-web.com" target="_blank" rel="noopener" style="color:var(--accent)">GRIP whitepaper</a>
+        &middot; <a href="https://tralala.grip-web.com" target="_blank" rel="noopener" style="color:var(--accent)">tralala</a>.
+      </p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       ITALIAN BRAINROT — Father & Son Fun
+       WHAT WE WILL NOT DO — the open-core boundary + anti-slop bans
        ═══════════════════════════════════════════════════════════ -->
-  <section id="brainrot" class="section" data-score="72">
+  <section id="not-do" class="section" data-score="74">
     <div class="container">
-      <h2 class="section__title">Italian Brainrot</h2>
-      <p class="section__lead">Reality is tough. Rather be absurdist and laugh at funny things.
-        Built by V&gt;&gt; and his son Luka &mdash; being silly, open source, father-son coding.</p>
+      <h2 class="section__title">What we will not do</h2>
+      <p class="section__lead">Principle 01: we will not build what should not exist. The open-core boundary
+        is the clearest case &mdash; <strong>GRIP is licensed, not cloned.</strong> The standard (HAPPI) is yours
+        to take; the runtime that makes it fast is ours to license. That line is deliberate, not a paywall
+        bolted on later.</p>
 
-      <div class="feature-grid reveal" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-        <div class="brainrot-card">
-          <div class="brainrot-card__title">Tung Tung Tung Sahur!</div>
-          <div class="brainrot-card__by">By Luka &amp; Pappa</div>
-          <p class="brainrot-card__desc">Tap when "Sahur!" appears. Addictive, all ages, impossible to stop.
-            Minimal code, maximum chaos.</p>
-          <div class="project-card__links" style="justify-content:center">
-            <a href="https://ttt-sahur.vercel.app" target="_blank">Play Now</a>
-            <a href="https://github.com/LaurieScheepers/tung-tung-tung-sahur" target="_blank">Contribute</a>
-          </div>
-        </div>
-
-        <div class="brainrot-card">
-          <div class="brainrot-card__title">Mixing Mod</div>
-          <div class="brainrot-card__by">v0.9.0 &mdash; By Luka &amp; Pappa</div>
-          <p class="brainrot-card__desc">Combine Italian Brainrot meme characters to create hybrid creatures.
-            Become the FINAL BOSS and earn INFINITY COINS!</p>
-          <div class="project-card__links" style="justify-content:center">
-            <a href="https://italian-brainrot-mixing-mod.vercel.app" target="_blank">Play Now</a>
-            <a href="https://github.com/LaurieScheepers/italian-brainrot-mixing-mod" target="_blank">Contribute</a>
-          </div>
-        </div>
+      <p class="section__lead" style="margin-top:2.5rem">And phrases this page will not ship:</p>
+      <div class="notdo-bans">
+        <span class="ban-chip">leverage</span>
+        <span class="ban-chip">synergy</span>
+        <span class="ban-chip">cutting-edge</span>
+        <span class="ban-chip">next-generation</span>
+        <span class="ban-chip">game-changing</span>
+        <span class="ban-chip">world-class</span>
+        <span class="ban-chip">empower</span>
+        <span class="ban-chip">supercharge</span>
+        <span class="ban-chip">seamless</span>
+        <span class="ban-chip">AI-powered</span>
+        <span class="ban-chip">trusted by industry leaders</span>
+        <span class="ban-chip">digital transformation</span>
       </div>
     </div>
   </section>
@@ -572,40 +719,8 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       GRIP COMMANDER — Download
-       ═══════════════════════════════════════════════════════════ -->
-  <section id="download" class="section" data-score="85">
-    <div class="container">
-      <h2 class="section__title">GRIP Commander</h2>
-      <p class="section__lead">Desktop experience. Try the starter pack &mdash; 15 skills, 5 agents, 5 safety hooks.</p>
-
-      <div class="download-card reveal">
-        <div class="download-card__inner">
-          <div class="download-card__meta">
-            <span class="download-card__badge">Alpha</span>
-            <span class="download-card__version">v0.1.0-alpha.2</span>
-            <span class="download-card__platform">macOS (Apple Silicon)</span>
-          </div>
-          <a href="https://github.com/CodeTonight-SA/GRIP-GUI/releases/download/v0.1.0-alpha.2/GRIP-Commander-0.1.0-arm64.dmg"
-            class="cta" target="_blank" rel="noopener">Download .dmg</a>
-        </div>
-      </div>
-
-      <div class="feature-grid reveal" style="margin-top:1.5rem">
-        <div class="feature-card" style="padding:1rem">
-          <h3 style="font-size:1rem">Starter Pack</h3>
-          <p style="font-size:0.85rem">15 skills, 5 agents, 5 safety hooks, session context.
-            Works out of the box.</p>
-        </div>
-        <div class="feature-card" style="padding:1rem">
-          <h3 style="font-size:1rem">Full GRIP</h3>
-          <p style="font-size:0.85rem">290 skills, 31 agents, 34 hooks, convergence modules, genome, KONO memory.
-            <a href="#contact" style="color:var(--accent)">Request invitation</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+  <!-- GRIP Commander download section removed — the engine is by-invitation, never a public
+       download (locked #8/#10). -->
 
   <!-- ═══════════════════════════════════════════════════════════
        CONTACT — Unified Form
@@ -613,7 +728,7 @@
   <section id="contact" class="section section--dark" data-score="92">
     <div class="container">
       <h2 class="section__title">Get In Touch</h2>
-      <p class="section__lead">Interested in GRIP, HAL, TWR beta, or consulting? Tell us what you need.</p>
+      <p class="section__lead">Interested in licensing the engine, the open-source tools, or pro-bono work? Tell us what you need.</p>
 
       <form class="invitation-form reveal" id="invitationForm" action="https://formspree.io/f/mrbnkdjd" method="POST">
         <div class="form__row">
@@ -632,12 +747,11 @@
             <label class="form__label" for="interest">I'm interested in</label>
             <select class="form__input form__select" id="interest" name="interest" required>
               <option value="" disabled selected>Select</option>
-              <option value="grip">GRIP &mdash; AI Infrastructure</option>
-              <option value="hal">HAL &mdash; Agentic Runtime</option>
-              <option value="twr-beta">TWR &mdash; Early Beta</option>
-              <option value="skill-forge">Skill Forge &mdash; Contributing</option>
-              <option value="konsult">AI Konsult &mdash; Consulting Session</option>
-              <option value="other">Something Else</option>
+              <option value="licensing">License the engine &mdash; GRIP + HAL</option>
+              <option value="happi">HAPPI / open standard &mdash; SDKs</option>
+              <option value="open-source">Open-source tools</option>
+              <option value="pro-bono">Pro-bono / games</option>
+              <option value="other">Something else</option>
             </select>
           </div>
           <div class="form__field">
@@ -650,7 +764,7 @@
           <textarea class="form__input form__textarea" id="message" name="message" rows="4"
             placeholder="What are you working on? What problems are you trying to solve?"></textarea>
         </div>
-        <input type="hidden" name="_subject" value="ENTER Konsult Enquiry">
+        <input type="hidden" name="_subject" value="CodeTonight Enquiry">
         <button class="cta form__submit" type="submit">Send Message</button>
         <div class="form__feedback" id="formFeedback"></div>
       </form>
@@ -658,34 +772,25 @@
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       CTA — Two Ways to Start
+       CTA — Talk to us about licensing
        ═══════════════════════════════════════════════════════════ -->
   <section id="cta" class="section section--cta" data-score="97">
     <div class="container">
       <div class="converged-status">
         <span class="converged-label">READY</span>
         <span class="converged-pipe">|</span>
-        <span class="converged-msg">Two ways to start</span>
+        <span class="converged-msg">Talk to us about licensing</span>
       </div>
 
       <div class="cta-cards">
         <div class="cta-card cta-card--primary reveal">
-          <h3 class="cta-card__title">AI Konsult</h3>
-          <div class="cta-card__price">$150 USD</div>
-          <p class="cta-card__desc">90 minutes. Bring your actual work &mdash; the repetitive tasks, the docs nobody
-            writes, the bottlenecks you keep working around. We run GRIP on your problems live.</p>
-          <p class="cta-card__outcome">You leave knowing what to automate first, what it costs, and whether it's worth
-            it.</p>
-          <a href="https://calendly.com/enterkonsult/konsult" class="cta" target="_blank" rel="noopener">Book AI
-            Konsult</a>
-        </div>
-        <div class="cta-card cta-card--secondary reveal">
-          <h3 class="cta-card__title">Meet &amp; Greet</h3>
-          <div class="cta-card__price">Free</div>
-          <p class="cta-card__desc">30 minutes. Not sure yet? Talk to us first. No pitch deck, no sales process. Just a
-            conversation about what you're trying to do and whether GRIP fits.</p>
-          <a href="https://calendly.com/enterkonsult/meet-and-greet" class="cta cta--outline" target="_blank"
-            rel="noopener">Book Free Call</a>
+          <h3 class="cta-card__title">License the engine</h3>
+          <p class="cta-card__desc">GRIP + HAL are licensed to firms by invitation. Bring your actual work &mdash;
+            the repetitive tasks, the docs nobody writes, the bottlenecks you keep working around &mdash; and we'll
+            talk about whether the engine fits.</p>
+          <p class="cta-card__outcome">The HAPPI standard is free, the tools around it are open-source and clone-able
+            today, and the engine is by invitation.</p>
+          <a href="mailto:laurie@codetonight.co.za?subject=GRIP%2BHAL%20licensing%20conversation" class="cta">Request a licensing conversation</a>
         </div>
       </div>
     </div>
@@ -696,10 +801,8 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
-        <span class="footer__brand">ENTER KONSULT</span>
-        <span class="footer__tagline">Software that stays out of the way</span>
-        <a href="/documentation.html" class="footer__link">Documentation</a>
-        <a href="https://enterkonsult.com" class="footer__link" target="_blank" rel="noopener">Main Site</a>
+        <span class="footer__brand">CodeTonight</span>
+        <span class="footer__tagline">Technology that works for you. Not against you.</span>
         <a href="https://codetonight-sa.github.io/guild/" class="footer__link" target="_blank" rel="noopener">Guild</a>
         <a href="https://github.com/CodeTonight-SA" class="footer__link" target="_blank" rel="noopener">GitHub</a>
       </div>
@@ -718,7 +821,7 @@
     // ═══════════════════════════════════════════════════════════
     // THEME ENGINE
     // ═══════════════════════════════════════════════════════════
-    const THEME_KEY = 'ek-theme';
+    const THEME_KEY = 'ct-theme';
 
     function setTheme(id) {
       document.documentElement.setAttribute('data-theme', id);
