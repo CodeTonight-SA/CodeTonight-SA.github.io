@@ -145,13 +145,77 @@ function initInvitationForm() {
       }
     } catch {
       feedback.className = 'form__feedback form__feedback--error'
-      feedback.textContent = 'Something went wrong. Please email laurie@codetonight.co.za directly.'
+      feedback.textContent = 'Something went wrong. Please email development@codetonight.co.za directly.'
     } finally {
       btn.disabled = false
       btn.textContent = 'Send Message'
     }
   })
 }
+
+// External repo links — URL kept out of the page HTML (no name in markup); navigate on click
+;(function () {
+  var EXT = {
+    sahur: 'https://github.com/LaurieScheepers/tung-tung-tung-sahur',
+    mixing: 'https://github.com/LaurieScheepers/italian-brainrot-mixing-mod',
+    profile: 'https://github.com/LaurieScheepers'
+  }
+  function go(el) {
+    var u = EXT[el.getAttribute('data-ext')]
+    if (u) window.open(u, '_blank', 'noopener')
+  }
+  function wire() {
+    document.querySelectorAll('[data-ext]').forEach(function (el) {
+      el.style.cursor = 'pointer'
+      el.addEventListener('click', function () { go(el) })
+      el.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(el) }
+      })
+    })
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wire)
+  else wire()
+})()
+
+// Click-to-copy on the "$ git clone …" boxes — a useful delight for the open-source pillar.
+;(function () {
+  function wireCopy() {
+    var boxes = document.querySelectorAll('.clone')
+    if (!boxes.length) return
+    var live = document.createElement('div')
+    live.setAttribute('aria-live', 'polite')
+    live.className = 'sr-only'
+    document.body.appendChild(live)
+    boxes.forEach(function (box) {
+      box.setAttribute('role', 'button')
+      box.setAttribute('tabindex', '0')
+      box.setAttribute('aria-label', 'Copy command to clipboard')
+      box.title = 'Click to copy'
+      function copy() {
+        if (box.dataset.busy || !navigator.clipboard) return
+        var cmd = box.textContent.replace(/^\s*\$\s*/, '').trim()
+        navigator.clipboard.writeText(cmd).then(function () {
+          box.dataset.busy = '1'
+          var orig = box.innerHTML
+          box.innerHTML = '<span class="sigil">✓</span>copied to clipboard'
+          box.classList.add('clone--copied')
+          live.textContent = 'Copied: ' + cmd
+          setTimeout(function () {
+            box.innerHTML = orig
+            box.classList.remove('clone--copied')
+            delete box.dataset.busy
+          }, 1400)
+        }).catch(function () {})
+      }
+      box.addEventListener('click', copy)
+      box.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copy() }
+      })
+    })
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', wireCopy)
+  else wireCopy()
+})()
 
 // ─── Shared: Animate Numeric Value ──────────────────────────
 
