@@ -403,22 +403,23 @@
 
       <figure class="seam reveal">
         <img src="/images/open-core-seam.svg"
-          alt="Open-core seam: HAPPI/1.2 is open and free; HAL and GRIP are licensed.">
+          alt="Open-core seam: HAPPI/1.3 is open and free; HAL and GRIP are licensed.">
         <figcaption>Open-core: the standard is free, the runtime and engine are licensed.</figcaption>
       </figure>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════════════════════════════
-       THE OPEN STANDARD — HAPPI/1.2 (free; the open half of open-core)
+       THE OPEN STANDARD — HAPPI/1.3 (free; the open half of open-core)
        ═══════════════════════════════════════════════════════════ -->
   <section id="happi" class="section" data-score="24">
     <div class="container">
-      <h2 class="section__title">HAPPI/1.2 &mdash; AI as a syscall</h2>
+      <h2 class="section__title">HAPPI/1.3 &mdash; AI as a syscall</h2>
       <p class="section__lead">A provider-agnostic envelope contract &mdash; your callers ask for inference,
-        never binding to a vendor's SDK. As of 1.2 the same open envelope also carries provenance: an audit
-        receipt for each decision and a replayable memory-chain of what the model knew. The standard is free
-        and public &mdash; the runtime that serves and anchors it is licensed.</p>
+        never binding to a vendor's SDK. As of 1.3 the same open envelope carries provenance: an audit
+        receipt for each decision, a replayable memory-chain of what the model knew, and deterministic
+        citation checks that prove quoted text is present in the supplied source. The standard is free and
+        public &mdash; the runtime that serves and anchors it is licensed.</p>
 
       <div class="syscall reveal">
         <figure>
@@ -431,7 +432,7 @@ client.chat.completions.create(
 <span style="color:#7a8a99;font-style:italic"># swap providers? rewrite every call.</span></pre>
         </figure>
         <figure>
-          <figcaption class="good">// HAPPI/1.2</figcaption>
+          <figcaption class="good">// HAPPI/1.3</figcaption>
           <pre>infer({
   provider: "any",
   prompt: "...",
@@ -443,7 +444,8 @@ client.chat.completions.create(
       <div class="reveal" style="margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;max-width:640px">
         <div style="color:var(--accent-text);margin-bottom:0.75rem">// new since 1.0 &mdash; the envelope proves itself</div>
         <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">idr</strong> &mdash; an audit receipt for each decision <span style="color:var(--text-muted)">(1.1)</span></div>
-        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong style="color:var(--accent-text)">context</strong> &mdash; a replayable memory-chain of what the model knew <span style="color:var(--text-muted)">(1.2)</span></div>
+        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">context</strong> &mdash; a replayable memory-chain of what the model knew <span style="color:var(--text-muted)">(1.2)</span></div>
+        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong style="color:var(--accent-text)">cite.verify</strong> &mdash; exact quote-in-source verification; fabricated citations resolve to not_found <span style="color:var(--text-muted)">(1.3)</span></div>
       </div>
 
       <p class="section__lead" style="margin-top:2.5rem">Four clone-able SDKs, one envelope contract,
