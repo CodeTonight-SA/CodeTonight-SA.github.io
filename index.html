@@ -443,9 +443,9 @@ client.chat.completions.create(
 
       <div class="reveal" style="margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;max-width:640px">
         <div style="color:var(--accent-text);margin-bottom:0.75rem">// new since 1.0 &mdash; the envelope proves itself</div>
-        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">idr</strong> &mdash; an audit receipt for each decision <span style="color:var(--text-muted)">(1.1)</span></div>
-        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">context</strong> &mdash; a replayable memory-chain of what the model knew <span style="color:var(--text-muted)">(1.2)</span></div>
-        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong style="color:var(--accent-text)">cite.verify</strong> &mdash; exact quote-in-source verification; fabricated citations resolve to not_found <span style="color:var(--text-muted)">(1.3)</span></div>
+        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">idr</strong> &mdash; a signed decision record: the what, why, and when of every decision <span style="color:var(--text-muted)">(1.1)</span></div>
+        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5"><strong style="color:var(--accent-text)">context</strong> &mdash; a signed memory-chain: the replayable belief record of what the model knew, and when <span style="color:var(--text-muted)">(1.2)</span></div>
+        <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong style="color:var(--accent-text)">cite.verify</strong> &mdash; deterministic citation-provenance: every cited quote is checked verbatim-present in its source; fabricated citations resolve to not_found <span style="color:var(--text-muted)">(1.3)</span></div>
       </div>
 
       <p class="section__lead" style="margin-top:2.5rem">Four clone-able SDKs, one envelope contract,
