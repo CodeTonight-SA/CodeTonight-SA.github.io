@@ -448,6 +448,11 @@ client.chat.completions.create(
         <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong style="color:var(--accent-text)">cite.verify</strong> &mdash; deterministic citation-provenance: every cited quote is checked verbatim-present in its source; fabricated citations resolve to not_found <span style="color:var(--text-muted)">(1.3)</span></div>
       </div>
 
+      <div class="reveal" style="margin-top:2rem;background:linear-gradient(135deg,rgba(77,139,255,0.06),rgba(0,0,0,0));border:1px solid rgba(77,139,255,0.18);border-radius:8px;padding:1.5rem 2rem">
+        <p style="margin:0 0 0.5rem;color:var(--accent-text);font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;letter-spacing:0.08em">CRYPTOGRAPHIC CAUSATION</p>
+        <p style="margin:0;line-height:1.7">These three event types compose into a single moat: tamper-evident, replayable records of <strong>what</strong> an AI decided, <strong>what it believed when</strong> it decided, and <strong>every claim it asserts</strong> &mdash; hash-chained and Merkle-rooted, externally anchorable. The verifier is the math and an independent party, never the AI. A sceptic can re-run the replay, re-verify the RFC&nbsp;6962 Merkle inclusion proof, and re-check each citation against its source. Falsifiable by construction. Popper applied to AI provenance.</p>
+      </div>
+
       <p class="section__lead" style="margin-top:2.5rem">Four clone-able SDKs, one envelope contract,
         identical behaviour:</p>
       <div class="sdk-grid reveal">
@@ -473,6 +478,13 @@ client.chat.completions.create(
           <p class="project-card__desc" style="font-size:0.85rem">The test suite every SDK must pass.</p>
           <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-conformance</div>
         </div>
+      </div>
+
+      <div class="reveal" style="margin-top:3rem;border:1px solid rgba(77,139,255,0.25);border-radius:8px;padding:1.5rem 2rem">
+        <p style="margin:0 0 0.75rem;color:var(--accent-text);font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;letter-spacing:0.08em">ONE INSTALL &mdash; macOS &middot; Linux &middot; Windows/Git-Bash</p>
+        <div class="clone" style="margin-bottom:0.75rem"><span class="sigil">$</span>curl install.grip-web.com | sh</div>
+        <p style="margin:0 0 0.5rem;font-size:0.9rem;line-height:1.6">Stands up a local HAL gateway (sovereign by default &mdash; non-Anthropic; DeepSeek &middot; Gemini &middot; Groq &middot; xAI with automatic failover), a HAPPI/1.3 runtime, and a witnessable node. Cross-platform. Secrets via the OS keychain, never baked in.</p>
+        <p style="margin:0;font-size:0.88rem;color:var(--text-muted)"><em>Don&rsquo;t trust it &mdash; witness it.</em> The node publishes its own signed decision chain; verify one inclusion proof in-browser, no account needed &rarr; <a href="https://happiverse.grip-web.com" target="_blank" rel="noopener" style="color:var(--accent-text)">happiverse.grip-web.com</a></p>
       </div>
 
       <div style="text-align:center;margin-top:4rem">
