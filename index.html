@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Open-core AI from Cape Town. The HAPPI standard is free; the GRIP+HAL engine is licensed; the tools around it are open-source and clone-able today.">
+    content="Open-core AI from Cape Town. HAPPI (the open standard) and GRASP (the open proof layer) are free; the GRIP+HAL engine is licensed; the tools around it are clone-able today.">
   <meta name="theme-color" content="#000000">
   <title>CodeTonight — we license the AI engine, and open-source the tools around it</title>
 
@@ -13,7 +13,7 @@
 
   <meta property="og:title" content="CodeTonight — we license the AI engine, and open-source the tools around it">
   <meta property="og:description"
-    content="Open-core AI from Cape Town. The HAPPI standard is free; the GRIP+HAL engine is licensed; the tools around it are open-source and clone-able today. Deeds, not words.">
+    content="Open-core AI from Cape Town. HAPPI (the open standard) and GRASP (the open proof layer) are free; the GRIP+HAL engine is licensed; the tools around it are clone-able today. Deeds, not words.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codetonight-sa.github.io">
   <meta name="twitter:card" content="summary">
@@ -489,6 +489,53 @@ client.chat.completions.create(
 
       <div style="text-align:center;margin-top:4rem">
         <a href="https://www.happi.md" class="cta cta--outline" target="_blank" rel="noopener">Read the standard &rarr; happi.md</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       GRASP — the open reference implementation of the moat (AGPL-3.0)
+       ═══════════════════════════════════════════════════════════ -->
+  <section id="grasp" class="section section--dark" data-score="31">
+    <div class="container">
+      <h2 class="section__title">GRASP &mdash; the moat, in open source</h2>
+      <p class="section__lead">HAPPI defines the provenance verbs; <strong>GRASP</strong> &mdash; Governed
+        Reasoning And Signable Provenance &mdash; is the open-source (AGPL-3.0) reference implementation of all
+        three. What an AI <strong>decided</strong>, what it <strong>believed when</strong> it decided, and whether
+        every <strong>claim</strong> it made is verbatim-present in its cited source. Cryptographic causation you
+        can clone, run, and check for yourself &mdash; not a promise, a library.</p>
+
+      <div class="feature-grid reveal">
+        <div class="feature-card">
+          <h3>Decision record</h3>
+          <p>Signed Intent Decision Records, predecessor-chained into a forest rooted only at exogenous anchors
+            &mdash; CI runs, human commits, cross-provider verdicts &mdash; with an RFC&nbsp;6962 Merkle root and
+            O(log&nbsp;N) inclusion proofs.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Belief record</h3>
+          <p>An append-only, signed memory-chain of the evolving mental model &mdash; so the record carries what
+            the system believed <em>at decision time</em>, not just its output.</p>
+        </div>
+        <div class="feature-card">
+          <h3>Claim record</h3>
+          <p>Deterministic verbatim-citation provenance: every cited quote is checked against its source
+            &mdash; exact, then whitespace-tolerant, then <code>not_found</code>. A fabricated quote renders red
+            and cannot earn a pass, because the check is arithmetic matching, not judgement.</p>
+        </div>
+      </div>
+
+      <div class="reveal" style="margin-top:2.5rem;border:1px solid var(--accent);border-radius:8px;padding:1.5rem 2rem">
+        <p style="margin:0 0 1rem;line-height:1.7"><em>Don&rsquo;t trust it &mdash; witness it.</em> The verifier
+          is the math and an independent party, never the AI. A sceptic &mdash; a regulator, opposing counsel, an
+          auditor &mdash; can re-run the replay, re-verify the Merkle inclusion proof, and re-check each citation
+          against its source. GRASP proves a quote is verbatim-present in the source you supply &mdash; not that
+          the source is authentic, nor that the quote supports the point; that last mile stays a human's job.
+          Falsifiable by construction; free and open under AGPL-3.0.</p>
+        <div class="project-card__links" style="margin-bottom:0.75rem">
+          <a href="https://grasp-web-chi.vercel.app" target="_blank" rel="noopener">Try it in your browser &rarr;</a>
+        </div>
+        <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grasp</div>
       </div>
     </div>
   </section>
