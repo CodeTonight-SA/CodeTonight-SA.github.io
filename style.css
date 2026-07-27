@@ -783,3 +783,104 @@ body {
     transform: translate(-50%, 0);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   PROGRESSIVE DISCLOSURE — "read more" inside dense cards
+   Built on native <details>/<summary>: no JavaScript, keyboard
+   operable and announced as expanded/collapsed by screen readers for
+   free, and the content stays present for search engines and for
+   anyone with JS disabled (it is in the DOM, merely collapsed).
+   ═══════════════════════════════════════════════════════════════ */
+
+.more {
+  margin-top: 0.85rem;
+}
+
+/* When a card description becomes a wrapper holding real <p> children
+   (rather than one paragraph with <br><br> separators), neutralise the
+   browser's default paragraph margins so spacing is unchanged. */
+.project-card__desc>p {
+  margin: 0 0 0.85rem;
+}
+
+.project-card__desc>p:last-child,
+.more>p:last-child {
+  margin-bottom: 0;
+}
+
+.more>p {
+  margin: 0 0 0.85rem;
+}
+
+.more>summary {
+  /* Replace the default disclosure triangle with our own marker so it can
+     be positioned and themed; list-style covers Firefox, ::-webkit-details-marker
+     covers older Safari.
+
+     display is kept as list-item deliberately. Some engines have historically
+     dropped the native toggle when <summary> is given a flex or grid display,
+     so vertical centring uses line-height rather than flexbox. Measured in
+     Chrome: closed 44px (equal to the summary, content hidden), open 349px. */
+  display: list-item;
+  list-style: none;
+  cursor: pointer;
+  min-height: 44px;
+  line-height: 44px;
+  /* 44px tap target, consistent with the rest of the controls */
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent-text);
+  user-select: none;
+}
+
+.more>summary::-webkit-details-marker {
+  display: none;
+}
+
+.more>summary::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-right: 0.45rem;
+  border-left: 5px solid currentColor;
+  border-top: 4px solid transparent;
+  border-bottom: 4px solid transparent;
+  transition: transform 0.18s ease;
+}
+
+.more[open]>summary::before {
+  transform: rotate(90deg);
+}
+
+.more>summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.more>summary:hover {
+  text-decoration: underline;
+}
+
+/* The collapsed label reads "read more", the expanded one "show less",
+   swapped in CSS so the markup carries a single honest summary element. */
+.more>summary .more__less {
+  display: none;
+}
+
+.more[open]>summary .more__more {
+  display: none;
+}
+
+.more[open]>summary .more__less {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .more>summary::before {
+    transition: none;
+  }
+}
