@@ -735,10 +735,12 @@
       text-decoration-color: var(--accent-text);
     }
 
-    /* CTA card + footer centring (single card + footer rows) */
+    /* CTA cards — two audiences side by side, collapsing to one column on
+       narrow screens. auto-fit rather than a media query, matching the
+       .engine-cards idiom already used above. */
     .cta-cards {
-      grid-template-columns: 1fr;
-      max-width: 520px;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      max-width: 900px;
     }
 
     .cta-card {
@@ -1105,13 +1107,13 @@ client.chat.completions.create(
             &rarr; happi.md</a>
         </div>
 
-        <!-- TODO: update SVG subtitles/captions -->
         <figure class="seam reveal">
-          <img src="/images/open-core-seam.svg"
-            alt="Open-core seam: HAPPI/1.3 is open and free; HAL and GRIP are currently by invitation only, but we are preparing for an OSS release soon. Watch this space!">
+          <img src="/images/open-core-seam.svg" width="780" height="200"
+            alt="The open-core seam. Open and clone-able today: HAPPI/1.3, free; and GRASP, under AGPL-3.0. By invite: HAL and GRIP, while the open-source release is in preparation.">
 
-          <figcaption>Open-core: the standard -- HAPPI/1.3 -- is free, HAL and GRIP are currently by invitation only,
-            but we are preparing for an OSS release soon. Watch this space!</figcaption>
+          <figcaption>Two things are already yours: HAPPI/1.3, the free standard, and GRASP, the open proof
+            layer under AGPL-3.0. Clone either one tonight. HAL and GRIP are by invite while we get the
+            open-source release ready -- the seam moves left, and we will say so when it does.</figcaption>
         </figure>
       </div>
     </section>
@@ -1470,28 +1472,36 @@ client.chat.completions.create(
       </div>
     </section>
 
-    <!-- TODO: remove licensing talk like above, reframe, or remove entirely -->
     <!-- ═══════════════════════════════════════════════════════════
-       CTA — Talk to us about licensing
+       CTA — two ways in: ask for an invite, or just take the open stack
        ═══════════════════════════════════════════════════════════ -->
     <section id="cta" class="section section--cta" data-score="97">
       <div class="container">
         <div class="converged-status">
           <span class="converged-label">READY</span>
           <span class="converged-pipe">|</span>
-          <span class="converged-msg">Talk to us about licensing</span>
+          <span class="converged-msg">Two ways in</span>
         </div>
 
         <div class="cta-cards">
           <div class="cta-card cta-card--primary reveal">
-            <h3 class="cta-card__title">License the engine</h3>
-            <p class="cta-card__desc">GRIP + HAL are licensed to firms by invitation. Bring your actual work --
-              the repetitive tasks, the docs nobody writes, the bottlenecks you keep working around -- and we'll
-              talk about whether the engine fits.</p>
-            <p class="cta-card__outcome">The HAPPI standard is free, the tools around it are open-source and clone-able
-              today, and the engine is by invitation.</p>
-            <a href="mailto:development@codetonight.co.za?subject=GRIP%2BHAL%20licensing%20conversation"
-              class="cta">Request a licensing conversation</a>
+            <h3 class="cta-card__title">Ask for an invite</h3>
+            <p class="cta-card__desc">GRIP + HAL are by invite while we get the open-source release ready. Bring
+              your actual work -- the repetitive tasks, the docs nobody writes, the bottlenecks you keep working
+              around -- and we'll talk about whether the engine fits.</p>
+            <p class="cta-card__outcome">If it doesn't fit, we'll say so. That is cheaper for both of us than
+              finding out later.</p>
+            <a href="mailto:development@codetonight.co.za?subject=GRIP%2BHAL%20invite%20request"
+              class="cta">Ask for an invite</a>
+          </div>
+
+          <div class="cta-card reveal">
+            <h3 class="cta-card__title">Use the open stack</h3>
+            <p class="cta-card__desc">HAPPI/1.3 is a free standard. GRASP is the open proof layer, AGPL-3.0. Ten
+              repositories you can clone tonight, run yourself, and check against your own work.</p>
+            <p class="cta-card__outcome">No invite needed. No conversation required. Nothing to ask us for.</p>
+            <a href="https://github.com/CodeTonight-SA" target="_blank" rel="noopener" class="cta cta--outline">Browse
+              the repositories &rarr;</a>
           </div>
         </div>
       </div>
