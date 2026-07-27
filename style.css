@@ -456,6 +456,13 @@ body {
   color: var(--blue);
   text-decoration: none;
   margin-left: auto;
+  /* Measured at 47x21 in a 390px viewport, below the 44px minimum tap target.
+     This is a standalone control, not a link inside a sentence, so the WCAG
+     2.5.8 inline exception does not apply. Grown via the box rather than the
+     type ramp so the footer's visual weight is unchanged. */
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 
 .footer__link:hover {
