@@ -587,7 +587,13 @@ body {
   font-size: 0.75rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--gray-600);
+  /* Theme-aware, not the fixed --gray-* scale: the form sits on .section--dark
+     (background: var(--surface)) and the site's default theme is swiss-dark, so a
+     hardcoded grey rendered a white slab with 2.40:1 labels. Measured against
+     WCAG 2.1 AA in all three themes (light / swiss-dark / swiss-neutral):
+     label on --surface 5.19-7.17:1, input text on --bg 14.90-17.46:1,
+     placeholder on --bg 5.32-6.50:1, border on --bg 5.32-6.50:1 (needs 3:1). */
+  color: var(--text-muted);
   margin-bottom: var(--space-xs);
 }
 
@@ -595,28 +601,50 @@ body {
   font-family: var(--font-sans);
   font-size: 16px; /* >=16px: prevents iOS Safari auto-zoom on focus (immune to 14px root at <=480px); all inputs/select/textarea carry .form__input */
   padding: 0.75rem var(--space-sm);
-  border: 1px solid var(--gray-200);
-  background: var(--white);
-  color: var(--gray-800);
-  transition: border-color 0.2s;
+  border: 1px solid var(--text-muted);
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.form__input:focus-visible,
 .form__input:focus {
-  outline: none;
-  border-color: var(--blue);
+  /* A border-colour swap alone is a weak focus indicator and fails WCAG 2.4.7
+     for anyone who cannot perceive that hue shift; pair it with a ring that
+     carries its own contrast against the field. */
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-color: var(--accent);
 }
 
 .form__input::placeholder {
-  color: var(--gray-400);
+  color: var(--text-muted);
+  opacity: 1; /* Firefox applies a default opacity that would undercut the measured ratio */
 }
 
+/* The chevron is a data-URI, so its fill cannot reference a CSS custom property
+   and cannot follow the theme. The original baked in fill='%23999', which is
+   ~2:1 against the light background and fails WCAG 1.4.11 (3:1 for a meaningful
+   UI control). A mask tinted with currentColor is not an option here: masking
+   applies to the whole element, and <select> has no reliable pseudo-element to
+   hang it on. So the fill is restated per theme, matching each --text-muted:
+   light #525252 (6.50:1), swiss-dark #8a8a8a (5.73:1), swiss-neutral #6b5f50
+   (5.32:1) - each measured against that theme's field background. */
 .form__select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23525252' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 0.75rem center;
   padding-right: 2rem;
   cursor: pointer;
+}
+
+[data-theme="swiss-dark"] .form__select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a8a8a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+}
+
+[data-theme="swiss-neutral"] .form__select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236b5f50' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
 }
 
 .form__textarea {
