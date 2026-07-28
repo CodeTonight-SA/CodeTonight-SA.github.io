@@ -19,9 +19,9 @@
 
   <!-- positioning line -->
   <text x="88" y="286" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="38"
-    font-weight="400" fill="#e5e5e5">we license the AI engine,</text>
+    font-weight="400" fill="#e5e5e5">an open standard, an open proof layer,</text>
   <text x="88" y="338" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="38"
-    font-weight="400" fill="#8a8a8a">and open-source the tools around it.</text>
+    font-weight="400" fill="#8a8a8a">and an engine you can ask into.</text>
 
   <!-- product row, monospace -->
   <text x="88" y="440" font-family="JetBrains Mono, SFMono-Regular, Menlo, monospace" font-size="25"
