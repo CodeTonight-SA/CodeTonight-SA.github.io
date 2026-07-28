@@ -1,0 +1,12 @@
+Contact: mailto:development@codetonight.co.za
+Expires: 2027-07-28T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://codetonight-sa.github.io/.well-known/security.txt
+
+# If you have found a security issue in HAPPI, GRASP, GRIP or HAL, or in this
+# site, please write to the address above. Tell us what you found and how to
+# reproduce it. We will confirm we received it.
+#
+# Please give us a reasonable chance to fix an issue before publishing it.
+# We will not take legal action against anyone who reports a genuine issue in
+# good faith and does not access, alter or destroy data belonging to others.
