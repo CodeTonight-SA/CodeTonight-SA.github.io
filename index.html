@@ -200,10 +200,19 @@
       cursor: pointer;
       transition: all 0.15s;
       position: relative;
+      appearance: none;
+      -webkit-appearance: none;
+      border-radius: 0;
+      font: inherit;
     }
 
     .theme-dot:hover {
       transform: scale(1.3);
+    }
+
+    .theme-dot:focus-visible {
+      outline: 2px solid var(--accent-text);
+      outline-offset: 2px;
     }
 
     .theme-dot.active {
@@ -831,15 +840,15 @@
 <body>
 
   <!-- THEME SWITCHER (right edge) -->
-  <div class="theme-panel" id="themePanel">
-    <div class="theme-dot active" data-theme="swiss-dark" title="Swiss Dark"></div>
-    <div class="theme-dot" data-theme="swiss-light" title="Swiss Light"></div>
-    <div class="theme-dot" data-theme="swiss-neutral" title="Swiss Neutral"></div>
-    <div class="theme-dot" data-theme="autumn" title="Autumn"></div>
-    <div class="theme-dot" data-theme="forest" title="Forest"></div>
-    <div class="theme-dot" data-theme="retrowave" title="Retrowave"></div>
-    <div class="theme-dot" data-theme="matrix" title="Matrix"></div>
-    <div class="theme-dot" data-theme="cyberpunk" title="Cyberpunk"></div>
+  <div class="theme-panel" id="themePanel" role="radiogroup" aria-label="Colour theme">
+    <button type="button" class="theme-dot active" role="radio" aria-checked="true" tabindex="0" data-theme="swiss-dark" title="Swiss Dark" aria-label="Swiss Dark"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-light" title="Swiss Light" aria-label="Swiss Light"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-neutral" title="Swiss Neutral" aria-label="Swiss Neutral"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="autumn" title="Autumn" aria-label="Autumn"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="forest" title="Forest" aria-label="Forest"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="retrowave" title="Retrowave" aria-label="Retrowave"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="matrix" title="Matrix" aria-label="Matrix"></button>
+    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="cyberpunk" title="Cyberpunk" aria-label="Cyberpunk"></button>
   </div>
 
   <!-- CONVERGENCE SCORE TRACKER -->
@@ -1540,23 +1549,45 @@ client.chat.completions.create(
     // THEME ENGINE
     // ═══════════════════════════════════════════════════════════
     const THEME_KEY = 'ct-theme';
+    const themePanel = document.getElementById('themePanel');
+    const themeDots = [...themePanel.querySelectorAll('.theme-dot')];
 
     function setTheme(id) {
       document.documentElement.setAttribute('data-theme', id);
       localStorage.setItem(THEME_KEY, id);
-      document.querySelectorAll('.theme-dot').forEach(d => {
-        d.classList.toggle('active', d.dataset.theme === id);
+      themeDots.forEach(d => {
+        const on = d.dataset.theme === id;
+        d.classList.toggle('active', on);
+        d.setAttribute('aria-checked', String(on));
+        // roving tabindex: the selected theme is the group's only tab stop
+        d.tabIndex = on ? 0 : -1;
       });
     }
 
-    document.getElementById('themePanel').addEventListener('click', e => {
+    themePanel.addEventListener('click', e => {
       const dot = e.target.closest('.theme-dot');
       if (dot && dot.dataset.theme) setTheme(dot.dataset.theme);
     });
 
-    // Restore saved theme or default to swiss-dark
+    themePanel.addEventListener('keydown', e => {
+      const i = themeDots.indexOf(document.activeElement);
+      if (i === -1) return;
+      let n;
+      switch (e.key) {
+        case 'ArrowRight': case 'ArrowDown': n = (i + 1) % themeDots.length; break;
+        case 'ArrowLeft': case 'ArrowUp': n = (i - 1 + themeDots.length) % themeDots.length; break;
+        case 'Home': n = 0; break;
+        case 'End': n = themeDots.length - 1; break;
+        default: return;
+      }
+      e.preventDefault();
+      setTheme(themeDots[n].dataset.theme);
+      themeDots[n].focus();
+    });
+
+    // Restore saved theme; an unrecognised value is ignored so the group keeps a tab stop
     const saved = localStorage.getItem(THEME_KEY);
-    if (saved) setTheme(saved);
+    if (themeDots.some(d => d.dataset.theme === saved)) setTheme(saved);
   </script>
 </body>
 
