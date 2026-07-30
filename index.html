@@ -834,35 +834,70 @@
       white-space: nowrap;
       border: 0;
     }
+
+    /* Hidden until focused - never display:none, which would make it unreachable */
+    .skip-link {
+      position: fixed;
+      top: 0.5rem;
+      left: 0.5rem;
+      z-index: 300;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      background: var(--accent-text);
+      color: var(--bg);
+      font-size: 0.8125rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 0;
+    }
+
+    .skip-link:focus {
+      width: auto;
+      height: auto;
+      clip: auto;
+      padding: 0.75rem 1.25rem;
+      border: 2px solid var(--bg);
+    }
   </style>
 </head>
 
 <body>
 
-  <!-- THEME SWITCHER (right edge) -->
-  <div class="theme-panel" id="themePanel" role="radiogroup" aria-label="Colour theme">
-    <button type="button" class="theme-dot active" role="radio" aria-checked="true" tabindex="0" data-theme="swiss-dark" title="Swiss Dark" aria-label="Swiss Dark"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-light" title="Swiss Light" aria-label="Swiss Light"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-neutral" title="Swiss Neutral" aria-label="Swiss Neutral"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="autumn" title="Autumn" aria-label="Autumn"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="forest" title="Forest" aria-label="Forest"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="retrowave" title="Retrowave" aria-label="Retrowave"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="matrix" title="Matrix" aria-label="Matrix"></button>
-    <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="cyberpunk" title="Cyberpunk" aria-label="Cyberpunk"></button>
-  </div>
+  <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <!-- CONVERGENCE SCORE TRACKER -->
-  <div class="score-tracker" id="scoreTracker">
-    <div class="score-tracker__inner">
-      <span class="score-tracker__label" id="scoreLabel">SCORE</span>
-      <span class="score-tracker__value" id="scoreValue">0</span>
+  <header>
+    <!-- THEME SWITCHER (right edge) -->
+    <div class="theme-panel" id="themePanel" role="radiogroup" aria-label="Colour theme">
+      <button type="button" class="theme-dot active" role="radio" aria-checked="true" tabindex="0" data-theme="swiss-dark" title="Swiss Dark" aria-label="Swiss Dark"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-light" title="Swiss Light" aria-label="Swiss Light"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-neutral" title="Swiss Neutral" aria-label="Swiss Neutral"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="autumn" title="Autumn" aria-label="Autumn"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="forest" title="Forest" aria-label="Forest"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="retrowave" title="Retrowave" aria-label="Retrowave"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="matrix" title="Matrix" aria-label="Matrix"></button>
+      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="cyberpunk" title="Cyberpunk" aria-label="Cyberpunk"></button>
     </div>
-  </div>
+
+    <!-- CONVERGENCE SCORE TRACKER -->
+    <div class="score-tracker" id="scoreTracker">
+      <div class="score-tracker__inner">
+        <span class="score-tracker__label" id="scoreLabel">SCORE</span>
+        <span class="score-tracker__value" id="scoreValue">0</span>
+      </div>
+    </div>
+  </header>
 
   <!-- ═══════════════════════════════════════════════════════════
        HERO — CodeTonight
        ═══════════════════════════════════════════════════════════ -->
-  <main>
+  <!-- tabindex="-1" so the skip link can move focus here, not just scroll -->
+  <main id="main-content" tabindex="-1">
     <section id="hero" class="section section--hero" data-score="0">
       <div class="container" style="text-align:center">
         <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:0.75rem">
@@ -1545,6 +1580,18 @@ client.chat.completions.create(
 
   <script src="/main.js"></script>
   <script>
+    // ═══════════════════════════════════════════════════════════
+    // SKIP LINK
+    // ═══════════════════════════════════════════════════════════
+    // main.js's smooth-scroll handler calls preventDefault(), which cancels the
+    // browser's own focus move. Without this the link scrolls but leaves focus
+    // on itself, so the next Tab skips nothing.
+    const skipLink = document.querySelector('.skip-link');
+    const mainContent = document.getElementById('main-content');
+    if (skipLink && mainContent) {
+      skipLink.addEventListener('click', () => mainContent.focus({ preventScroll: true }));
+    }
+
     // ═══════════════════════════════════════════════════════════
     // THEME ENGINE
     // ═══════════════════════════════════════════════════════════
