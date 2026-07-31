@@ -712,6 +712,22 @@ body {
   opacity: 0.3;
 }
 
+/* Explicit colour rather than opacity: opacity stacks and is what pushed
+   other muted text below the contrast floor. */
+.footer__motto {
+  width: 100%;
+  /* The space above comes from .footer .container's flex gap, the space below
+     from .footer's bottom padding - both var(--space-md). Trimming them here
+     rather than on those rules keeps the change to this line alone, and keeps
+     the two gaps equal. */
+  margin-top: -0.5rem;
+  margin-bottom: -0.5rem;
+  font-size: 0.75rem;
+  text-transform: lowercase;
+  text-align: center;
+  color: var(--text-muted);
+}
+
 /* ─── Print ──────────────────────────────────────────────── */
 
 @media print {
