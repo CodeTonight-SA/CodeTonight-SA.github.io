@@ -1310,6 +1310,97 @@ client.chat.completions.create(
     </section>
 
     <!-- ═══════════════════════════════════════════════════════════
+       FLAGSHIPS — curated spotlight (HAL is new; GRASP + ccflex cross-linked, not duplicated)
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="flagships" class="section section--dark" data-score="52">
+      <div class="container">
+        <h2 class="section__title">Three flagships</h2>
+        <p class="section__lead">One from each pillar of the open work: the moat you can check, the substrate that
+          makes any model a syscall, and proof you can play with. Drawn, not just described.</p>
+
+        <div class="work-grid reveal" style="margin-top:2.5rem">
+
+          <div class="project-card project-card--lead">
+            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;SUBSTRATE</span></div>
+            <div class="project-card__title">HAL &mdash; AI as a syscall</div>
+            <span class="claim">harness-agnostic &middot; LLM-agnostic &middot; a council, not one model</span>
+            <svg viewBox="0 0 240 120" role="img"
+              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
+              aria-label="One call fans out to four language models whose answers converge on a single judge, which returns one verdict.">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="6" y="50" width="34" height="20" rx="3"/>
+                <line x1="40" y1="60" x2="98" y2="24"/>
+                <line x1="40" y1="60" x2="98" y2="48"/>
+                <line x1="40" y1="60" x2="98" y2="72"/>
+                <line x1="40" y1="60" x2="98" y2="96"/>
+                <circle cx="108" cy="24" r="10"/>
+                <circle cx="108" cy="48" r="10"/>
+                <circle cx="108" cy="72" r="10"/>
+                <circle cx="108" cy="96" r="10"/>
+                <line x1="118" y1="24" x2="174" y2="60"/>
+                <line x1="118" y1="48" x2="174" y2="60"/>
+                <line x1="118" y1="72" x2="174" y2="60"/>
+                <line x1="118" y1="96" x2="174" y2="60"/>
+                <rect x="174" y="46" width="30" height="28" rx="3" style="stroke:var(--accent)"/>
+                <path d="M180 60 l5 6 l11 -13" style="stroke:var(--accent)" stroke-width="2"/>
+                <line x1="204" y1="60" x2="232" y2="60" style="stroke:var(--accent)"/>
+              </g>
+            </svg>
+            <p class="project-card__desc">HAPPI/1.0 is a small open protocol &mdash; "AI as a syscall" &mdash; so any
+              model is reachable through one interface, whatever harness or provider you run. Route across models, or
+              convene a multi-LLM council: parallel or turn-based Mixture-of-Experts with an LLM as the judge. Three
+              zero-fuss client libraries, plus a conformance suite that is the standard mark.</p>
+            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-go</div>
+            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-py</div>
+            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-js</div>
+            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-conformance</div>
+          </div>
+
+          <div class="project-card">
+            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;MOAT</span></div>
+            <div class="project-card__title">GRASP</div>
+            <span class="claim">signed &middot; chained &middot; verify-it-yourself</span>
+            <svg viewBox="0 0 240 120" role="img"
+              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
+              aria-label="Three record blocks hash-linked into a chain and sealed with a checkmark.">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <rect x="14" y="46" width="42" height="28" rx="3"/>
+                <rect x="99" y="46" width="42" height="28" rx="3"/>
+                <rect x="184" y="46" width="42" height="28" rx="3"/>
+                <line x1="56" y1="60" x2="99" y2="60"/>
+                <line x1="141" y1="60" x2="184" y2="60"/>
+                <path d="M196 60 l6 7 l13 -16" style="stroke:var(--accent)" stroke-width="2"/>
+              </g>
+            </svg>
+            <p class="project-card__desc">The provenance moat, in open source: what an AI decided, what it believed
+              when, and whether every claim is verbatim in its source. <a href="#grasp">See the moat &uarr;</a></p>
+          </div>
+
+          <div class="project-card">
+            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;PLAY</span></div>
+            <div class="project-card__title">ccflex-skibidi</div>
+            <span class="claim">WebGL &middot; ranked &middot; verifiable</span>
+            <svg viewBox="0 0 240 120" role="img"
+              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
+              aria-label="A rising leaderboard of three bars beside a verified-rank badge.">
+              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <line x1="18" y1="98" x2="222" y2="98"/>
+                <rect x="42" y="68" width="28" height="30"/>
+                <rect x="100" y="48" width="28" height="50"/>
+                <rect x="158" y="28" width="28" height="70" style="stroke:var(--accent)"/>
+                <circle cx="204" cy="42" r="13" style="stroke:var(--accent)"/>
+                <path d="M198 42 l4 5 l10 -12" style="stroke:var(--accent)" stroke-width="2"/>
+              </g>
+            </svg>
+            <p class="project-card__desc">Your Claude Code <code>/stats</code>, rendered in WebGL &mdash; ranked and
+              verifiable, proof you can play with. Also in <a href="#open-work">The Open Work &darr;</a></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
        PRO-BONO & PLAY — community work + father-son games (Pillar B)
        ═══════════════════════════════════════════════════════════ -->
     <section id="pro-bono" class="section" data-score="68">
