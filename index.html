@@ -614,6 +614,59 @@
       margin-top: auto;
     }
 
+    /* Product receipt — an illustrative signed record beside each product.
+       Themed variables ONLY. A hardcoded colour here would repeat the two
+       contrast failures the 2026-07-30 page-wide audit measured: the
+       hardcoded .terminal__body .cm (3.47:1 on every theme) and the global
+       --green driving .converged-label to 1.95:1 on the light themes.
+       --accent-text is the themed, contrast-safe accent this file already
+       uses for .chip strong, .clone .sigil and .proof-row b. */
+    .receipt {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.72rem;
+      line-height: 1.5;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      padding: 0.85rem 1rem;
+      margin-top: 1.25rem;
+      max-width: 32rem;
+    }
+
+    .receipt__row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 0.15rem 0;
+    }
+
+    .receipt__k {
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .receipt__v {
+      color: var(--text);
+      text-align: right;
+      overflow-wrap: anywhere;
+    }
+
+    .receipt__v--ok {
+      color: var(--accent-text);
+    }
+
+    .receipt__sep {
+      border-top: 1px solid var(--border);
+      margin: 0.5rem 0;
+    }
+
+    .receipt__seal {
+      color: var(--accent-text);
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.04em;
+    }
+
     .proof-row {
       display: flex;
       flex-wrap: wrap;
@@ -1256,6 +1309,103 @@ client.chat.completions.create(
             <p class="project-card__desc">Keep your engineering skills sharp while using AI. The sharpest sword is
               forged through use, not observation -- for engineers who use Claude Code daily.</p>
             <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/skill-forge</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════
+       PRODUCTS — what runs on the private engine (Pillar A)
+       Salvaged from codetonight.co.za as step one of the domain
+       consolidation. Every value inside a .receipt is illustrative
+       set-dressing — no real matter, client, hash or hostname.
+       ═══════════════════════════════════════════════════════════ -->
+    <section id="products" class="section section--dark" data-score="52">
+      <div class="container">
+        <h2 class="section__title">Provable by construction</h2>
+        <p class="section__lead">Three products on the private engine, aimed at the domains where "trust me" is worth
+          least -- the law, money, and the meetings where decisions actually get made. Each one ships a record you can
+          check without us.</p>
+
+        <div class="work-grid reveal" style="margin-top:2.5rem">
+          <div class="project-card project-card--lead">
+            <div class="chips">
+              <span class="chip"><strong>STATUS:</strong>&nbsp;LIVE</span>
+              <span class="chip"><strong>ROLE:</strong>&nbsp;PRODUCT</span>
+            </div>
+            <div class="project-card__title">DONNA</div>
+            <span class="claim">signed per step &middot; tamper-evident &middot; verify without us</span>
+            <p class="project-card__desc">Reads legal documents, produces an opinion and the clarifying questions a good
+              associate would ask -- and signs every step into a hash-linked chain. Alter the record afterwards and the
+              signatures break. That is the entire claim, and it is the falsifiable kind: tampering shows, rather than
+              being asserted not to happen.</p>
+            <div class="receipt" role="img" aria-label="Illustration of a signed DONNA record: an opinion over three ingested documents, signed with Ed25519 and ML-DSA, hash-linked to the record before it, and verifiable as tamper-evident.">
+              <div class="receipt__row"><span class="receipt__k">record</span><span class="receipt__v">opinion
+                  &middot; matter-x</span></div>
+              <div class="receipt__row"><span class="receipt__k">ingested</span><span class="receipt__v">3
+                  documents</span></div>
+              <div class="receipt__sep"></div>
+              <div class="receipt__row"><span class="receipt__k">signature</span><span class="receipt__v">Ed25519 +
+                  ML-DSA</span></div>
+              <div class="receipt__row"><span class="receipt__k">hash</span><span
+                  class="receipt__v">d41f&hellip;7c08</span></div>
+              <div class="receipt__row"><span class="receipt__k">prev</span><span
+                  class="receipt__v">9a02&hellip;11be</span></div>
+              <div class="receipt__seal">verify &rarr; tamper-evident</div>
+            </div>
+            <div class="project-card__links" style="margin-top:1.25rem;margin-bottom:0.75rem">
+              <a href="https://donnaoss.com" target="_blank" rel="noopener">Live knowledge portal &rarr;</a>
+            </div>
+            <div class="clone"><span class="sigil">$</span>git clone
+              https://github.com/CodeTonight-SA/donna-folded</div>
+          </div>
+
+          <div class="project-card">
+            <div class="chips">
+              <span class="chip"><strong>STATUS:</strong>&nbsp;TESTNET</span>
+              <span class="chip"><strong>ROLE:</strong>&nbsp;PRODUCT</span>
+            </div>
+            <div class="project-card__title">Falsifiable Finance</div>
+            <span class="claim">replay-auditable &middot; offline-verifiable</span>
+            <p class="project-card__desc">Financial records signed and hashed into a chain you can replay yourself.
+              The point is not to believe the numbers -- it is to be able to falsify them. On a public testnet today:
+              a working proof, not a mainnet deployment, and we will not describe it as one.</p>
+            <div class="receipt" role="img" aria-label="Illustration of a Falsifiable Finance record: entry 142 on a public testnet, keccak-hashed, chained to the previous entry, with all 142 records replaying successfully.">
+              <div class="receipt__row"><span class="receipt__k">record</span><span class="receipt__v">entry &middot;
+                  0142</span></div>
+              <div class="receipt__row"><span class="receipt__k">network</span><span
+                  class="receipt__v">testnet</span></div>
+              <div class="receipt__sep"></div>
+              <div class="receipt__row"><span class="receipt__k">hash</span><span class="receipt__v">keccak
+                  b7c1&hellip;9f2a</span></div>
+              <div class="receipt__row"><span class="receipt__k">prev</span><span
+                  class="receipt__v">2f88&hellip;ab10</span></div>
+              <div class="receipt__row"><span class="receipt__k">replay</span><span class="receipt__v receipt__v--ok">142
+                  / 142 ok</span></div>
+              <div class="receipt__seal">verify &rarr; reproducible</div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="chips">
+              <span class="chip"><strong>ROLE:</strong>&nbsp;PRODUCT</span>
+            </div>
+            <div class="project-card__title">GRIP Meet</div>
+            <span class="claim">capture, not proof</span>
+            <p class="project-card__desc">Live capture, transcription, and structured summaries -- the same GRIP + HAL
+              substrate pointed at the conversations where decisions actually get made. No signing claim attaches here:
+              it is capture, and dressing that up as proof would be the thing this page says it will not do.</p>
+            <div class="receipt" role="img" aria-label="Illustration of a GRIP Meet session summary: a standup with four speakers, a summary ready, and three actions captured.">
+              <div class="receipt__row"><span class="receipt__k">session</span><span
+                  class="receipt__v">standup</span></div>
+              <div class="receipt__row"><span class="receipt__k">speakers</span><span class="receipt__v">4</span></div>
+              <div class="receipt__sep"></div>
+              <div class="receipt__row"><span class="receipt__k">summary</span><span
+                  class="receipt__v receipt__v--ok">ready</span></div>
+              <div class="receipt__row"><span class="receipt__k">actions</span><span class="receipt__v">3
+                  captured</span></div>
+              <div class="receipt__seal">nothing dropped</div>
+            </div>
           </div>
         </div>
       </div>
