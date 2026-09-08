@@ -117,6 +117,7 @@ OVERCLAIMS = [
     ("cannot be edited", "claims records cannot be edited (they can; tampering is detected)"),
     ("cannot be edited or reordered", "claims records cannot be reordered"),
     ("immutable", "claims immutability"),
+    ("only agree if nothing was tampered", "claims four records can only agree when untampered"),
     # The checker matches quotations, not sentences, claims or reasoning.
     ("every sentence it writes is checked", "claims every sentence is checked, not every quotation"),
     ("every claim it makes is really in the source", "claims every claim is checked, not every quotation"),

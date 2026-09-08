@@ -135,11 +135,15 @@
             comparing against that earlier root, which is why the anchoring work below matters and why we
             are careful to call it a pilot rather than a running service.</p>
           <p>None of the cryptography here is new. Hash chains, Merkle trees and signatures are decades old
-            and we did not invent any of them. What is ours is the composition &mdash; four separate records
-            that only agree if nothing was tampered with &mdash; and the fact that a sceptic can sit down and
-            try to break it without asking our permission.</p>
-          <p class="cap"><b>In plain terms:</b> it is a receipt with a wax seal. Anyone can read the receipt.
-            Anyone can see whether the seal has been broken. You do not have to know the shopkeeper.</p>
+            and we did not invent any of them. What is ours is the composition &mdash; four separate records,
+            written at different moments by different parts of the system, that all have to line up &mdash;
+            and the fact that a sceptic can sit down and try to break it without asking our permission. Four
+            records raise the cost of a convincing forgery. <b>They do not make one impossible</b>, and only
+            the comparison against an outside root does that.</p>
+          <p class="cap"><b>In plain terms:</b> it is a receipt with a wax seal, and you kept a photograph of
+            the seal. Anyone can read the receipt. Anyone can hold it against your photograph and see whether
+            the seal was broken and re-made. Without the photograph, a good enough forger wins; with it, you
+            do not have to know the shopkeeper.</p>
         </div>
       </div>
     </section>
@@ -199,9 +203,12 @@
           </article>
           <div class="compose">
             <b>Why four and not one:</b> a single log proves only that a log exists. These four have to agree
-            with each other, and they were written at different moments by different parts of the system. To
-            fake the set you would have to fake all four in a way that still lines up &mdash; which is the
-            whole point of chaining them.
+            with each other, and they were written at different moments by different parts of the system, so
+            faking the set means faking all four in a way that still lines up. That raises the cost. <b>It
+              does not make forgery impossible</b> &mdash; someone with write access to everything can redo
+            all four consistently. What settles it is holding the set against a root recorded before the
+            tampering, which is the job of the anchoring described further down, and the reason we call that
+            a pilot rather than a running service.
           </div>
         </div>
       </div>
