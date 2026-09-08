@@ -147,6 +147,14 @@ check("recompute the seals" in INDEX,
 check("absent from the supplied source" in INDEX,
       "the citation claim is scoped to quotations absent from the source")
 
+# A claims-table row must not carry a status and a hedge that disagree. The
+# fingerprint row said "Shipped" and "not yet proven at scale" in one cell.
+rows = re.findall(r"<tr><td>(.*?)</td><td>.*?badge[^>]*>([^<]+)<", INDEX, re.S)
+hedged = [c for c, st in rows
+          if st.strip() == "Shipped"
+          and re.search(r"not yet|not proven|unproven|in build|partly", c, re.I)]
+check(not hedged, "no claims-table row is marked Shipped while hedging itself")
+
 # --- One host across sitemap, robots and canonical -----------------------
 hosts = set(re.findall(r"https://([a-z0-9.-]+)/(?:sitemap\.xml)?", SITEMAP + ROBOTS))
 canon = re.search(r'rel="canonical" href="https://([a-z0-9.-]+)/"', INDEX)
