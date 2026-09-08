@@ -1,21 +1,20 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="swiss-dark">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="Open-core AI from Cape Town. HAPPI (the open standard) and GRASP (the open proof layer) are free and clone-able today. GRIP+HAL are by invite while we prepare the open-source release. Deeds, not words.">
+    content="CodeTonight builds honest open-source AI that keeps a receipt. It records what it decided, what it believed when it decided, and whether every claim it makes is really in the source. You do not have to trust it. You can check it.">
   <meta name="theme-color" content="#000000">
-  <title>CodeTonight — an open standard, an open proof layer, and an engine you can ask into</title>
+  <title>CodeTonight — Do not trust the AI. Witness it.</title>
 
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://codetonight-sa.github.io/">
 
-  <meta property="og:title"
-    content="CodeTonight — an open standard, an open proof layer, and an engine you can ask into">
+  <meta property="og:title" content="CodeTonight — Do not trust the AI. Witness it.">
   <meta property="og:description"
-    content="Open-core AI from Cape Town. HAPPI (the open standard) and GRASP (the open proof layer) are free and clone-able today. GRIP+HAL are by invite while we prepare the open-source release. Deeds, not words.">
+    content="Honest open-source AI that keeps a receipt: what it decided, what it believed when it decided, and whether every claim is really in the source. Check it yourself.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codetonight-sa.github.io/">
   <meta property="og:site_name" content="CodeTonight">
@@ -24,17 +23,9 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt"
-    content="CodeTonight — an open standard, an open proof layer, and an engine you can ask into. HAPPI/1.3, GRASP, GRIP + HAL. Deeds, not words.">
+    content="CodeTonight — Do not trust the AI. Witness it. HAPPI/1.4, GRASP, GRIP and HAL. Deeds, not words.">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://codetonight-sa.github.io/images/og-card.png">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=JetBrains+Mono:wght@400;700&display=swap"
-    media="print" onload="this.media='all'">
 
   <link rel="stylesheet" href="/style.css">
 
@@ -48,1445 +39,389 @@
       "image": "https://codetonight-sa.github.io/images/og-card.png",
       "email": "development@codetonight.co.za",
       "slogan": "Deeds, not words.",
-      "description": "Open-core AI from Cape Town. HAPPI (the open standard) and GRASP (the open proof layer) are free and clone-able today. GRIP+HAL are by invite while we prepare the open-source release.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Cape Town",
-        "addressCountry": "ZA"
-      },
-      "sameAs": [
-        "https://github.com/CodeTonight-SA"
-      ]
+      "description": "Open-source AI that keeps a tamper-evident record of what it decided, what it believed, and what it claimed.",
+      "address": { "@type": "PostalAddress", "addressLocality": "Cape Town", "addressCountry": "ZA" },
+      "sameAs": ["https://github.com/CodeTonight-SA"]
     }
   </script>
-
-  <style>
-    /* ═══════════════════════════════════════════════════════════════
-       THEME ENGINE — 8 themes from GRIP Commander (subset)
-       CSS custom properties applied via data-theme attribute
-       ═══════════════════════════════════════════════════════════════ */
-
-    [data-theme="swiss-light"] {
-      --bg: #EAEAEA;
-      --surface: #F5F5F5;
-      --border: #d1d5db;
-      --text: #000000;
-      --text-muted: #525252;
-      --accent: #0891b2;
-      --accent-glow: rgba(8, 145, 178, 0.3);
-      --blue: #0891b2;
-      --blue-dark: #065d73;
-      --accent-text: #066274;
-      --danger: #b3261e;
-    }
-
-    [data-theme="swiss-dark"] {
-      --bg: #0a0a0a;
-      --surface: #171717;
-      --border: #262626;
-      --text: #e5e5e5;
-      --text-muted: #8a8a8a;
-      --accent: #22d3ee;
-      --accent-glow: rgba(34, 211, 238, 0.4);
-      --blue: #22d3ee;
-      --blue-dark: #0891b2;
-      --accent-text: #22d3ee;
-      --danger: #e06c75;
-    }
-
-    [data-theme="swiss-neutral"] {
-      --bg: #F0EDE8;
-      --surface: #F7F5F0;
-      --border: #D0C8BC;
-      --text: #1a1a1a;
-      --text-muted: #6b5f50;
-      --accent: #996F00;
-      --accent-glow: rgba(184, 134, 11, 0.3);
-      --blue: #B8860B;
-      --blue-dark: #996F00;
-      --accent-text: #6b4e00;
-      --danger: #a8261c;
-    }
-
-    [data-theme="autumn"] {
-      --bg: #FDF6E3;
-      --surface: #FFF8EC;
-      --border: #D8C8A8;
-      --text: #3C2A14;
-      --text-muted: #7A6548;
-      --accent: #C46A00;
-      --accent-glow: rgba(196, 106, 0, 0.3);
-      --blue: #C46A00;
-      --blue-dark: #A35800;
-      --accent-text: #8a4a00;
-      --danger: #b3261e;
-    }
-
-    [data-theme="forest"] {
-      --bg: #0D1B0E;
-      --surface: #152418;
-      --border: #2A3E2C;
-      --text: #D0E8D0;
-      --text-muted: #6A9A6E;
-      --accent: #22C55E;
-      --accent-glow: rgba(34, 197, 94, 0.4);
-      --blue: #22C55E;
-      --blue-dark: #16a34a;
-      --accent-text: #22C55E;
-      --danger: #f87171;
-    }
-
-    [data-theme="retrowave"] {
-      --bg: #2D1B69;
-      --surface: #3A2580;
-      --border: #4A3098;
-      --text: #F0D0FF;
-      --text-muted: #C8A8E0;
-      --accent: #FF6B9D;
-      --accent-glow: rgba(255, 107, 157, 0.4);
-      --blue: #FF6B9D;
-      --blue-dark: #D84D7F;
-      --accent-text: #FF6B9D;
-      --danger: #ff8fa3;
-    }
-
-    [data-theme="matrix"] {
-      --bg: #000000;
-      --surface: #0A0A0A;
-      --border: #003300;
-      --text: #00FF00;
-      --text-muted: #00BB00;
-      --accent: #00FF00;
-      --accent-glow: rgba(0, 255, 0, 0.5);
-      --blue: #00FF00;
-      --blue-dark: #008800;
-      --accent-text: #00FF00;
-      --danger: #ff5555;
-    }
-
-    [data-theme="cyberpunk"] {
-      --bg: #1A1A1A;
-      --surface: #242424;
-      --border: #3A3A3A;
-      --text: #E8E8E0;
-      --text-muted: #999990;
-      --accent: #FACC15;
-      --accent-glow: rgba(250, 204, 21, 0.4);
-      --blue: #FACC15;
-      --blue-dark: #CA9C05;
-      --accent-text: #FACC15;
-      --danger: #f87171;
-    }
-
-    /* Theme switcher panel */
-    .theme-panel {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      z-index: 200;
-      display: flex;
-      flex-direction: row;
-      gap: 6px;
-      padding: 8px 10px;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      transition: all 0.3s;
-    }
-
-    .theme-dot {
-      width: 16px;
-      height: 16px;
-      border: 2px solid var(--border);
-      cursor: pointer;
-      transition: all 0.15s;
-      position: relative;
-      appearance: none;
-      -webkit-appearance: none;
-      border-radius: 0;
-      font: inherit;
-    }
-
-    .theme-dot:hover {
-      transform: scale(1.3);
-    }
-
-    .theme-dot:focus-visible {
-      outline: 2px solid var(--accent-text);
-      outline-offset: 2px;
-    }
-
-    .theme-dot.active {
-      border-color: var(--accent-text);
-      box-shadow: 0 0 8px var(--accent-glow);
-    }
-
-    .theme-dot[data-theme="swiss-light"] {
-      background: #EAEAEA;
-    }
-
-    .theme-dot[data-theme="swiss-dark"] {
-      background: #0a0a0a;
-    }
-
-    .theme-dot[data-theme="swiss-neutral"] {
-      background: #F0EDE8;
-    }
-
-    .theme-dot[data-theme="autumn"] {
-      background: #D97706;
-    }
-
-    .theme-dot[data-theme="forest"] {
-      background: #22C55E;
-    }
-
-    .theme-dot[data-theme="retrowave"] {
-      background: #FF6B9D;
-    }
-
-    .theme-dot[data-theme="matrix"] {
-      background: #00FF00;
-    }
-
-    .theme-dot[data-theme="cyberpunk"] {
-      background: #FACC15;
-    }
-
-    /* Logo */
-    .hero-logo {
-      max-width: 400px;
-      width: 80%;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-logo svg {
-      width: 100%;
-      height: auto;
-    }
-
-    .hero-logo svg path,
-    .hero-logo svg polygon {
-      fill: var(--accent);
-    }
-
-    .hero-logo svg g:first-child path {
-      fill: var(--text);
-    }
-
-    .hero-byline {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-sub {
-      font-size: 1rem;
-      color: var(--text-muted);
-      margin-bottom: 0.25rem;
-      font-style: italic;
-    }
-
-    /* Principles block (canonical, opens the page) */
-    .principles {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      width: fit-content;
-      max-width: 100%;
-      margin: 2.25rem auto 0;
-      text-align: left;
-      font-family: 'JetBrains Mono', monospace;
-    }
-
-    .principle {
-      font-size: 0.9rem;
-      color: var(--text);
-      line-height: 1.4;
-      border-left: 2px solid var(--accent);
-      padding-left: 0.9rem;
-    }
-
-    .principle__num {
-      color: var(--accent-text);
-      font-weight: 700;
-      margin-right: 0.6rem;
-    }
-
-    /* Project cards */
-    .project-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      transition: all 0.3s;
-    }
-
-    .project-card:hover {
-      border-color: var(--accent-text);
-    }
-
-    .project-card__tag {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.5rem;
-    }
-
-    .project-card__title {
-      font-size: 1.5rem;
-      font-weight: 900;
-      margin-bottom: 0.75rem;
-      color: var(--text);
-    }
-
-    .project-card__desc {
-      color: var(--text-muted);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      font-size: 0.95rem;
-    }
-
-    .project-card__links {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .project-card__links a {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--accent-text);
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 0.4rem 0.8rem;
-      transition: all 0.15s;
-      min-height: 48px;
-      display: inline-flex;
-      align-items: center;
-    }
-
-    .project-card__links a:hover {
-      background: var(--accent);
-      color: var(--bg);
-    }
-
-    /* Team */
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .team-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.25rem;
-      text-align: center;
-    }
-
-    .team-card__sig {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--accent-text);
-      margin-bottom: 0.25rem;
-    }
-
-    .team-card__name {
-      font-weight: 700;
-      margin-bottom: 0.25rem;
-      color: var(--text);
-    }
-
-    .team-card__role {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      line-height: 1.4;
-    }
-
-    /* Brainrot section */
-    .brainrot-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      text-align: center;
-    }
-
-    .brainrot-card__title {
-      font-size: 1.25rem;
-      font-weight: 900;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-    }
-
-    .brainrot-card__by {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--accent-text);
-      margin-bottom: 0.75rem;
-    }
-
-    .brainrot-card__desc {
-      color: var(--text-muted);
-      margin-bottom: 1rem;
-      font-size: 0.9rem;
-    }
-
-    /* Feature cards */
-    .feature-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-      transition: all 0.3s;
-    }
-
-    .feature-card:hover {
-      border-color: var(--accent-text);
-    }
-
-    .feature-card h3 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      color: var(--text);
-    }
-
-    .feature-card p {
-      color: var(--text-muted);
-      line-height: 1.6;
-      font-size: 0.95rem;
-    }
-
-    /* CTA button contrast fix: dark text on light accent backgrounds */
-    .cta {
-      color: #000;
-    }
-
-    .cta:hover {
-      color: #000;
-    }
-
-    .cta--outline {
-      color: var(--accent-text);
-    }
-
-    /* Footer contrast fix — override opacity:0.4 that dims below WCAG */
-    .footer__tagline,
-    .footer__legal span,
-    .footer__legal {
-      color: var(--text-muted) !important;
-      opacity: 1 !important;
-    }
-
-    /* Hero subtitle contrast fix — override opacity that dims text below WCAG threshold */
-    .hero__context,
-    .hero__tagline,
-    .hero__subtitle {
-      color: var(--text-muted) !important;
-      opacity: 1 !important;
-    }
-
-    /* Form interest dropdown */
-    .form__select option {
-      background: var(--surface);
-      color: var(--text);
-    }
-
-    /* Section transitions */
-    body,
-    .project-card,
-    .team-card,
-    .brainrot-card,
-    .feature-card,
-    .cta-card {
-      transition: background 0.3s, color 0.3s, border-color 0.3s;
-    }
-
-    @media (max-width: 600px) {
-      .theme-panel {
-        top: auto;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        justify-content: center;
-        border: none;
-        border-top: 1px solid var(--border);
-        padding: 6px;
-      }
-
-      .theme-dot {
-        min-width: 48px;
-        min-height: 48px;
-        background-clip: content-box;
-        padding: 16px;
-      }
-
-      .hero-logo {
-        max-width: 280px;
-      }
-    }
-
-    /* ── W2: open-core pillars ── */
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .chip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.3rem 0.6rem;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .chip strong {
-      color: var(--accent-text);
-      font-weight: 700;
-    }
-
-    .chip--invite {
-      border-color: var(--accent-text);
-      color: var(--accent-text);
-    }
-
-    .claim {
-      display: inline-block;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.72rem;
-      color: var(--text);
-      background: var(--surface);
-      border-left: 2px solid var(--accent);
-      padding: 0.35rem 0.7rem;
-      margin-bottom: 0.75rem;
-      line-height: 1.4;
-    }
-
-    .clone {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.74rem;
-      color: var(--text);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      padding: 0.55rem 0.8rem;
-      white-space: normal;
-      overflow-wrap: anywhere;
-      word-break: break-all;
-      /* main.js promotes these to role="button" + tabindex="0" click-to-copy
-         controls, so they are real tap targets. Measured at 39px tall in a
-         390px viewport, 5px under the 44px minimum. */
-      display: flex;
-      align-items: center;
-      min-height: 44px;
-    }
-
-    .clone .sigil {
-      color: var(--accent-text);
-      user-select: none;
-      margin-right: 0.5rem;
-    }
-
-    .engine-cards {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    }
-
-    .sdk-grid,
-    .work-grid {
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr));
-    }
-
-    .project-card--lead {
-      grid-column: 1 / -1;
-    }
-
-    .sdk-grid .project-card,
-    .work-grid .project-card {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .sdk-grid .clone,
-    .work-grid .clone {
-      margin-top: auto;
-    }
-
-    .proof-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem 1.25rem;
-      justify-content: center;
-      margin-top: 4rem;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .proof-row b {
-      color: var(--accent-text);
-    }
-
-    /* syscall before/after */
-    .syscall {
-      display: grid;
-      gap: 1rem;
-      margin-top: 1.5rem;
-      align-items: stretch;
-      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    }
-
-    .syscall figure {
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .syscall figcaption {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
-    }
-
-    .syscall .bad {
-      color: var(--danger);
-    }
-
-    .syscall .good {
-      color: var(--accent-text);
-    }
-
-    .syscall pre {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      flex: 1 1 auto;
-      padding: 0.8rem 1rem;
-      overflow-x: auto;
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.78rem;
-      line-height: 1.5;
-      color: var(--text);
-    }
-
-    /* open-core seam figure */
-    .seam {
-      text-align: center;
-      margin: 4.5rem auto 0;
-      max-width: 720px;
-    }
-
-    .seam img {
-      width: 100%;
-      height: auto;
-    }
-
-    .seam figcaption {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 1.75rem;
-    }
-
-    /* open-core split-screen glance */
-    .glance {
-      display: grid;
-      gap: 2rem;
-      margin-top: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
-    }
-
-    .glance__side {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.5rem;
-    }
-
-    .glance__side--invite {
-      border-color: var(--accent-text);
-    }
-
-    .glance__label {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent-text);
-      margin-bottom: 0.6rem;
-    }
-
-    /* what we will NOT do */
-    .notdo-bans {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.25rem;
-    }
-
-    .ban-chip {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: 0.8rem;
-      padding: 0.3rem 0.65rem;
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      text-decoration: line-through;
-      text-decoration-color: var(--accent-text);
-    }
-
-    /* CTA cards — two audiences side by side, collapsing to one column on
-       narrow screens. auto-fit rather than a media query, matching the
-       .engine-cards idiom already used above. */
-    .cta-cards {
-      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
-      max-width: 900px;
-    }
-
-    .cta-card {
-      text-align: center;
-    }
-
-    .footer .container {
-      justify-content: center;
-    }
-
-    .footer__link {
-      margin-left: 0;
-    }
-
-    /* Pro-Bono & Play: bottom-align button rows across cards; keep claim chips content-width */
-    #pro-bono .project-card,
-    #pro-bono .brainrot-card {
-      display: flex;
-      flex-direction: column;
-    }
-
-    #pro-bono .project-card .claim {
-      align-self: flex-start;
-    }
-
-    #pro-bono .project-card__links {
-      margin-top: auto;
-    }
-
-    /* Mobile: collapse the 2-up contact-form rows to one column + stop inputs
-       overflowing. style.css declares the .form__row 1fr-1fr base AFTER its own
-       768px media query, so the base was winning; this inline block loads after
-       style.css, so it wins the mobile layout back. */
-    @media (max-width: 768px) {
-      .form__row {
-        grid-template-columns: 1fr;
-      }
-
-      .form__input,
-      .form__select,
-      .form__textarea {
-        width: 100%;
-        box-sizing: border-box;
-        min-width: 0;
-      }
-
-      .form__field {
-        min-width: 0;
-      }
-
-      /* Hide the floating "READY NN" score badge on mobile — position:fixed has no
-         side margin to live in on phones, so it overlaps the section lead text. */
-      .score-tracker {
-        display: none;
-      }
-    }
-
-    /* Step G delight — click-to-copy on the "$ git clone …" boxes */
-    .clone {
-      cursor: pointer;
-      transition: border-color 0.15s, color 0.15s;
-    }
-
-    .clone:hover {
-      border-color: var(--accent-text);
-    }
-
-    .clone--copied {
-      border-color: var(--accent);
-      color: var(--accent-text);
-    }
-
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border: 0;
-    }
-
-    /* Hidden until focused - never display:none, which would make it unreachable */
-    .skip-link {
-      position: fixed;
-      top: 0.5rem;
-      left: 0.5rem;
-      z-index: 300;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      background: var(--accent-text);
-      color: var(--bg);
-      font-size: 0.8125rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 0;
-    }
-
-    .skip-link:focus {
-      width: auto;
-      height: auto;
-      clip: auto;
-      padding: 0.75rem 1.25rem;
-      border: 2px solid var(--bg);
-    }
-  </style>
 </head>
 
 <body>
-
   <a class="skip-link" href="#main-content">Skip to content</a>
 
-  <header>
-    <!-- THEME SWITCHER (right edge) -->
-    <div class="theme-panel" id="themePanel" role="radiogroup" aria-label="Colour theme">
-      <button type="button" class="theme-dot active" role="radio" aria-checked="true" tabindex="0" data-theme="swiss-dark" title="Swiss Dark" aria-label="Swiss Dark"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-light" title="Swiss Light" aria-label="Swiss Light"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="swiss-neutral" title="Swiss Neutral" aria-label="Swiss Neutral"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="autumn" title="Autumn" aria-label="Autumn"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="forest" title="Forest" aria-label="Forest"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="retrowave" title="Retrowave" aria-label="Retrowave"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="matrix" title="Matrix" aria-label="Matrix"></button>
-      <button type="button" class="theme-dot" role="radio" aria-checked="false" tabindex="-1" data-theme="cyberpunk" title="Cyberpunk" aria-label="Cyberpunk"></button>
-    </div>
-
-    <!-- CONVERGENCE SCORE TRACKER -->
-    <div class="score-tracker" id="scoreTracker">
-      <div class="score-tracker__inner">
-        <span class="score-tracker__label" id="scoreLabel">SCORE</span>
-        <span class="score-tracker__value" id="scoreValue">0</span>
-      </div>
+  <header class="site-header" role="banner">
+    <div class="wrap navbar">
+      <a class="brand" href="#hero">CODE<b>TONIGHT</b></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mainnav"
+        aria-label="Open the menu">&#9776;</button>
+      <nav class="mainnav" id="mainnav" aria-label="Sections of this page">
+        <ul>
+          <li><a href="#moat">Moat</a></li>
+          <li><a href="#legs">Chains</a></li>
+          <li><a href="#happi">Protocol</a></li>
+          <li><a href="#grasp">GRASP</a></li>
+          <li><a href="#engine">Engine</a></li>
+          <li><a href="#continuity">Continuity</a></li>
+          <li><a href="#honesty">On the record</a></li>
+          <li><a href="#open-work">Open work</a></li>
+          <li><a href="#flagships">Play</a></li>
+          <li><a href="#team">Team</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
   </header>
 
-  <!-- ═══════════════════════════════════════════════════════════
-       HERO — CodeTonight
-       ═══════════════════════════════════════════════════════════ -->
-  <!-- tabindex="-1" so the skip link can move focus here, not just scroll -->
-  <main id="main-content" tabindex="-1">
-    <section id="hero" class="section section--hero" data-score="0">
-      <div class="container" style="text-align:center">
-        <div style="width:100%;display:flex;flex-direction:column;align-items:center;gap:0.75rem">
-          <!-- temporary typographic wordmark — final logo co-designed with Fabio -->
-          <h1
-            style="font-size:clamp(2.5rem,8vw,5rem);font-weight:900;letter-spacing:-0.03em;line-height:1;text-align:center;width:100%">
-            <span style="color:var(--accent)">Code</span><span style="color:#888">Tonight</span>
-          </h1>
+  <main id="main-content" role="main">
+
+    <!-- 01 hero -->
+    <section id="hero">
+      <div class="wrap grid">
+        <div class="hero-side">
+          <dl class="hero-meta">
+            <dt>Context</dt>
+            <dd>Cryptographic causation</dd>
+            <dt>Protocol</dt>
+            <dd>HAPPI/1.4</dd>
+            <dt>Engine</dt>
+            <dd>Any model</dd>
+            <dt>Status</dt>
+            <dd><span class="dot" aria-hidden="true"></span>Live &middot; self-checking</dd>
+          </dl>
         </div>
-        <h2 class="hero__title"
-          style="font-size:clamp(1.4rem,4vw,2.4rem);font-weight:500;line-height:1.25;max-width:1000px;margin:2rem auto 0;text-wrap:balance">
-          CodeTonight builds honest Open Source AI that works <b>with</b> you, not <b>for</b> you -- and as a bonus it
-          records
-          the why,
-          the what, and the how behind its actions. <br><br> Further, it shows the memory chain and the "beliefs"
-          leading up to the happening. <br><br>Finally, it provides a deterministic provenance floor so that each claim
-          can be proven or refuted via comparison with actual facts. <br><br> Therefore
-          you don't have to trust the AI, you can <i>witness</i> it. And you should...<br><br>You can simply
-          <b>GRASP</b> it -- by
-          inspecting it with your own real human eyes. No black boxes. <br>
-          <br>Everything is recorded, linked and signed in a
-          tamper-evident chain of events, of which the source is exogenously ratified by an unbiased council of outsider
-          LLMs.
-          <br><br>
-          The final
-          result is permanently stored on
-          the
-          Blockchain, anchored in a root Merkle Forest block, that is being attested and mined as you are reading
-          this. <br><br> This is our novel invention for the future -- <b>Cryptographic
-            Causation™</b>
-        </h2>
-        <p class="hero__subtitle" style="font-size:1.05rem;max-width:820px;margin:2rem auto 0">
-          <b>
-            <u style="text-underline-offset: 4px;">Our Guiding Principle:</u>
-          </b><br><br>
-          <em><b>facta non verba</b></em> -- deeds, not words.<br><br>We
-          are based in
-          Cape
-          Town, South Africa 🇿🇦,<br>the country with the best weather in the world.
-        </p>
-        <div class="principles">
-          <div class="principle"><span class="principle__num">01</span>We will not build what should not exist</div>
-          <div class="principle"><span class="principle__num">02</span>We transform complexity -- KISS is paramount
-          </div>
-          <div class="principle"><span class="principle__num">03</span>We enforce strict quality control</div>
-          <div class="principle"><span class="principle__num">04</span>We do what is RIGHT</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-       THE ENGINE — GRIP + HAL (the moat, by invite pending OSS release)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="engine" class="section section--dark" data-score="12">
-      <div class="container">
-        <h2 class="section__title">The Engine</h2>
-        <p class="section__lead">GRIP brings the harness-agnostic agentic reasoning tool; HAL brings the uncapped,
-          any-provider, LLM-agnostic, runtime. Worried about reaching the end of your weekly limit? Category Error. We
-          have the InfiniteMachine, making limits redundant.
-          <br><br>GRIP + HAL are pending imminent open-source releases as permissively-licensed, trust-anchored, audited
-          and
-          verifiable AI toolsets for the good of all humanity.
-        </p>
-
-        <div class="engine-cards reveal">
-          <div class="project-card">
-            <div class="chips">
-              <span class="chip"><strong>STATUS:</strong>&nbsp;BY INVITATION (Pending OSS)</span>
-              <span class="chip"><strong>ROLE:</strong>&nbsp;CREATOR</span>
-            </div>
-            <div class="project-card__title">GRIP</div>
-            <div class="project-card__desc">
-              <p>The agentic brain. Convergence architecture -- every operation is
-                <code>converge(state, criterion, improve)</code> -- recursive self-improvement under human gates.
-              </p>
-              <details class="more">
-                <summary><span class="more__more">Read more</span><span class="more__less">Show less</span></summary>
-                <p>True Popperian falsification principles, analogous relations between isomorphic structures strictly
-                  evaluated via Gentner SMT analysis and Hossenfelder-like scientific skepticism.</p>
-                <p>Every claim registers a falsifiable hypothesis, effect sizes over
-                  directions, shadow metrics against Goodhart self-scoring, always exogenously anchored and checked. The
-                  LLM
-                  that is writing code is not allowed to review itself -- that is simply stupid and self-defeating 😂.
-                </p>
-              </details>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="chips">
-              <span class="chip"><strong>STATUS:</strong>&nbsp;BY INVITATION (Pending OSS)</span>
-              <span class="chip"><strong>ROLE:</strong>&nbsp;CREATOR</span>
-            </div>
-            <div class="project-card__title">HAL</div>
-            <div class="project-card__desc">
-              <p>The any-model runtime. Just over 100 optimal modules across 8 layers -- so
-                fresh and so clean. MoE
-                councils of councils routing across 21 (and growing) providers -- sovereign by default. <b>Vendor
-                  lock-in
-                  is the
-                  risk,
-                  not the convenience. We distribute intelligence democratically -- no favouritism here.</b>
-              </p>
-              <details class="more">
-                <summary><span class="more__more">Read more</span><span class="more__less">Show less</span></summary>
-                <p>Like
-                  all good investors, we diversify. We all play poker and take
-                  risks -- but crucially, we also cover our bases ("All your base are belong to us! 🤖").
-
-                  SOTA models available from <b>Anthropic, OpenAI, Google, DeepSeek, Qwen, Kimi, GLM, Llama, and many
-                    others!</b>
-                </p>
-                <p>A conversation engine that persists sessions across
-                  weeks, months, years, and mechanical safety -- hook dispatch, sanitisation, agent traps.</p>
-              </details>
-            </div>
-          </div>
-        </div>
-
-        <div class="terminal reveal" style="margin-top:1.5rem;margin-left:auto;margin-right:auto">
-          <div class="terminal__bar">
-            <span class="terminal__dot" style="background:#ff5f57"></span>
-            <span class="terminal__dot" style="background:#febc2e"></span>
-            <span class="terminal__dot" style="background:#28c840"></span>
-            <span class="terminal__title">convergence_kernel.py</span>
-          </div>
-          <pre
-            class="terminal__body"><span class="kw">def</span> <span class="fn">converge</span>(state, criterion, improve, depth=<span class="num">0</span>, max_depth=<span class="num">11</span>):
-    <span class="cm">"""The entire system in 37 tokens."""</span>
-    <span class="kw">if</span> criterion(state) <span class="kw">or</span> depth >= max_depth:
-        <span class="kw">return</span> state
-    <span class="kw">return</span> <span class="fn">converge</span>(improve(state), criterion, improve, depth+<span class="num">1</span>, max_depth)</pre>
-        </div>
-
-        <p class="section__lead" style="text-align:center;margin:3rem auto 0">
-          AI safety achieved through mechanisms, not values. Guardrails are set in stone, with deterministic Python
-          scripts
-          that the model can't argue with.</p>
-
-        <div style="text-align:center;margin-top:4.5rem">
-          <a href="mailto:development@codetonight.co.za?subject=GRIP%2BHAL%20invite%20request"
-            class="cta">Request an invite</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-       THE OPEN STANDARD — HAPPI/1.3 (free; the open half of open-core)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="happi" class="section" data-score="24">
-      <div class="container">
-        <h2 class="section__title">HAPPI/1.3 -- AI as a syscall</h2>
-        <p class="section__lead">A provider-agnostic envelope contract -- your callers ask for inference,
-          never binding to a vendor's SDK.</p>
-
-        <p class="section__lead">As of 1.3 the same open envelope carries provenance: an audit
-          receipt for each decision, a replayable memory-chain of what the model knew, and deterministic
-          citation checks that prove quoted text is present in the supplied source.</p>
-
-        <p class="section__lead">The standard is free and
-          public -- the runtime that serves and anchors it is currently by invitation.</p>
-
-        <div class="syscall reveal">
-          <figure>
-            <figcaption class="bad">// vendor-locked</figcaption>
-            <pre>client = OpenAI(api_key=...)
-client.chat.completions.create(
-    model="gpt-4o",
-    messages=[...],
-)
-<span style="color:#7a8a99;font-style:italic"># swap providers? rewrite every call.</span></pre>
-          </figure>
-          <figure>
-            <figcaption class="good">// HAPPI/1.3</figcaption>
-            <pre>infer({
-  provider: "any",
-  prompt: "...",
-})
-<span style="color:#7a8a99;font-style:italic"># swap providers? change one field.</span></pre>
-          </figure>
-        </div>
-
-        <div class="reveal"
-          style="margin-top:2rem;font-family:'JetBrains Mono',monospace;font-size:0.9rem;max-width:640px">
-          <div style="color:var(--accent-text);margin-bottom:0.75rem">// new since 1.0 -- the envelope proves
-            itself</div>
-          <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5">
-            <strong style="color:var(--accent-text)">idr</strong> -- a signed decision record: the what, why, and
-            when of every decision <span style="color:var(--text-muted)">(1.1)</span>
-          </div>
-          <div style="border-left:2px solid var(--accent);padding-left:0.9rem;margin-bottom:0.5rem;line-height:1.5">
-            <strong style="color:var(--accent-text)">context</strong> -- a signed memory-chain: the replayable
-            belief record of what the model knew, and when <span style="color:var(--text-muted)">(1.2)</span>
-          </div>
-          <div style="border-left:2px solid var(--accent);padding-left:0.9rem;line-height:1.5"><strong
-              style="color:var(--accent-text)">cite.verify</strong> -- deterministic citation-provenance: every
-            cited quote is checked verbatim-present in its source; fabricated citations resolve to not_found <span
-              style="color:var(--text-muted)">(1.3)</span></div>
-        </div>
-
-        <div class="reveal"
-          style="margin-top:2rem;background:linear-gradient(135deg,rgba(77,139,255,0.06),rgba(0,0,0,0));border:1px solid rgba(77,139,255,0.18);border-radius:8px;padding:1.5rem 2rem">
-          <p
-            style="margin:0 0 0.5rem;color:var(--accent-text);font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;letter-spacing:0.08em">
-            CRYPTOGRAPHIC CAUSATION</p>
-          <p style="margin:0;line-height:1.7">These three event types compose into a single moat: tamper-evident,
-            replayable records of <strong>what</strong> an AI decided, <strong>what it believed when</strong> it
-            decided, and <strong>every claim it asserts</strong> -- hash-chained and Merkle-rooted, externally
-            anchorable. The verifier is the math and an independent party, never the AI. A sceptic can re-run the
-            replay, re-verify the RFC&nbsp;6962 Merkle inclusion proof, and re-check each citation against its source.
-            Falsifiable by construction. Popper applied to AI provenance.</p>
-        </div>
-
-        <div
-          style="display: flex; justify-content: center; align-items: center; margin-top: 2.5rem; margin-bottom: 2.5rem;">
-          Four clone-able SDKs, one envelope contract, identical behaviour:
-        </div>
-
-        <div class="sdk-grid reveal">
-          <div class="project-card">
-            <div class="project-card__tag">Python</div>
-            <div class="project-card__title">hal-py</div>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-py</div>
-          </div>
-          <div class="project-card">
-            <div class="project-card__tag">JS / TS -- zero-dep</div>
-            <div class="project-card__title">hal-js</div>
-            <p class="project-card__desc" style="font-size:0.85rem">Node, Deno, and Bun. No dependencies.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-js</div>
-          </div>
-          <div class="project-card">
-            <div class="project-card__tag">Go</div>
-            <div class="project-card__title">hal-go</div>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-go</div>
-          </div>
-          <div class="project-card">
-            <div class="project-card__tag">Conformance</div>
-            <div class="project-card__title">hal-conformance</div>
-            <p class="project-card__desc" style="font-size:0.85rem">The test suite every SDK must pass.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/hal-conformance
-            </div>
-          </div>
-        </div>
-
-        <div class="reveal"
-          style="margin-top:3rem;border:1px solid rgba(77,139,255,0.25);border-radius:8px;padding:1.5rem 2rem">
-          <p
-            style="margin:0 0 0.75rem;color:var(--accent-text);font-family:'JetBrains Mono',monospace;font-size:0.85rem;font-weight:600;letter-spacing:0.08em">
-            ONE INSTALL -- macOS &middot; Linux &middot; Windows/Git-Bash</p>
-          <div class="clone" style="margin-bottom:0.75rem"><span class="sigil">$</span>curl install.grip-web.com | sh
-          </div>
-          <p style="margin:0 0 0.5rem;font-size:0.9rem;line-height:1.6">Stands up a local HAL gateway (sovereign by
-            default -- non-Anthropic; DeepSeek &middot; Gemini &middot; Groq &middot; xAI with automatic failover),
-            a HAPPI/1.3 runtime, and a witnessable node. Cross-platform. Secrets via the OS keychain, never baked in.
+        <div class="hero-main">
+          <h1 class="word">Do not trust the AI.<br>Witness it.</h1>
+          <p class="expand"><b>CodeTonight</b> &mdash; Cape Town, South Africa</p>
+          <p class="lede">We build honest open-source AI that keeps a receipt: <em>the why, the what and the
+              how</em> behind everything it does. You do not have to take its word for any of it. You can
+            look.</p>
+          <p class="contract">Every decision is written down as it happens, sealed so it cannot be edited or
+            reordered afterwards, and linked to the notes the machine was working from at that moment.
+            <b>Then every sentence it writes is checked, word for word, against the document it says it came
+              from.</b> A made-up quotation fails that check. It cannot be talked around, because it is
+            arithmetic, not opinion.
           </p>
-          <p style="margin:0;font-size:0.88rem;color:var(--text-muted)"><em>Don&rsquo;t trust it -- witness
-              it.</em> The node publishes its own signed decision chain; verify one inclusion proof in-browser, no
-            account needed &rarr; <a href="https://happiverse.grip-web.com" target="_blank" rel="noopener"
-              style="color:var(--accent-text)">happiverse.grip-web.com</a></p>
-        </div>
-
-        <div style="text-align:center;margin-top:4rem">
-          <a href="https://www.happi.md" class="cta cta--outline" target="_blank" rel="noopener">Read the standard
-            &rarr; happi.md</a>
-        </div>
-
-        <figure class="seam reveal">
-          <img src="/images/open-core-seam.svg" width="780" height="200"
-            alt="The open-core seam. Open and clone-able today: HAPPI/1.3, free; and GRASP, under AGPL-3.0. By invite: HAL and GRIP, while the open-source release is in preparation.">
-
-          <figcaption>Two things are already yours: HAPPI/1.3, the free standard, and GRASP, the open proof
-            layer under AGPL-3.0. Clone either one tonight. HAL and GRIP are by invite while we get the
-            open-source release ready -- the seam moves left, and we will say so when it does.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-       GRASP — the open reference implementation of the moat (AGPL-3.0)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="grasp" class="section section--dark" data-score="31">
-      <div class="container">
-        <h2 class="section__title">GRASP -- the moat, in open source</h2>
-        <p class="section__lead">HAPPI defines the provenance verbs; <strong>GRASP</strong> -- Governed
-          Reasoning And Signable Provenance -- is the open-source (AGPL-3.0) reference implementation of all
-          three. What an AI <strong>decided</strong>, what it <strong>believed when</strong> it decided, and whether
-          every <strong>claim</strong> it made is verbatim-present in its cited source. Cryptographic causation you
-          can clone, run, and check for yourself -- not a promise, a library.</p>
-
-        <div class="feature-grid reveal">
-          <div class="feature-card">
-            <h3>Decision record</h3>
-            <p>Signed Intent Decision Records, predecessor-chained into a forest rooted only at exogenous anchors
-              -- CI runs, human commits, cross-provider verdicts -- with an RFC&nbsp;6962 Merkle root and
-              O(log&nbsp;N) inclusion proofs.</p>
+          <div class="cta-row">
+            <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break the chain yourself</a>
+            <a class="btn ghost" href="https://www.happi.md">Read the protocol</a>
           </div>
-          <div class="feature-card">
-            <h3>Belief record</h3>
-            <p>An append-only, signed memory-chain of the evolving mental model -- so the record carries what
-              the system believed <em>at decision time</em>, not just its output.</p>
-          </div>
-          <div class="feature-card">
-            <h3>Claim record</h3>
-            <p>Deterministic verbatim-citation provenance: every cited quote is checked against its source
-              -- exact, then whitespace-tolerant, then <code>not_found</code>. A fabricated quote renders red
-              and cannot earn a pass, because the check is arithmetic matching, not judgement.</p>
-          </div>
-        </div>
-
-        <div class="reveal"
-          style="margin-top:2.5rem;border:1px solid var(--accent);border-radius:8px;padding:1.5rem 2rem">
-          <p style="margin:0 0 1rem;line-height:1.7"><em>Don&rsquo;t trust it -- witness it.</em> The verifier
-            is the math and an independent party, never the AI. A sceptic -- a regulator, opposing counsel, an
-            auditor -- can re-run the replay, re-verify the Merkle inclusion proof, and re-check each citation
-            against its source. GRASP proves a quote is verbatim-present in the source you supply -- not that
-            the source is authentic, nor that the quote supports the point; that last mile stays a human's job.
-            Falsifiable by construction; free and open under AGPL-3.0.</p>
-          <div class="project-card__links" style="margin-bottom:0.75rem">
-            <a href="https://grasp-web-chi.vercel.app" target="_blank" rel="noopener">Try it in your browser &rarr;</a>
-          </div>
-          <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grasp</div>
+          <p class="trust"><span>AGPL-3.0</span><span>HAPPI/1.4</span><span>Cape Town, ZA</span><span>Bitcoin
+              block 956992 (pilot)</span></p>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       THE OPEN WORK — OSS tools (Pillar B; the open core, proven)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="open-work" class="section" data-score="38">
-      <div class="container">
-        <h2 class="section__title">The Open Work</h2>
-        <p class="section__lead">Around the private engine: real open-source tools, each carrying a falsifiable
-          claim -- a proof, a cost model, a live game. They are the engine's quality, shown not told.</p>
+    <!-- 02 the moat, in one paragraph -->
+    <section id="moat" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">01</span> &mdash; the idea</p>
+          <h2>You keep the receipt.</h2>
+        </div>
+        <div class="sec-body">
+          <p>When a person makes a decision you can ask them what they were thinking and check whether the
+            answer holds up. When an AI makes a decision you usually get a confident paragraph and no way to
+            tell whether it is true. Asking the machine again does not help, because the second answer is
+            produced the same way as the first.</p>
+          <p>So we stopped asking. Instead, <b>the machine writes down what it decided, what it believed at
+              the time, and what it claimed &mdash; while it is deciding, not afterwards</b> &mdash; and each
+            record is sealed to the one before it. Change any earlier entry and every seal after it stops
+            matching. That is what makes the record worth anything: not that we promise it is honest, but
+            that dishonesty leaves a visible mark.</p>
+          <p>None of the cryptography here is new. Hash chains, Merkle trees and signatures are decades old
+            and we did not invent any of them. What is ours is the composition &mdash; four separate records
+            that only agree if nothing was tampered with &mdash; and the fact that a sceptic can sit down and
+            try to break it without asking our permission.</p>
+          <p class="cap"><b>In plain terms:</b> it is a receipt with a wax seal. Anyone can read the receipt.
+            Anyone can see whether the seal has been broken. You do not have to know the shopkeeper.</p>
+        </div>
+      </div>
+    </section>
 
-        <div class="work-grid reveal" style="margin-top:2.5rem">
-          <div class="project-card project-card--lead">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;BRIDGE</span></div>
-            <div class="project-card__title">grip-decision-chain</div>
-            <span class="claim">order-evident &middot; append-only &middot; verify-it-yourself</span>
-            <p class="project-card__desc">The public, readable face of the moat: every decision GRIP's AI ships to its
-              own codebase, as an order-evident chain -- hash-linked so nothing can be quietly dropped or
-              reordered. No code, no diffs, no client data: an allowlist, not a redaction. The engine that signs and
-              externally anchors it stays by invite.</p>
-            <div class="project-card__links" style="margin-bottom:0.75rem">
-              <a href="https://codetonight-sa.github.io/grip-decision-chain/" target="_blank" rel="noopener">Live chain
-                &rarr;</a>
-            </div>
-            <div class="clone"><span class="sigil">$</span>git clone
-              https://github.com/CodeTonight-SA/grip-decision-chain</div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
-            <div class="project-card__title">git-solve</div>
-            <span class="claim">Banach fixed-point proof</span>
-            <p class="project-card__desc">Cross-session branch reconciliation as a convergence loop --
-              divergent parallel work resolved safely, verifiably, replayably.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/git-solve</div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
-            <div class="project-card__title">prompt-cache-keepalive</div>
-            <span class="claim">proven cost model</span>
-            <p class="project-card__desc">Keeps the Anthropic prompt cache warm so long sessions stop paying the
-              cold-read tax. The saving is a model you can check, not a promise.</p>
-            <div class="clone"><span class="sigil">$</span>git clone
-              https://github.com/CodeTonight-SA/prompt-cache-keepalive</div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
-            <div class="project-card__title">grip-post</div>
-            <span class="claim">refuses to write fluff</span>
-            <p class="project-card__desc">grip-post is an anti-fluff gate that refuses to write fluff --
-              we run it on our own copy. Unicode formatter + anti-slop gate for LinkedIn, browser-extensible.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grip-post</div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
-            <div class="project-card__title">grip-session-mesh</div>
-            <span class="claim">three-layer session mesh</span>
-            <p class="project-card__desc">Share a knowledge base across concurrent Claude Code sessions --
-              inbox, session registry, and live snapshots, garbage-collected by TTL.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/grip-session-mesh
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;GAME</span></div>
-            <div class="project-card__title">ccflex-skibidi</div>
-            <span class="claim">WebGL &middot; ranked &middot; verifiable</span>
-            <p class="project-card__desc">A ranked WebGL game with verifiable scores.
-              <!-- W4: embed the live WebGL as a hero element once the embed URL is confirmed -->
+    <!-- 03 four chains -->
+    <section id="legs" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">02</span> &mdash; the mechanism</p>
+          <h2>Four records. One run. One receipt.</h2>
+        </div>
+        <div class="sec-body">
+          <p>Each of the four answers a different question, and each one can be attacked on its own terms.
+            Under every entry below is the thing that would prove it wrong.</p>
+        </div>
+        <div class="legs">
+          <article class="leg">
+            <p class="n">01</p>
+            <p class="tag">The decision</p>
+            <h3>IDR</h3>
+            <p>An Intent Decision Record: what was decided, why, how, and when. Records are hash-chained in
+              order and gathered under a single root value, so the whole set can be checked at once and
+              replayed step by step.</p>
+            <p class="breaks"><b>Breaks if:</b> you can alter one record and still produce a matching root.
             </p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/ccflex-skibidi
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;TOOL</span></div>
-            <div class="project-card__title">skill-forge</div>
-            <span class="claim">anti-skill-atrophy</span>
-            <p class="project-card__desc">Keep your engineering skills sharp while using AI. The sharpest sword is
-              forged through use, not observation -- for engineers who use Claude Code daily.</p>
-            <div class="clone"><span class="sigil">$</span>git clone https://github.com/CodeTonight-SA/skill-forge</div>
+          </article>
+          <article class="leg">
+            <p class="n">02</p>
+            <p class="tag">The belief</p>
+            <h3>Memory chain</h3>
+            <p>A separate record of what the machine had in front of it at the moment it decided. Kept apart
+              from the decision on purpose: a decision that looks reasonable can still rest on notes that
+              were already wrong.</p>
+            <p class="breaks"><b>Breaks if:</b> you can swap the context behind a decision and the two chains
+              still agree.</p>
+          </article>
+          <article class="leg">
+            <p class="n">03</p>
+            <p class="tag">The claim</p>
+            <h3>cite.verify</h3>
+            <p>Every quoted sentence is matched, character for character, against the passage it is
+              attributed to. Found or not found. There is no partial credit and no persuading it.</p>
+            <p class="breaks"><b>Breaks if:</b> an invented quotation ever comes back green.</p>
+          </article>
+          <article class="leg">
+            <p class="n">04</p>
+            <p class="tag">The commitment</p>
+            <h3>Congruent Continuity <span class="badge inbuild">In build</span></h3>
+            <p>Before acting on an assumption, the machine signs a short bet: here is what I am taking as
+              true, and here is what would prove me wrong. An outside checker settles it. If the assumption
+              is refuted, everything built on top of it is marked suspect.</p>
+            <p class="breaks"><b>Breaks if:</b> a bet can be written after the outcome is known.</p>
+          </article>
+          <div class="compose">
+            <b>Why four and not one:</b> a single log proves only that a log exists. These four have to agree
+            with each other, and they were written at different moments by different parts of the system. To
+            fake the set you would have to fake all four in a way that still lines up &mdash; which is the
+            whole point of chaining them.
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       FLAGSHIPS — a curated visual spotlight; all three cross-link to their full sections (the SVG drawings are the added value)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="flagships" class="section section--dark" data-score="52">
-      <div class="container">
-        <h2 class="section__title">Three flagships</h2>
-        <p class="section__lead">One from each pillar of the open work: the moat you can check, the substrate that
-          makes any model a syscall, and the engine improving itself, in the open. Drawn, not just described.</p>
-
-        <div class="work-grid reveal" style="margin-top:2.5rem">
-
-          <div class="project-card project-card--lead">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;SUBSTRATE</span></div>
-            <div class="project-card__title">HAL &mdash; AI as a syscall</div>
-            <span class="claim">harness-agnostic &middot; LLM-agnostic &middot; a council, not one model</span>
-            <svg viewBox="0 0 240 120" role="img"
-              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
-              aria-label="One call fans out to four language models whose answers converge on a single judge, which returns one verdict.">
-              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="6" y="50" width="34" height="20" rx="3"/>
-                <line x1="40" y1="60" x2="98" y2="24"/>
-                <line x1="40" y1="60" x2="98" y2="48"/>
-                <line x1="40" y1="60" x2="98" y2="72"/>
-                <line x1="40" y1="60" x2="98" y2="96"/>
-                <circle cx="108" cy="24" r="10"/>
-                <circle cx="108" cy="48" r="10"/>
-                <circle cx="108" cy="72" r="10"/>
-                <circle cx="108" cy="96" r="10"/>
-                <line x1="118" y1="24" x2="174" y2="60"/>
-                <line x1="118" y1="48" x2="174" y2="60"/>
-                <line x1="118" y1="72" x2="174" y2="60"/>
-                <line x1="118" y1="96" x2="174" y2="60"/>
-                <rect x="174" y="46" width="30" height="28" rx="3" style="stroke:var(--accent)"/>
-                <path d="M180 60 l5 6 l11 -13" style="stroke:var(--accent)" stroke-width="2"/>
-                <line x1="204" y1="60" x2="232" y2="60" style="stroke:var(--accent)"/>
-              </g>
-            </svg>
-            <p class="project-card__desc">HAPPI/1.0 is a small open protocol &mdash; "AI as a syscall" &mdash; so any
-              model is reachable through one interface, whatever harness or provider you run: route across models, or
-              convene a multi-LLM council (parallel or turn-based Mixture-of-Experts, with an LLM as the judge). The
-              client libraries and the conformance mark live with the engine. <a href="#engine">Meet GRIP + HAL &uarr;</a></p>
+    <!-- 04 break it yourself -->
+    <section id="break" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">03</span> &mdash; try to break it</p>
+          <h2>Do not believe us. Edit the record.</h2>
+        </div>
+        <div class="sec-body">
+          <p>The demonstration is simple enough to be unfair to us. You are shown a chain of sealed records.
+            You change one of them &mdash; a word, a number, whatever you like. Every seal from that point
+            forward turns red, and stays red, because each seal is computed from the record before it.</p>
+          <p>There is a second one for quotations. Take a sentence with a citation, alter the source it points
+            at, and watch the check fail. Then invent a citation that was never in the source at all and
+            watch it fail the same way. That is the property we care about most: <b>a fabricated citation
+              cannot pass, because passing is a calculation rather than a judgement.</b></p>
+          <p>Both run entirely in your browser. Nothing is sent to us, and there is nothing to sign up for.</p>
+          <div class="cta-row" style="margin-top:1.5rem">
+            <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break a chain</a>
+            <a class="btn ghost" href="https://grasp-web-chi.vercel.app/#cite">Break a citation</a>
+            <a class="btn ghost" href="https://grasp-web-chi.vercel.app/try">Open the full demo</a>
           </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;MOAT</span></div>
-            <div class="project-card__title">GRASP</div>
-            <span class="claim">signed &middot; chained &middot; verify-it-yourself</span>
-            <svg viewBox="0 0 240 120" role="img"
-              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
-              aria-label="Three record blocks hash-linked into a chain and sealed with a checkmark.">
-              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <rect x="14" y="46" width="42" height="28" rx="3"/>
-                <rect x="99" y="46" width="42" height="28" rx="3"/>
-                <rect x="184" y="46" width="42" height="28" rx="3"/>
-                <line x1="56" y1="60" x2="99" y2="60"/>
-                <line x1="141" y1="60" x2="184" y2="60"/>
-                <path d="M196 60 l6 7 l13 -16" style="stroke:var(--accent)" stroke-width="2"/>
-              </g>
-            </svg>
-            <p class="project-card__desc">The provenance moat, in open source: what an AI decided, what it believed
-              when, and whether every claim is verbatim in its source. <a href="#grasp">See the moat &uarr;</a></p>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;RSI</span></div>
-            <div class="project-card__title">grip-rsi-witness</div>
-            <span class="claim">recursive self-improvement &middot; live &middot; verifiable</span>
-            <svg viewBox="0 0 240 120" role="img"
-              style="display:block;width:100%;max-width:300px;height:auto;margin:1.25rem 0;color:var(--text-muted)"
-              aria-label="A self-referential loop feeding an upward-stepping improvement line, sealed with a checkmark.">
-              <g fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-                <path d="M64 48 A24 24 0 1 0 70 74"/>
-                <path d="M64 46 l2 10 l-10 -3" style="stroke:var(--accent)" stroke-width="2"/>
-                <polyline points="96,86 124,86 124,66 152,66 152,46 180,46 180,30"/>
-                <circle cx="204" cy="32" r="12" style="stroke:var(--accent)"/>
-                <path d="M198 32 l4 5 l9 -11" style="stroke:var(--accent)" stroke-width="2"/>
-              </g>
-            </svg>
-            <p class="project-card__desc">GRIP's recursive self-improvement, in the open: the engine improving itself,
-              with every step witnessed &mdash; live and verifiable, not a claim.</p>
-            <div class="project-card__links" style="margin-bottom:0.75rem">
-              <a href="https://codetonight-sa.github.io/grip-rsi-witness/" target="_blank" rel="noopener">Watch it live &rarr;</a>
-            </div>
-          </div>
-
+          <p class="cap">The demonstrations live on the GRASP site, which is a separate page with its own
+            interactive engine. We link it rather than copying it, so there is only ever one version to keep
+            honest.</p>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       PRO-BONO & PLAY — community work + father-son games (Pillar B)
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="pro-bono" class="section" data-score="68">
-      <div class="container">
-        <h2 class="section__title">Pro-Bono &amp; Play</h2>
-        <p class="section__lead">Public good and genuine fun -- games with real players,
-          a privacy-first desktop app. All open, all honest about who built them.</p>
-
-        <div class="feature-grid reveal">
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;GAME</span></div>
-            <div class="project-card__title">Kwartel</div>
-            <span class="claim">kwartel.io &middot; 3+ years &middot; 100k+ players</span>
-            <p class="project-card__desc">Afrikaans daily word game. Vanilla JS, offline-first PWA, zero
-              dependencies. Woordraaispel -- lekker!</p>
-            <div class="project-card__links">
-              <a href="https://kwartel.io" target="_blank" rel="noopener">Play Kwartel</a>
-            </div>
-          </div>
-
-          <div class="project-card">
-            <div class="chips"><span class="chip"><strong>ROLE:</strong>&nbsp;APP</span></div>
-            <div class="project-card__title">google-vibe-os</div>
-            <span class="claim">local-only &middot; zero telemetry</span>
-            <p class="project-card__desc">Unified Google Workspace -- Gmail, Calendar, Drive, and Tasks in one
-              desktop app, MCP-enabled for AI integration. Privacy-first.</p>
-            <div class="project-card__links">
-              <a href="https://github.com/CodeTonight-SA/google-vibe-os" target="_blank" rel="noopener">View
-                Repository</a>
-            </div>
-          </div>
+    <!-- 05 HAPPI -->
+    <section id="happi" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">04</span> &mdash; the protocol</p>
+          <h2>HAPPI: talking to a model should be one call.</h2>
+          <p class="label" style="margin-top:1rem">Open standard &middot; version 1.4</p>
         </div>
-
-        <!-- father-son games: personal repos, presented honestly (not org-owned) -->
-        <p class="section__lead" style="margin-top:3rem;margin-bottom:1.25rem">Italian Brainrot -- father-son games
-          by V&gt;&gt; and his
-          son. Personal projects, open source, built for laughs.</p>
-        <div class="project-card__links" style="justify-content:flex-start;margin-bottom:var(--space-lg)">
-          <a data-ext="profile" role="button" tabindex="0">Embrace The Silly</a>
+        <div class="sec-body">
+          <p>Every AI provider has its own way of being asked a question, and every one of them changes it.
+            Code written against one of them is stuck to it. HAPPI is a small open standard that puts one
+            shape around all of them: <b>one envelope goes in, one stream of events comes out</b>, whichever
+            model or provider is behind it.</p>
+          <p>That sounds like plumbing, and mostly it is. It matters here for one reason: because every
+            request and every reply passes through the same shape, the same shape is where the record gets
+            written. Swapping the model underneath does not change what gets recorded.</p>
+          <p>Versions 1.0 through 1.4 are all accepted, so nothing breaks when the standard moves. Version
+            1.3 added the citation check. <b>HAPPI/1.4 added pre-registered commitments</b> &mdash; the fourth
+            record above.</p>
         </div>
-        <div class="feature-grid reveal">
-          <div class="brainrot-card">
-            <div class="brainrot-card__title">Tung Tung Tung Sahur!</div>
-            <div class="brainrot-card__by">By Pappa &amp; son &middot; personal repo</div>
-            <p class="brainrot-card__desc">Tap when "Sahur!" appears. Minimal code, maximum chaos.</p>
-            <div class="project-card__links" style="justify-content:center">
-              <a href="https://ttt-sahur.vercel.app" target="_blank" rel="noopener">Play Now</a>
-              <a data-ext="sahur" role="button" tabindex="0">Source</a>
-            </div>
-          </div>
-          <div class="brainrot-card">
-            <div class="brainrot-card__title">Mixing Mod</div>
-            <div class="brainrot-card__by">v0.9.0 -- By Pappa &amp; son &middot; personal repo</div>
-            <p class="brainrot-card__desc">Combine meme characters into hybrid creatures. Become the FINAL BOSS.</p>
-            <div class="project-card__links" style="justify-content:center">
-              <a href="https://italian-brainrot-mixing-mod.vercel.app" target="_blank" rel="noopener">Play Now</a>
-              <a data-ext="mixing" role="button" tabindex="0">Source</a>
-            </div>
-          </div>
-        </div>
+        <div class="syscall">
+          <figure>
+            <figcaption>Without it</figcaption>
+            <pre>openai.chat(...)
+anthropic.messages(...)
+gemini.generate(...)
 
-        <p class="section__lead" style="margin-top:3rem;font-size:0.95rem">
-          <strong>Also in the lab:</strong> TWR -- a clipboard manager with version-control patterns; shipping
-          soon.<br>
-          <strong>More:</strong> <a href="https://about.grip-web.com" target="_blank" rel="noopener"
-            style="color:var(--accent-text)">GRIP whitepaper</a>
-          &middot; <a href="https://tralala.grip-web.com" target="_blank" rel="noopener"
-            style="color:var(--accent-text)">tralala</a>.
-        </p>
+<i>three shapes, three sets of
+error handling, three places
+to write a record</i></pre>
+          </figure>
+          <figure>
+            <figcaption class="good">With HAPPI</figcaption>
+            <pre>happi.call(envelope)
+  -&gt; event: started
+  -&gt; event: context
+  -&gt; event: cite.verify
+  -&gt; event: completed
+
+<i>one shape, any provider,
+one place to write the record</i></pre>
+          </figure>
+        </div>
+        <div class="sec-body" style="margin-top:1.5rem">
+          <p class="cap">The specification is a single readable file, and it is executable: <b>bash happi.md</b>
+            runs the quickstart out of the document itself. Read it at <a
+              href="https://www.happi.md">www.happi.md</a>.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       WHAT WE WILL NOT DO — the open-core boundary + anti-slop bans
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="not-do" class="section" data-score="74">
-      <div class="container">
-        <h2 class="section__title">What we will not do</h2>
-        <p class="section__lead">Principle 01: we will not ship anything unfinished, or which shouldn't exist at all.
-          YAGNI.
-          The open-core boundary
-          is the clearest case -- <strong>GRIP is ever-evolving, and will soon come out of its cage.</strong> The
-          standard (HAPPI) is yours
-          to take; the runtime that makes it fast is used internally and by select few organisations. Honesty is
-          paramount. Provenance is known. No snake oil, no vapourware.</p>
+    <!-- 06 GRASP -->
+    <section id="grasp" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">05</span> &mdash; the open proof layer</p>
+          <h2>GRASP is the moat, given away.</h2>
+          <p class="label" style="margin-top:1rem">AGPL-3.0</p>
+        </div>
+        <div class="sec-body">
+          <p>Governed Reasoning And Signable Provenance. It is the reference implementation of everything
+            described above, published under a copyleft licence, and it is the answer to the obvious
+            objection: <b>if only we can check the receipts, they are not receipts.</b></p>
+          <p>So the checker is a separate small program you can run yourself, on our records or on anyone
+            else's. It does not call us and it does not need our permission. If our own chain were ever
+            tampered with, our own tool would say so.</p>
+          <p>The format is going through the standards process as an IETF draft, because a receipt format
+            owned by one company is a receipt format that can be quietly changed.</p>
+          <div class="cta-row" style="margin-top:1.5rem">
+            <a class="btn" href="https://github.com/CodeTonight-SA/grasp">Source on GitHub</a>
+            <a class="btn ghost" href="https://github.com/CodeTonight-SA/grasp/blob/main/tools/grasp-verify-receipt">The
+              checker</a>
+            <a class="btn ghost" href="https://datatracker.ietf.org/doc/draft-laurie-tmif/">IETF draft</a>
+          </div>
+          <p class="cap">More on the site: <a href="https://grasp-web-chi.vercel.app/">grasp-web-chi.vercel.app</a>
+            &mdash; including the parts we are careful not to overclaim.</p>
+        </div>
+      </div>
+    </section>
 
-        <p class="section__lead" style="margin-top:2.5rem">And phrases this page will not mention:</p>
-        <div class="notdo-bans">
+    <!-- 07 engine -->
+    <section id="engine" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">06</span> &mdash; the engine</p>
+          <h2>Any model. And you can watch it choose.</h2>
+        </div>
+        <div class="sec-body">
+          <p>GRIP is the working environment and HAL is the layer underneath it that reaches the models. HAL
+            routes across many providers, falls over to another when one is rate-limited or down, and says
+            in the record which one answered. <b>The default is deliberately not a single vendor</b>, because
+            a system that can only reason through one company's model is that company's system.</p>
+          <p>It can also convene several models at once on the same question &mdash; running in parallel or
+            taking turns &mdash; and have a different model judge the result. That matters for review: a
+            model marking its own work is not a review, and the record shows plainly who sat and who judged.</p>
+          <p>One property we hold ourselves to: <b>the same belief should produce the same fingerprint
+              whichever model wrote it.</b> We list that as shipped but not yet proven at scale, and we say
+            so again in the ledger below rather than hoping you miss it.</p>
+          <p class="cap"><b>Where the line is drawn.</b> The standard (HAPPI) and the proof layer (GRASP) are
+            open and yours to take today. The runtime that makes it fast is used internally and by a small
+            number of organisations while it is being prepared for release. We would rather say that plainly
+            than describe a private thing as open.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 08 congruent continuity -->
+    <section id="continuity" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">07</span> &mdash; the fourth record</p>
+          <h2>Confidence is the worst signal we have.</h2>
+          <p class="label" style="margin-top:1rem"><span class="badge inbuild">Partly in build</span></p>
+        </div>
+        <div class="sec-body">
+          <p>A model that has gone down the wrong path does not sound uncertain. It sounds consistent,
+            because it is being consistent &mdash; with a premise that happens to be false. Everything
+            downstream of that premise is coherent and wrong at the same time. <b>So the machine's own
+              confidence is close to the least useful number in the system</b>, and any safeguard built on
+            it inherits the same blind spot.</p>
+          <p>Congruent Continuity replaces the question. Before acting on an assumption that matters, the
+            machine signs a short falsifiable statement &mdash; this is what I am taking as true, this is
+            what would show me wrong &mdash; and does it <em>before</em> the action, so the reasoning cannot
+            be quietly rewritten to fit the outcome. Something outside the machine then settles it: a plain
+            deterministic check wherever one exists, and a model from a different vendor where one does not.
+            When a premise is refuted, everything that depended on it is marked suspect rather than left
+            standing.</p>
+          <p class="cap"><b>Honest status, because this one is easy to oversell.</b> The recorder is written
+            and tested and has been since 30 August 2026. The settlement worker, the statistical predictors
+            and the pre-flight watcher are still being built. <b>There is no live gate</b> &mdash; nothing is
+            blocked by this today, and we will not describe it as protecting anything until it does.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 09 on the record -->
+    <section id="honesty" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">08</span> &mdash; on the record</p>
+          <h2>What we are not claiming.</h2>
+        </div>
+        <div class="sec-body">
+          <p>A page about honest machines that overstates its own position would be self-refuting. So here is
+            the list of things people might reasonably assume from everything above, which are not true.</p>
+        </div>
+        <ul class="notlist">
+          <li><span><b>Not new cryptography.</b> We recombine primitives that already existed. We did not
+              invent a cipher.</span><span class="badge">Shipped</span></li>
+          <li><span><b>Not bit-for-bit replay.</b> We record evidence and re-derive the decision. We do not
+              claim to reproduce a model run byte for byte &mdash; no one can, across different hardware and
+              batching, and we will not pretend otherwise.</span><span class="badge">Shipped</span></li>
+          <li><span><b>Post-quantum signing is parity, not an advantage.</b> It is available. It is not a
+              reason to pick us.</span><span class="badge provisioned">Provisioned</span></li>
+          <li><span><b>Anchoring to Bitcoin is a proven pilot, not continuous production.</b> One block,
+              956992. Not a running service.</span><span class="badge pilot">Pilot</span></li>
+          <li><span><b>The self-check demonstration is one machine checking its own chain.</b> Single node,
+              no network, not anchored.</span><span class="badge">Shipped</span></li>
+        </ul>
+        <div class="sec-body" style="margin-top:2.5rem">
+          <h3>Our own claims, with a status on each.</h3>
+          <p>We hold ourselves to the standard we are describing. Where there is doubt, we mark it down
+            rather than up.</p>
+        </div>
+        <div class="ledger-wrap">
+          <table class="ledger">
+            <thead>
+              <tr>
+                <th scope="col">Claim</th>
+                <th scope="col">Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Signed decision chain, a separate belief chain, and a claim check, composed together</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Deterministic citation check &mdash; an invented citation cannot pass</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Hash-chained, Merkle-rooted, HMAC-SHA256 by default</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>A substrate that is not tied to one vendor, with failover recorded openly</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Same belief, different model, same fingerprint &mdash; not yet proven at scale</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>GRASP published as an open reference implementation under AGPL-3.0</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Congruent Continuity: the recorder</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Congruent Continuity: settlement, predictors and the pre-flight watcher</td><td><span class="badge inbuild">In build</span></td></tr>
+              <tr><td>Bitcoin anchor of a pilot chain (block 956992)</td><td><span class="badge pilot">Pilot</span></td></tr>
+              <tr><td>Per-tenant Ed25519 signing path</td><td><span class="badge provisioned">Provisioned</span></td></tr>
+              <tr><td>Post-quantum dual signing for finance (ML-DSA-65)</td><td><span class="badge provisioned">Provisioned</span></td></tr>
+              <tr><td>Continuous production anchoring to Bitcoin</td><td><span class="badge roadmap">Roadmap</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sec-body" id="not-do" style="margin-top:2.5rem">
+          <h3>What we will not do.</h3>
+          <p>We will not ship a thing that is unfinished, and we will not build a thing that should not
+            exist. Where we have drawn a line between what is open and what is not, we say where the line is
+            rather than blurring it.</p>
+          <p>And these are the phrases you will not find on this page, because each of them is a way of
+            sounding impressive without saying anything:</p>
+        </div>
+        <div class="bans">
           <span class="ban-chip">enterprise-grade</span>
           <span class="ban-chip">load-bearing</span>
           <span class="ban-chip">leverage</span>
@@ -1505,232 +440,269 @@ client.chat.completions.create(
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       TEAM
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="team" class="section" data-score="80">
-      <div class="container">
-        <h2 class="section__title">The Team</h2>
-        <p class="section__lead">Small, focused, opinionated. Cape Town, South Africa.</p>
-
-        <div class="team-grid reveal">
-          <div class="team-card">
-            <div class="team-card__sig">V&gt;&gt;</div>
-            <div class="team-card__role">Philosopher -- Lover of Wisdom. Favourite programming languages Latin and
-              Greek. Founder. Engineer, Builder and a solely self-proclaimed
-              Polymath. Some call V&gt;&gt; a leader. Some call him a jerk -- "Oh you always say you are so
-              misunderstood, V>>!" they proclaim 😉. Those who trust and are patient enough to listen to his
-              ramblings, remain. The
-              others normally see themselves out!<br><br>
-              V&gt;&gt; likes to occassionally dabble with interweb technologies (THANKS AL GORE!) and building
-              smolbrain AGI for
-              the public -- for a better tomorrow. Like Gandalf, often late, but appears exactly when he is
-              needed.
-              Recently celebrated his eleventyfirst birthday. Defers to elders.
-              Blessed/Cursed with the ability to intuitively understand patterns connecting things that are almost
-              certainly unrelated :D</div>
-          </div>
-          <div class="team-card">
-            <div class="team-card__sig">A&gt;&gt;</div>
-            <div class="team-card__role">Craftsperson. Scientist. Stacking TWR's allday errday, discovered the Electron.
-              Full Stack
-              Business Wizard and consummate professional. Keeps V>> on the ground. "Luv ya, A&gt;&gt;!" Being an
-              ultra-wise gentle giant, who
-              is
-              free of mind and spirit,
-              while helping others get rid of self-imposed mind-constraints (for <i>free</i> -- can you
-              believe!).<br><br>"Did
-              you know that the brain is capable of anything?" -- a quote from his padawan.
-              We think this is actually true. Ask him to build your banger of an idea, and he'll get started at the drop
-              of a
-              hat. A&gt;&gt;'s bias for action is matched only by
-              his
-              bias towards good times and good meat. Braai until we die 🇿🇦!
-            </div>
-          </div>
-          <div class="team-card">
-            <div class="team-card__sig">K&gt;&gt;</div>
-            <div class="team-card__role">Genius. Enough said. Sometimes fewer words say it best. Ask him to debug your C
-              code and take over the memory management for your organisation's legacy codebase -- he saves servers for a
-              living.<br><br>Apparently, he reads through Bash scripts at night. It's the only thing that can
-              help
-              him fall asleep -- this one book called <br><br> <code>bash sleep --help</code> <br><br>He builds things
-              that are physically impossible. Solved P = NP. <br>
-              <i>for realz</i>.
-              <br><br>The man is as gracious as he is intelligent.
-            </div>
-          </div>
+    <!-- 10 open work -->
+    <section id="open-work" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">09</span> &mdash; the open work</p>
+          <h2>Small tools, each with something to prove.</h2>
+        </div>
+        <div class="sec-body">
+          <p>Around the engine sits a set of open-source tools. Each one carries a claim that could be shown
+            false, which is the only kind of claim worth publishing. Clone any of them.</p>
+        </div>
+        <div class="cards">
+          <article class="card lead">
+            <p class="n">Bridge</p>
+            <h3>grip-decision-chain</h3>
+            <p class="claim">order-evident &middot; append-only &middot; check it yourself</p>
+            <p>The public face of the record: every decision our AI ships into its own codebase, hash-linked
+              so nothing can be quietly dropped or reordered. No code, no diffs, no client data &mdash; an
+              allowlist of what may appear, rather than a redaction of what may not.</p>
+            <p class="links"><a href="https://codetonight-sa.github.io/grip-decision-chain/">Live chain</a></p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/grip-decision-chain</p>
+          </article>
+          <article class="card">
+            <p class="n">Tool</p>
+            <h3>git-solve</h3>
+            <p class="claim">a fixed-point proof</p>
+            <p>Two sessions edit the same files at once. This resolves the divergence as a convergence loop,
+              safely and repeatably, and can show its working.</p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/git-solve</p>
+          </article>
+          <article class="card">
+            <p class="n">Tool</p>
+            <h3>prompt-cache-keepalive</h3>
+            <p class="claim">a cost model you can check</p>
+            <p>Keeps a long session's cache warm so it stops paying to re-read the same context. The saving
+              is arithmetic you can repeat, not a number we assert.</p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/prompt-cache-keepalive</p>
+          </article>
+          <article class="card">
+            <p class="n">Tool</p>
+            <h3>grip-post</h3>
+            <p class="claim">refuses to write filler</p>
+            <p>A formatter for LinkedIn with a gate that will not write empty phrases. We run it on our own
+              writing, which is why the list above exists.</p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/grip-post</p>
+          </article>
+          <article class="card">
+            <p class="n">Tool</p>
+            <h3>grip-session-mesh</h3>
+            <p class="claim">three layers, cleaned up on a timer</p>
+            <p>Shares one knowledge base across concurrent sessions: an inbox, a register of who is running,
+              and live snapshots that expire instead of piling up.</p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/grip-session-mesh</p>
+          </article>
+          <article class="card">
+            <p class="n">Tool</p>
+            <h3>skill-forge</h3>
+            <p class="claim">against skill atrophy</p>
+            <p>For engineers using AI every day: keep your own edge sharp. A sword is forged by use, not by
+              watching someone else swing one.</p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/skill-forge</p>
+          </article>
+          <article class="card">
+            <p class="n">Witness</p>
+            <h3>grip-rsi-witness</h3>
+            <p class="claim">self-improvement, in the open</p>
+            <p>The engine improving itself, with each step recorded as it happens. Watching it is the point;
+              a claim about self-improvement with no record is just a claim.</p>
+            <p class="links"><a href="https://codetonight-sa.github.io/grip-rsi-witness/">Watch it</a></p>
+          </article>
+          <article class="card">
+            <p class="n">Sandbox</p>
+            <h3>happiverse</h3>
+            <p class="claim">the protocol, running</p>
+            <p>HAPPI in motion rather than on paper &mdash; a place to see what the envelope and the event
+              stream actually look like.</p>
+            <p class="links"><a href="https://happiverse.grip-web.com">Open happiverse</a></p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ═══════════════════════════════════════════════════════════
-       CONTACT — Unified Form
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="contact" class="section section--dark" data-score="92">
-      <div class="container">
-        <h2 class="section__title">Get In Touch</h2>
-        <p class="section__lead">Interested in the AI engine, hmm? Perhaps the open-source tools? Keen for a game?
-          Leads for #techforgood pro-bono work?
-          Tell us
-          what you need.</p>
-
-        <form class="invitation-form reveal" id="invitationForm" action="https://formspree.io/f/mrbnkdjd" method="POST">
-          <div class="form__row">
-            <div class="form__field">
-              <label class="form__label" for="contactName">Your Name</label>
-              <input class="form__input" type="text" id="contactName" name="contact_name" required
-                placeholder="Your name">
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="email">Email</label>
-              <input class="form__input" type="email" id="email" name="email" required placeholder="you@company.com">
-            </div>
-          </div>
-          <div class="form__row">
-            <div class="form__field">
-              <label class="form__label" for="interest">I'm interested in</label>
-              <select class="form__input form__select" id="interest" name="interest" required>
-                <option value="" disabled selected>Select</option>
-                <option value="projects">Bespoke software / AI development or consulting</option>
-                <option value="licensing">GRIP / HAL / HAPPI / GRASP -- our AI IP suite</option>
-                <option value="open-source">Open-source software / contributing</option>
-                <option value="pro-bono">Pro-bono / #techforgood / games / just for fun</option>
-                <option value="chat">Just saying hi / coffee chat</option>
-                <option value="all">ALL OF THE ABOVE!!!</option>
-              </select>
-            </div>
-            <div class="form__field">
-              <label class="form__label" for="orgName">Organisation (optional)</label>
-              <input class="form__input" type="text" id="orgName" name="org_name" placeholder="Your company or team">
-            </div>
-          </div>
-          <div class="form__field form__field--full">
-            <label class="form__label" for="message">Message</label>
-            <textarea class="form__input form__textarea" id="message" name="message" rows="4"
-              placeholder="What are you working on? What problems are you trying to solve? Which solutions do you believe should be built? How can we help?"></textarea>
-          </div>
-          <input type="hidden" name="_subject" value="CodeTonight Enquiry">
-          <button class="cta form__submit" type="submit">Send Message</button>
-          <div class="form__feedback" id="formFeedback"></div>
-        </form>
-      </div>
-    </section>
-
-    <!-- ═══════════════════════════════════════════════════════════
-       CTA — two ways in: ask for an invite, or just take the open stack
-       ═══════════════════════════════════════════════════════════ -->
-    <section id="cta" class="section section--cta" data-score="97">
-      <div class="container">
-        <div class="converged-status">
-          <span class="converged-label">READY</span>
-          <span class="converged-pipe">|</span>
-          <span class="converged-msg">Two ways in</span>
+    <!-- 11 flagships and play -->
+    <section id="flagships" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">10</span> &mdash; built and running</p>
+          <h2>Things with real users.</h2>
         </div>
-
-        <div class="cta-cards">
-          <div class="cta-card cta-card--primary reveal">
-            <h3 class="cta-card__title">Ask for an invite</h3>
-            <p class="cta-card__desc">GRIP + HAL are by invite while we get the open-source release ready. Bring
-              your actual work -- the repetitive tasks, the docs nobody writes, the bottlenecks you keep working
-              around -- and we'll talk about whether the engine fits.</p>
-            <p class="cta-card__outcome">If it doesn't fit, we'll say so. That is cheaper for both of us than
-              finding out later.</p>
-            <a href="mailto:development@codetonight.co.za?subject=GRIP%2BHAL%20invite%20request"
-              class="cta">Ask for an invite</a>
-          </div>
-
-          <div class="cta-card reveal">
-            <h3 class="cta-card__title">Use the open stack</h3>
-            <p class="cta-card__desc">HAPPI/1.3 is a free standard. GRASP is the open proof layer, AGPL-3.0. Ten
-              repositories you can clone tonight, run yourself, and check against your own work.</p>
-            <p class="cta-card__outcome">No invite needed. No conversation required. Nothing to ask us for.</p>
-            <a href="https://github.com/CodeTonight-SA" target="_blank" rel="noopener" class="cta cta--outline">Browse
-              the repositories &rarr;</a>
-          </div>
+        <div class="sec-body">
+          <p>Work that shipped and stayed shipped. Some of it is serious and some of it is a father and son
+            making each other laugh, and both are here on purpose.</p>
+        </div>
+        <div class="cards">
+          <article class="card wide">
+            <p class="n">Game</p>
+            <h3>Kwartel</h3>
+            <p class="claim">three years &middot; more than 100 000 players</p>
+            <p>An Afrikaans daily word game. Plain JavaScript, works offline, no dependencies at all.
+              Woordraaispel &mdash; lekker.</p>
+            <p class="links"><a href="https://kwartel.io">Play Kwartel</a></p>
+          </article>
+          <article class="card wide">
+            <p class="n">App</p>
+            <h3>google-vibe-os</h3>
+            <p class="claim">local only &middot; no telemetry</p>
+            <p>Gmail, Calendar, Drive and Tasks in one desktop app, reachable by an AI assistant if you want
+              it to be. Nothing leaves the machine.</p>
+            <p class="links"><a href="https://github.com/CodeTonight-SA/google-vibe-os">Repository</a></p>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <section id="pro-bono" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">11</span> &mdash; for the fun of it</p>
+          <h2>Made with my son.</h2>
+        </div>
+        <div class="sec-body">
+          <p>Personal projects, open source, built for laughs. They are on this page because pretending a
+            company is only its serious work is its own kind of dishonesty.</p>
+        </div>
+        <div class="cards">
+          <article class="card wide">
+            <p class="n">Game</p>
+            <h3>Tung Tung Tung Sahur</h3>
+            <p class="claim">by a father and son</p>
+            <p>Tap when the word appears. Very little code, a great deal of noise.</p>
+            <p class="links"><a href="https://ttt-sahur.vercel.app">Play</a><a
+                href="https://github.com/LaurieScheepers/tung-tung-tung-sahur">Source</a></p>
+          </article>
+          <article class="card wide">
+            <p class="n">Game</p>
+            <h3>Mixing Mod</h3>
+            <p class="claim">version 0.9.0</p>
+            <p>Combine characters into hybrids until one of them becomes the final boss.</p>
+            <p class="links"><a href="https://italian-brainrot-mixing-mod.vercel.app">Play</a><a
+                href="https://github.com/LaurieScheepers/italian-brainrot-mixing-mod">Source</a></p>
+          </article>
+        </div>
+        <div class="sec-body" style="margin-top:1.5rem">
+          <p class="cap">Also in the workshop: TWR, a clipboard manager that treats your clipboard like a
+            version-controlled file. And <a href="https://tralala.grip-web.com">tralala</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 team -->
+    <section id="team" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">12</span> &mdash; who this is</p>
+          <h2>Three people. Cape Town.</h2>
+        </div>
+        <div class="sec-body">
+          <p>Small, focused and opinionated. If you write to us, one of these three reads it.</p>
+        </div>
+        <div class="team">
+          <article class="member">
+            <p class="sig">V&gt;&gt;</p>
+            <p>Founder, engineer, and a self-declared polymath who studied philosophy and never quite got
+              over it. Favourite programming languages: Latin and Greek. Some people call him a leader and
+              some call him a jerk; the ones who stay are the ones patient enough to hear out the
+              ramblings.</p>
+            <p>Builds small AI for the public, for a better tomorrow. Like Gandalf, often late, but arrives
+              precisely when he means to. Recently celebrated his eleventy-first birthday, and defers to his
+              elders. Blessed, or cursed, with a habit of seeing the pattern connecting two things that are
+              almost certainly unrelated.</p>
+          </article>
+          <article class="member">
+            <p class="sig">A&gt;&gt;</p>
+            <p>Craftsperson and scientist. Full-stack, business-minded, and the reason V&gt;&gt; stays on the
+              ground. A gentle giant, free of mind and spirit, who spends a good deal of his time helping
+              other people put down constraints they invented for themselves &mdash; and does it for
+              nothing.</p>
+            <p>"Did you know the brain is capable of anything?" said one of his students. We think that is
+              actually true. Describe an idea and he will start building it before you finish the sentence.
+              His bias for action is matched only by his bias towards good times and good meat. Braai until
+              we die.</p>
+          </article>
+          <article class="member">
+            <p class="sig">K&gt;&gt;</p>
+            <p>Genius. Sometimes fewer words say it best. Hand him your C and he will take over the memory
+              management for an organisation's oldest codebase. He rescues servers for a living.</p>
+            <p>Reportedly reads shell scripts at night, because it is the only thing that puts him to sleep
+              &mdash; there is a book called <code>bash sleep --help</code>. Builds things that ought to be
+              impossible. As gracious as he is clever.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 13 contact -->
+    <section id="contact" class="darksec reveal">
+      <div class="wrap grid">
+        <div class="sec-head" id="cta">
+          <p class="label"><span class="kicker">13</span> &mdash; get in touch</p>
+          <h2>Write to us.</h2>
+          <p class="label" style="margin-top:1rem">development@codetonight.co.za</p>
+        </div>
+        <div class="form-wrap">
+          <p style="color:var(--dark-muted);margin-bottom:1.5rem">Tell us what you are building, what you
+            need to be able to prove about it, and who has to believe you. If you would rather read first,
+            the whitepapers are available under a short confidentiality agreement &mdash; say so below or
+            email us directly.</p>
+          <form action="https://formspree.io/f/mrbnkdjd" method="POST" class="contact-form">
+            <div class="form__row">
+              <div class="form__field">
+                <label class="form__label" for="email">Your email</label>
+                <input class="form__input" type="email" id="email" name="email" required
+                  placeholder="you@company.com">
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="interest">What brings you here</label>
+                <input class="form__input" type="text" id="interest" name="interest"
+                  placeholder="Audit trail, protocol, whitepapers, something else">
+              </div>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="message">Message</label>
+              <textarea class="form__input form__textarea" id="message" name="message" rows="5" required
+                placeholder="What are you trying to prove, and to whom?"></textarea>
+            </div>
+            <button class="btn form__submit" type="submit">Send</button>
+            <p class="form__feedback" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+
   </main>
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__top">
-        <span class="footer__brand">CodeTonight</span>
-        <span class="footer__tagline">Technology that works for you. Not against you.</span>
-        <a href="https://github.com/CodeTonight-SA" class="footer__link" target="_blank" rel="noopener">GitHub</a>
-      </div>
-      <div class="footer__legal">
-        <span>&copy; 2023-2026 CodeTonight (Pty) Ltd. All rights reserved.</span>
-        <span class="footer__separator">|</span>
-        <span>Made in Cape Town, South Africa</span>
-        <span class="footer__separator">|</span>
-        <span>Patents Pending :D</span>
-      </div>
-      <!-- lang="la" so screen readers use Latin phonetics (WCAG 3.1.2) -->
-      <p class="footer__motto" lang="la">Numquam desine, vir stellarum</p>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap">
+      <p class="word">Deeds, not words.</p>
+      <p class="motto">facta non verba</p>
+      <p>CodeTonight builds honest open-source AI in Cape Town, South Africa. The standard and the proof
+        layer are open. Where something is not, we say so.</p>
+      <p class="fine">
+        <a href="https://grasp-web-chi.vercel.app/privacy">Privacy</a> &middot;
+        <a href="https://grasp-web-chi.vercel.app/terms">Terms</a> &middot;
+        <a href="https://grasp-web-chi.vercel.app/confidentiality">Confidentiality</a> &middot;
+        <a href="/.well-known/security.txt">Security</a> &middot;
+        <a href="/LICENSE">Licence</a> &middot;
+        <a href="https://github.com/CodeTonight-SA">GitHub</a> &middot;
+        <a href="mailto:development@codetonight.co.za">development@codetonight.co.za</a>
+        <br><br>
+        Written by V&gt;&gt; (Lourens Cornelius "Laurie" Scheepers) with Claude Fable 5.1.
+        <br>
+        &copy; 2026 CodeTonight. Cape Town, South Africa.
+      </p>
     </div>
   </footer>
 
-  <script src="/main.js"></script>
-  <script>
-    // ═══════════════════════════════════════════════════════════
-    // SKIP LINK
-    // ═══════════════════════════════════════════════════════════
-    // main.js's smooth-scroll handler calls preventDefault(), which cancels the
-    // browser's own focus move. Without this the link scrolls but leaves focus
-    // on itself, so the next Tab skips nothing.
-    const skipLink = document.querySelector('.skip-link');
-    const mainContent = document.getElementById('main-content');
-    if (skipLink && mainContent) {
-      skipLink.addEventListener('click', () => mainContent.focus({ preventScroll: true }));
-    }
-
-    // ═══════════════════════════════════════════════════════════
-    // THEME ENGINE
-    // ═══════════════════════════════════════════════════════════
-    const THEME_KEY = 'ct-theme';
-    const themePanel = document.getElementById('themePanel');
-    const themeDots = [...themePanel.querySelectorAll('.theme-dot')];
-
-    function setTheme(id) {
-      document.documentElement.setAttribute('data-theme', id);
-      localStorage.setItem(THEME_KEY, id);
-      themeDots.forEach(d => {
-        const on = d.dataset.theme === id;
-        d.classList.toggle('active', on);
-        d.setAttribute('aria-checked', String(on));
-        // roving tabindex: the selected theme is the group's only tab stop
-        d.tabIndex = on ? 0 : -1;
-      });
-    }
-
-    themePanel.addEventListener('click', e => {
-      const dot = e.target.closest('.theme-dot');
-      if (dot && dot.dataset.theme) setTheme(dot.dataset.theme);
-    });
-
-    themePanel.addEventListener('keydown', e => {
-      const i = themeDots.indexOf(document.activeElement);
-      if (i === -1) return;
-      let n;
-      switch (e.key) {
-        case 'ArrowRight': case 'ArrowDown': n = (i + 1) % themeDots.length; break;
-        case 'ArrowLeft': case 'ArrowUp': n = (i - 1 + themeDots.length) % themeDots.length; break;
-        case 'Home': n = 0; break;
-        case 'End': n = themeDots.length - 1; break;
-        default: return;
-      }
-      e.preventDefault();
-      setTheme(themeDots[n].dataset.theme);
-      themeDots[n].focus();
-    });
-
-    // Restore saved theme; an unrecognised value is ignored so the group keeps a tab stop
-    const saved = localStorage.getItem(THEME_KEY);
-    if (themeDots.some(d => d.dataset.theme === saved)) setTheme(saved);
-  </script>
+  <script src="/main.js" defer></script>
 </body>
 
 </html>

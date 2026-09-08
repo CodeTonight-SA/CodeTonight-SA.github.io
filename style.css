@@ -274,14 +274,14 @@ table.ledger td:last-child { white-space: nowrap; }
 .site-footer .motto { font-style: italic; }
 
 /* ---- reveal + delight ---- */
-.reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-in, transform 0.6s ease-out; }
-.reveal.revealed { opacity: 1; transform: none; }
+.js .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease-in, transform 0.6s ease-out; }
+.js .reveal.revealed { opacity: 1; transform: none; }
 .delight-flash { position: fixed; inset: auto 1rem 1rem auto; z-index: 400; background: var(--ink); color: #fff; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.08em; padding: 0.8rem 1.1rem; border: 1px solid var(--orange); opacity: 0; transform: translateY(8px); transition: opacity 300ms, transform 300ms; }
 .delight-flash--on { opacity: 1; transform: none; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .reveal { opacity: 1; transform: none; transition: none; }
+  .js .reveal { opacity: 1; transform: none; transition: none; }
   *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
 }
 @media (prefers-reduced-motion: no-preference) {
@@ -295,7 +295,7 @@ table.ledger td:last-child { white-space: nowrap; }
   body, .darksec, .panel, .site-footer { background: #fff !important; color: #000 !important; }
   .darksec *, .panel *, .site-footer * { color: #000 !important; }
   section { border-top: 1px solid #000; padding: 1.5rem 0; }
-  .reveal { opacity: 1; transform: none; }
+  .js .reveal { opacity: 1; transform: none; }
   a::after { content: " (" attr(href) ")"; font-family: var(--mono); font-size: 0.7rem; }
   a[href^="#"]::after { content: ""; }
   .terminal { box-shadow: none; }
