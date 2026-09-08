@@ -101,8 +101,12 @@ body = outside_ban_chips(INDEX)
 for phrase in BANNED:
     check(phrase.lower() not in body.lower(), f"banned phrase absent: {phrase}")
 check(not EMOJI.search(INDEX), "no emoji in the page")
-check("HAPPI/1.4" in INDEX and "HAPPI/1.3 --" not in INDEX,
-      "HAPPI version label is 1.4")
+check("HAPPI/1.4" in INDEX and "HAPPI/1.3" not in INDEX,
+      "HAPPI version label is 1.4 (1.3 appears nowhere)")
+check('og:image:alt' in INDEX and "HAPPI/1.4" in re.search(
+      r'property="og:image:alt"\s+content="([^"]*)"', INDEX).group(1)
+      if re.search(r'property="og:image:alt"\s+content="([^"]*)"', INDEX) else False,
+      "og:image:alt names HAPPI/1.4")
 
 # --- One host across sitemap, robots and canonical -----------------------
 hosts = set(re.findall(r"https://([a-z0-9.-]+)/(?:sitemap\.xml)?", SITEMAP + ROBOTS))
@@ -116,6 +120,26 @@ if cname.exists():
     check(canon is not None and cname.read_text().strip() == canon.group(1),
           "CNAME matches the canonical host")
 check("<lastmod>" in SITEMAP, "sitemap carries lastmod")
+lastmod = re.search(r"<lastmod>(\d{4}-\d{2}-\d{2})</lastmod>", SITEMAP)
+check(lastmod is not None and lastmod.group(1) >= "2026-09-08",
+      "sitemap lastmod is the rebuild date or later")
+
+# --- Structure the rebuild adds ------------------------------------------
+check(re.search(r"<nav[^>]*aria-label=", INDEX) is not None,
+      "a labelled <nav> landmark exists")
+check(".js .reveal" in CSS,
+      "reveal animation is scoped to .js (content visible without JavaScript)")
+check(re.search(r"Claude Fable 5\.1", INDEX) is not None
+      and "Scheepers" in INDEX,
+      "footer carries a provenance line naming V>> and the model")
+
+# --- Assets follow the same tokens (no cyan, no rounded corners) ---------
+for svg in ("favicon.svg", "images/og-card.svg", "images/open-core-seam.svg"):
+    text = (ROOT / svg).read_text(encoding="utf-8")
+    check("#22d3ee" not in text.lower() and "22d3ee" not in text.lower(),
+          f"{svg} carries no cyan accent")
+    check(re.search(r'\brx="(?!0")', text) is None,
+          f"{svg} has no rounded corners")
 
 print()
 if failures:
