@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description"
-    content="CodeTonight builds honest open-source AI that keeps a receipt. It records what it decided, what it believed when it decided, and whether every claim it makes is really in the source. You do not have to trust it. You can check it.">
+    content="CodeTonight builds honest open-source AI that keeps a receipt. It records what it decided, what it believed when it decided, and checks every quotation it uses against the source it cites. You do not have to trust it. You can check it.">
   <meta name="theme-color" content="#000000">
   <title>CodeTonight — Do not trust the AI. Witness it.</title>
 
@@ -14,7 +14,7 @@
 
   <meta property="og:title" content="CodeTonight — Do not trust the AI. Witness it.">
   <meta property="og:description"
-    content="Honest open-source AI that keeps a receipt: what it decided, what it believed when it decided, and whether every claim is really in the source. Check it yourself.">
+    content="Honest open-source AI that keeps a receipt: what it decided, what it believed when it decided, and every quotation checked against the source it cites. Check it yourself.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://codetonight-sa.github.io/">
   <meta property="og:site_name" content="CodeTonight">
@@ -84,9 +84,9 @@
             <dt>Protocol</dt>
             <dd>HAPPI/1.4</dd>
             <dt>Engine</dt>
-            <dd>Any model</dd>
+            <dd>Many providers</dd>
             <dt>Status</dt>
-            <dd><span class="dot" aria-hidden="true"></span>Live &middot; self-checking</dd>
+            <dd><span class="dot" aria-hidden="true"></span>Chain and quote check live</dd>
           </dl>
         </div>
         <div class="hero-main">
@@ -95,11 +95,11 @@
           <p class="lede">We build honest open-source AI that keeps a receipt: <em>the why, the what and the
               how</em> behind everything it does. You do not have to take its word for any of it. You can
             look.</p>
-          <p class="contract">Every decision is written down as it happens, sealed so it cannot be edited or
-            reordered afterwards, and linked to the notes the machine was working from at that moment.
-            <b>Then every sentence it writes is checked, word for word, against the document it says it came
-              from.</b> A made-up quotation fails that check. It cannot be talked around, because it is
-            arithmetic, not opinion.
+          <p class="contract">Every decision is written down as it happens, sealed to the one before it, and
+            linked to the notes the machine was working from at that moment. Change any of it and the seals
+            stop matching a root you kept earlier. <b>Then every quotation it uses is checked, character by
+              character, against the source it cites.</b> A quotation that is not in that source fails, and
+            the failure cannot be argued with, because it is arithmetic rather than opinion.
           </p>
           <div class="cta-row">
             <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break the chain yourself</a>
@@ -126,8 +126,14 @@
           <p>So we stopped asking. Instead, <b>the machine writes down what it decided, what it believed at
               the time, and what it claimed &mdash; while it is deciding, not afterwards</b> &mdash; and each
             record is sealed to the one before it. Change any earlier entry and every seal after it stops
-            matching. That is what makes the record worth anything: not that we promise it is honest, but
-            that dishonesty leaves a visible mark.</p>
+            matching.</p>
+          <p>Be precise about what that buys, because it is easy to overstate. It does not make the records
+            impossible to change. <b>Someone who can rewrite the file can also recompute the seals</b>, and
+            end up with a set that agrees with itself. What the chain gives you is that the tampering shows
+            up <em>against a root you already held</em> &mdash; one you wrote down earlier, or that someone
+            outside signed, or that was published somewhere nobody can quietly edit. The value is in
+            comparing against that earlier root, which is why the anchoring work below matters and why we
+            are careful to call it a pilot rather than a running service.</p>
           <p>None of the cryptography here is new. Hash chains, Merkle trees and signatures are decades old
             and we did not invent any of them. What is ours is the composition &mdash; four separate records
             that only agree if nothing was tampered with &mdash; and the fact that a sceptic can sit down and
@@ -155,10 +161,11 @@
             <p class="tag">The decision</p>
             <h3>IDR</h3>
             <p>An Intent Decision Record: what was decided, why, how, and when. Records are hash-chained in
-              order and gathered under a single root value, so the whole set can be checked at once and
-              replayed step by step.</p>
-            <p class="breaks"><b>Breaks if:</b> you can alter one record and still produce a matching root.
-            </p>
+              order and gathered under a single root value, so the whole set can be checked at once and the
+              recorded evidence read back step by step. Reading it back is not re-running the model; see the
+              list further down.</p>
+            <p class="breaks"><b>Breaks if:</b> you can alter one record and still match a root that was
+              written down beforehand and kept out of your reach.</p>
           </article>
           <article class="leg">
             <p class="n">02</p>
@@ -174,9 +181,12 @@
             <p class="n">03</p>
             <p class="tag">The claim</p>
             <h3>cite.verify</h3>
-            <p>Every quoted sentence is matched, character for character, against the passage it is
-              attributed to. Found or not found. There is no partial credit and no persuading it.</p>
-            <p class="breaks"><b>Breaks if:</b> an invented quotation ever comes back green.</p>
+            <p>Every quoted sentence is matched, character for character, against the source it is
+              attributed to. Found or not found. There is no partial credit and no persuading it. It checks
+              that the words are really there &mdash; not that they support the point being made, which is
+              still your job as a reader.</p>
+            <p class="breaks"><b>Breaks if:</b> a quotation that is absent from the supplied source ever
+              comes back green.</p>
           </article>
           <article class="leg">
             <p class="n">04</p>
@@ -209,9 +219,11 @@
             You change one of them &mdash; a word, a number, whatever you like. Every seal from that point
             forward turns red, and stays red, because each seal is computed from the record before it.</p>
           <p>There is a second one for quotations. Take a sentence with a citation, alter the source it points
-            at, and watch the check fail. Then invent a citation that was never in the source at all and
-            watch it fail the same way. That is the property we care about most: <b>a fabricated citation
-              cannot pass, because passing is a calculation rather than a judgement.</b></p>
+            at, and watch the check fail. Then quote something that was never in the source at all and watch
+            it fail the same way. That is the property we care about most: <b>a quotation that is not in the
+              source it cites cannot pass, because passing is a calculation rather than a judgement.</b> It
+            is a narrow guarantee and we would rather state it narrowly: it catches invented quotations, not
+            weak arguments.</p>
           <p>Both run entirely in your browser. Nothing is sent to us, and there is nothing to sign up for.</p>
           <div class="cta-row" style="margin-top:1.5rem">
             <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break a chain</a>
@@ -241,9 +253,9 @@
           <p>That sounds like plumbing, and mostly it is. It matters here for one reason: because every
             request and every reply passes through the same shape, the same shape is where the record gets
             written. Swapping the model underneath does not change what gets recorded.</p>
-          <p>Versions 1.0 through 1.4 are all accepted, so nothing breaks when the standard moves. Version
-            1.3 added the citation check. <b>HAPPI/1.4 added pre-registered commitments</b> &mdash; the fourth
-            record above.</p>
+          <p>Versions 1.0 through 1.4 are all accepted, so something written against an earlier one still
+            works today. Version 1.3 added the citation check. <b>HAPPI/1.4 added pre-registered
+              commitments</b> &mdash; the fourth record above.</p>
         </div>
         <div class="syscall">
           <figure>
@@ -291,8 +303,10 @@ one place to write the record</i></pre>
           <p>So the checker is a separate small program you can run yourself, on our records or on anyone
             else's. It does not call us and it does not need our permission. If our own chain were ever
             tampered with, our own tool would say so.</p>
-          <p>The format is going through the standards process as an IETF draft, because a receipt format
-            owned by one company is a receipt format that can be quietly changed.</p>
+          <p>The format is written up as an individual Internet-Draft at the IETF, because a receipt format
+            owned by one company is a receipt format that can be quietly changed. Being clear about what that
+            is: an individual draft is a submission, not an approval. No working group has adopted it and the
+            IETF has endorsed nothing.</p>
           <div class="cta-row" style="margin-top:1.5rem">
             <a class="btn" href="https://github.com/CodeTonight-SA/grasp">Source on GitHub</a>
             <a class="btn ghost" href="https://github.com/CodeTonight-SA/grasp/blob/main/tools/grasp-verify-receipt">The
@@ -310,7 +324,7 @@ one place to write the record</i></pre>
       <div class="wrap grid">
         <div class="sec-head">
           <p class="label"><span class="kicker">06</span> &mdash; the engine</p>
-          <h2>Any model. And you can watch it choose.</h2>
+          <h2>No single vendor. And you can watch it choose.</h2>
         </div>
         <div class="sec-body">
           <p>GRIP is the working environment and HAL is the layer underneath it that reaches the models. HAL
@@ -320,9 +334,11 @@ one place to write the record</i></pre>
           <p>It can also convene several models at once on the same question &mdash; running in parallel or
             taking turns &mdash; and have a different model judge the result. That matters for review: a
             model marking its own work is not a review, and the record shows plainly who sat and who judged.</p>
-          <p>One property we hold ourselves to: <b>the same belief should produce the same fingerprint
-              whichever model wrote it.</b> We list that as shipped but not yet proven at scale, and we say
-            so again in the ledger below rather than hoping you miss it.</p>
+          <p>One property we hold ourselves to: if two different models arrive at the same conclusion from
+            the same notes, <b>the record should reduce both to the same short identifying value</b>, so you
+            can tell "these two runs agreed" from "these two runs merely sound alike". We list that as
+            working but not yet tested at scale, and we say so again in the table below rather than hoping
+            you miss it.</p>
           <p class="cap"><b>Where the line is drawn.</b> The standard (HAPPI) and the proof layer (GRASP) are
             open and yours to take today. The runtime that makes it fast is used internally and by a small
             number of organisations while it is being prepared for release. We would rather say that plainly
@@ -383,6 +399,13 @@ one place to write the record</i></pre>
           <li><span><b>Not bit-for-bit replay.</b> We record evidence and re-derive the decision. We do not
               claim to reproduce a model run byte for byte &mdash; no one can, across different hardware and
               batching, and we will not pretend otherwise.</span><span class="badge">Shipped</span></li>
+          <li><span><b>Tamper-evident, not tamper-proof.</b> The chain shows that records were changed. It
+              does not stop anyone changing them. Someone who can rewrite the files can recompute the seals
+              too; what they cannot do is match a root you already held elsewhere.</span><span
+              class="badge">Shipped</span></li>
+          <li><span><b>The quotation check does not check reasoning.</b> It proves a quoted passage really
+              appears in the source it cites. It says nothing about whether that passage supports the
+              argument built on it.</span><span class="badge">Shipped</span></li>
           <li><span><b>Post-quantum signing is parity, not an advantage.</b> It is available. It is not a
               reason to pick us.</span><span class="badge provisioned">Provisioned</span></li>
           <li><span><b>Anchoring to Bitcoin is a proven pilot, not continuous production.</b> One block,
@@ -405,7 +428,7 @@ one place to write the record</i></pre>
             </thead>
             <tbody>
               <tr><td>Signed decision chain, a separate belief chain, and a claim check, composed together</td><td><span class="badge">Shipped</span></td></tr>
-              <tr><td>Deterministic citation check &mdash; an invented citation cannot pass</td><td><span class="badge">Shipped</span></td></tr>
+              <tr><td>Exact-match citation check &mdash; a quotation absent from the supplied source cannot pass</td><td><span class="badge">Shipped</span></td></tr>
               <tr><td>Hash-chained, Merkle-rooted, HMAC-SHA256 by default</td><td><span class="badge">Shipped</span></td></tr>
               <tr><td>A substrate that is not tied to one vendor, with failover recorded openly</td><td><span class="badge">Shipped</span></td></tr>
               <tr><td>Same belief, different model, same fingerprint &mdash; not yet proven at scale</td><td><span class="badge">Shipped</span></td></tr>
@@ -473,8 +496,9 @@ one place to write the record</i></pre>
             <p class="n">Tool</p>
             <h3>git-solve</h3>
             <p class="claim">a fixed-point proof</p>
-            <p>Two sessions edit the same files at once. This resolves the divergence as a convergence loop,
-              safely and repeatably, and can show its working.</p>
+            <p>Two sessions edit the same files at once and end up disagreeing. This works the disagreement
+              back down to one answer, a step at a time, and shows every step it took &mdash; so you can
+              check the result instead of trusting it.</p>
             <p class="clone" tabindex="0" role="button"><span class="sigil"
                 aria-hidden="true">$</span>git clone https://github.com/CodeTonight-SA/git-solve</p>
           </article>
@@ -557,9 +581,11 @@ one place to write the record</i></pre>
           <article class="card wide">
             <p class="n">App</p>
             <h3>google-vibe-os</h3>
-            <p class="claim">local only &middot; no telemetry</p>
+            <p class="claim">no telemetry</p>
             <p>Gmail, Calendar, Drive and Tasks in one desktop app, reachable by an AI assistant if you want
-              it to be. Nothing leaves the machine.</p>
+              it to be. It talks to Google, because that is the whole point of it, and to a model provider if
+              you switch the assistant on. It sends nothing to us, and it carries no analytics or tracking of
+              any kind.</p>
             <p class="links"><a href="https://github.com/CodeTonight-SA/google-vibe-os">Repository</a></p>
           </article>
         </div>
