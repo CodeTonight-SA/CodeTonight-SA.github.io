@@ -190,7 +190,7 @@ h3 { font-size: 1.35rem; margin: 0 0 0.5rem; }
 @media (max-width: 640px) { .card, .card.wide { grid-column: 1 / -1; } }
 
 /* ---- clone boxes ---- */
-.clone { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); border: 1px solid var(--border); padding: 0.55rem 0.8rem; margin-top: auto; overflow-wrap: anywhere; word-break: break-all; display: flex; align-items: center; min-height: 44px; cursor: pointer; transition: border-color 300ms, color 300ms; }
+.clone { font-family: var(--mono); font-size: 0.76rem; color: var(--ink); border: 1px solid var(--border); padding: 0.55rem 0.8rem; margin-top: auto; white-space: nowrap; overflow-x: auto; display: flex; align-items: center; min-height: 44px; cursor: pointer; transition: border-color 300ms, color 300ms; }
 .clone .sigil { color: var(--orange-ink); user-select: none; margin-right: 0.5rem; }
 .clone:hover, .clone--copied { border-color: var(--orange-ink); color: var(--orange-ink); }
 .darksec .clone { color: var(--dark-ink); border-color: var(--dark-line); }
