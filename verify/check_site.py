@@ -108,6 +108,54 @@ check('og:image:alt' in INDEX and "HAPPI/1.4" in re.search(
       if re.search(r'property="og:image:alt"\s+content="([^"]*)"', INDEX) else False,
       "og:image:alt names HAPPI/1.4")
 
+# --- Overclaims a reviewing council found and blocked on ------------------
+# Each of these was on the page once. They are checked here so they cannot
+# come back quietly. The rule in every case: say what the mechanism does,
+# not what a reader might hope it does.
+OVERCLAIMS = [
+    # A hash chain detects a change; it does not prevent one.
+    ("cannot be edited", "claims records cannot be edited (they can; tampering is detected)"),
+    ("cannot be edited or reordered", "claims records cannot be reordered"),
+    ("immutable", "claims immutability"),
+    ("only agree if nothing was tampered", "claims four records can only agree when untampered"),
+    # The checker matches quotations, not sentences, claims or reasoning.
+    ("every sentence it writes is checked", "claims every sentence is checked, not every quotation"),
+    ("every claim it makes is really in the source", "claims every claim is checked, not every quotation"),
+    ("a fabricated citation\n              cannot pass", "claims fabricated citations cannot pass"),
+    ("fabricated citation cannot pass", "claims fabricated citations cannot pass"),
+    # Records are read back; the model run is not reproduced.
+    ("replayed step by step", "says replayed where it means read back"),
+    # Accepting four versions says nothing about future ones.
+    ("nothing breaks when the standard moves", "promises future compatibility"),
+    # A Google Workspace client necessarily talks to Google.
+    ("Nothing leaves the machine", "claims nothing leaves the machine"),
+    # An individual Internet-Draft is a submission, not an endorsement.
+    ("going through the standards process", "implies IETF adoption of an individual draft"),
+]
+for phrase, why in OVERCLAIMS:
+    check(phrase.lower() not in INDEX.lower(), f"no overclaim: {why}")
+
+# "tamper-proof" is allowed only where the page is denying it.
+check(all(re.search(r"not\s+$", INDEX[:m.start()])
+          for m in re.finditer(r"tamper-proof", INDEX, re.I)),
+      "the word tamper-proof appears only as something the page denies")
+
+# The page must keep saying the honest version of the two central claims.
+check("tamper-evident" in INDEX.lower() or "stop matching a root" in INDEX.lower(),
+      "the chain is described as detecting change, not preventing it")
+check("recompute the seals" in INDEX,
+      "the page states the operator-rewrite limit out loud")
+check("absent from the supplied source" in INDEX,
+      "the citation claim is scoped to quotations absent from the source")
+
+# A claims-table row must not carry a status and a hedge that disagree. The
+# fingerprint row said "Shipped" and "not yet proven at scale" in one cell.
+rows = re.findall(r"<tr><td>(.*?)</td><td>.*?badge[^>]*>([^<]+)<", INDEX, re.S)
+hedged = [c for c, st in rows
+          if st.strip() == "Shipped"
+          and re.search(r"not yet|not proven|unproven|in build|partly", c, re.I)]
+check(not hedged, "no claims-table row is marked Shipped while hedging itself")
+
 # --- One host across sitemap, robots and canonical -----------------------
 hosts = set(re.findall(r"https://([a-z0-9.-]+)/(?:sitemap\.xml)?", SITEMAP + ROBOTS))
 canon = re.search(r'rel="canonical" href="https://([a-z0-9.-]+)/"', INDEX)
