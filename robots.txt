@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://codetonight-sa.github.io/sitemap.xml
+Sitemap: https://codetonight.co.za/sitemap.xml
