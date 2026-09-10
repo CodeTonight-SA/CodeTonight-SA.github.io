@@ -156,6 +156,12 @@ h3 { font-size: 1.35rem; margin: 0 0 0.5rem; }
 .syscall figcaption.good { color: var(--orange-ink); }
 .syscall pre { margin: 0; background: transparent; border: 1px solid var(--border); flex: 1 1 auto; padding: 0.9rem 1rem; overflow-x: auto; font-size: 0.8rem; line-height: 1.5; color: var(--ink); }
 .syscall pre i { color: var(--meta); font-style: italic; }
+/* dark panels: the syscall block lives on --dark (#000), so it swaps to the
+   dark palette — same pairs the rest of .darksec uses, all WCAG AA-cleared */
+.darksec .syscall figcaption { color: var(--dark-muted); }
+.darksec .syscall figcaption.good { color: var(--orange-bright); }
+.darksec .syscall pre { color: var(--dark-ink); border-color: var(--dark-line); }
+.darksec .syscall pre i { color: var(--dark-muted); }
 @media (max-width: 800px) { .syscall { grid-template-columns: 1fr; } }
 
 /* ---- event list (idr / context / cite.verify / continuity) ---- */
