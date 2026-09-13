@@ -1,0 +1,97 @@
+name: AGORA PR Review
+
+# AGORA Council — descriptive 4-section PR reviews, installed on this repo via
+# the /adding-agora-ci-workflow skill. The kernel (lib/agora_pr_review.py) lives
+# in the GRIP repo, which is PRIVATE — hence the pinned checkout + APPROVE_PAT.
+#
+# Speakers: DeepSeek V4 Flash, Alibaba Qwen 3.5 Flash, xAI Grok 4.3.
+# Judge: Google Gemini 3.1 Pro (exogenous to the speakers and the PR authors).
+# Verdicts: PASS / MERGE / DEFER CHANGES / REQUEST CHANGES.
+# DEFER CHANGES is advisory and non-blocking. A validity refusal or a
+# judge-unavailable is NOT a green — re-run, never merge on it.
+#
+# Fork caveat: pull_request events from FORK PRs receive no secrets, so the
+# speakers cannot auth. Same-repo branch PRs are fine. For fork PRs use
+# workflow_dispatch with the PR number (dispatch runs have secrets).
+
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "PR number to review"
+        required: true
+        type: string
+
+concurrency:
+  group: agora-pr-review-${{ github.event.pull_request.number || github.event.inputs.pr_number }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  agora:
+    if: |
+      github.repository_owner == 'CodeTonight-SA' &&
+      github.actor != 'dependabot[bot]' &&
+      ((github.event_name == 'pull_request' && github.event.pull_request.draft == false) ||
+      github.event_name == 'workflow_dispatch')
+    name: "AGORA Council (3 Speakers — descriptive review)"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout GRIP (AGORA kernel)
+        uses: actions/checkout@v4
+        with:
+          repository: CodeTonight-SA/GRIP
+          path: .grip
+          ref: e7331d7e9e470c8145091a097e3462073a89698c
+          token: ${{ secrets.APPROVE_PAT }}
+
+      - name: Checkout HAL (for `hal` CLI binary used by _call_happi)
+        uses: actions/checkout@v4
+        with:
+          repository: CodeTonight-SA/HAL
+          path: .hal
+          ref: 684d9e34954e53fd5842369392c491fa2ca203dc
+          token: ${{ secrets.APPROVE_PAT }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Resolve PR number
+        id: pr
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
+            echo "number=${{ github.event.inputs.pr_number }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "number=${{ github.event.pull_request.number }}" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run AGORA Council
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DASHSCOPE_API_KEY: ${{ secrets.DASHSCOPE_API_KEY }}
+          XAI_API_KEY: ${{ secrets.XAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          HAL_HOME: ${{ github.workspace }}/.hal
+          PYTHONPATH: ${{ github.workspace }}/.grip
+        run: |
+          export PATH="$HAL_HOME/bin:$PATH"
+          cd .grip
+          python3 lib/agora_pr_review.py \
+            --pr "${{ steps.pr.outputs.number }}" \
+            --repo "${{ github.repository }}" \
+            --post
