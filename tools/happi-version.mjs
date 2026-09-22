@@ -282,6 +282,31 @@ function findMarkers(text, lineStarts) {
 // in a page title, a meta description, a link preview or an aria-label. This
 // happened 32 times on this site and was fixed by hand; it is rejected here so
 // it cannot return. Markers belong AROUND such an element, never inside it.
+// Social images referenced by og:image / twitter:image that are NOT text, and so
+// cannot be version-checked by anything that reads source.
+function findUnreadableSocialCards(files) {
+  const out = [];
+  const metaRe = /<meta[^>]*?(?:property|name)\s*=\s*["'](?:og:image|twitter:image)["'][^>]*?content\s*=\s*["']([^"']+)["']/gi;
+  const raster = /\.(png|jpe?g|webp|gif|avif|bmp)(\?|#|$)/i;
+  const seen = new Set();
+  for (const file of files) {
+    if (!/\.html?$/i.test(file)) continue;
+    let text;
+    try { text = fs.readFileSync(file, 'utf8'); } catch { continue; }
+    metaRe.lastIndex = 0;
+    let m;
+    while ((m = metaRe.exec(text)) !== null) {
+      const src = m[1];
+      if (!raster.test(src)) continue;
+      const key = `${file}::${src}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      out.push({ file, src });
+    }
+  }
+  return out;
+}
+
 function findMarkersInMarkupText(text, lineStarts) {
   const violations = [];
   const htmlMarker = /<!--\s*\/?\s*happi:[A-Za-z]+[^>]*?-->/;
@@ -620,9 +645,25 @@ function runCheck(files, canonical) {
     violationCount += found.length;
   }
 
+  // Name what this check CANNOT read. A social card in a raster format carries
+  // its version in pixels, and no textual gate can see it -- the .png on one of
+  // these sites sat at 1.4 through a green check while every text occurrence
+  // said 1.5, and it is the image every link preview serves. Reported, not
+  // failed: converting a card to SVG is a design decision, and a check that
+  // blocked on it would be demanding one.
+  const unreadable = findUnreadableSocialCards(files);
+  if (unreadable.length > 0) {
+    console.log('');
+    console.log('NOT CHECKED — these are referenced as social images but are not text:');
+    for (const u of unreadable) {
+      console.log(`  ${u.file}: ${u.src}  (open it and read the version with your eyes)`);
+    }
+  }
+
   console.log(
     `scanned ${files.length} files, ${liveRegions} live regions, ` +
-    `${frozenRegions} frozen regions, ${violationCount} violations`,
+    `${frozenRegions} frozen regions, ${violationCount} violations` +
+    (unreadable.length ? `, ${unreadable.length} unreadable social image(s)` : ''),
   );
 
   return violationCount === 0 ? 0 : 1;
