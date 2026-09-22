@@ -1,0 +1,39 @@
+name: Protocol version
+
+# The site advertises a protocol version. That version has gone stale three times:
+# it read 1.0 while the runtime was at 1.3, and 1.4 while the runtime was at 1.5.
+# This check turns silent drift into a red build.
+#
+# It is DETECTION, not prevention: this site is served from its branch, so a stale
+# push still reaches readers — the check just goes red rather than saying nothing.
+# Upgrading to prevention means building the site in the workflow and deploying the
+# built artifact, which is a separate change to how the site is published.
+#
+# A failing check is repaired by `node tools/happi-version.mjs --write`, an ordinary
+# file edit. The gate cannot block its own repair.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  version-drift:
+    name: Version drift
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Every live region must equal the canonical protocol version
+        env:
+          # The two authorities live in another repository. Until they are published
+          # as a machine-readable manifest, CI pins the expected value here and the
+          # job fails loudly when the site disagrees with it.
+          HAPPI_EXPECTED: '1.5'
+        run: |
+          set -euo pipefail
+          node tools/happi-version.mjs --check .

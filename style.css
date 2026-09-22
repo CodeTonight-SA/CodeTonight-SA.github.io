@@ -306,3 +306,14 @@ table.ledger td:last-child { white-space: nowrap; }
   a[href^="#"]::after { content: ""; }
   .terminal { box-shadow: none; }
 }
+
+/* Preprint digest — a 64-char hash must wrap on a phone rather than widen the page. */
+.card .digest {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  opacity: 0.66;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+  margin-top: 0.35rem;
+}

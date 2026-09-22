@@ -22,8 +22,8 @@
   <meta property="og:image" content="https://codetonight.co.za/images/og-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt"
-    content="CodeTonight — Do not trust the AI. Witness it. HAPPI/1.4, GRASP, GRIP and HAL. Deeds, not words.">
+  <!-- happi:live --><meta property="og:image:alt"
+    content="CodeTonight — Do not trust the AI. Witness it. HAPPI/1.5, GRASP, GRIP and HAL. Deeds, not words."><!-- /happi:live -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://codetonight.co.za/images/og-card.png">
 
@@ -64,6 +64,7 @@
           <li><a href="#continuity">Continuity</a></li>
           <li><a href="#honesty">On the record</a></li>
           <li><a href="#open-work">Open work</a></li>
+          <li><a href="#papers">Papers</a></li>
           <li><a href="#flagships">Play</a></li>
           <li><a href="#team">Team</a></li>
           <li><a href="#contact">Contact</a></li>
@@ -82,7 +83,7 @@
             <dt>Context</dt>
             <dd>Cryptographic causation</dd>
             <dt>Protocol</dt>
-            <dd>HAPPI/1.4</dd>
+            <dd><!-- happi:live -->HAPPI/1.5<!-- /happi:live --></dd>
             <dt>Engine</dt>
             <dd>Many providers</dd>
             <dt>Status</dt>
@@ -105,8 +106,8 @@
             <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break the chain yourself</a>
             <a class="btn ghost" href="https://www.happi.md">Read the protocol</a>
           </div>
-          <p class="trust"><span>AGPL-3.0</span><span>HAPPI/1.4</span><span>Cape Town, ZA</span><span>Bitcoin
-              block 956992 (pilot)</span></p>
+          <p class="trust"><span>AGPL-3.0</span><span><!-- happi:live -->HAPPI/1.5<!-- /happi:live --></span><span>Cape Town, ZA</span><span>Bitcoin
+              blocks 956991&ndash;956992 (pilot)</span></p>
         </div>
       </div>
     </section>
@@ -261,8 +262,8 @@
             request and every reply passes through the same shape, the same shape is where the record gets
             written. Swapping the model underneath does not change what gets recorded.</p>
           <p>Versions 1.0 through 1.4 are all accepted, so something written against an earlier one still
-            works today. Version 1.3 added the citation check. <b>HAPPI/1.4 added pre-registered
-              commitments</b> &mdash; the fourth record above.</p>
+            works today. <!-- happi:frozen why="release history: 1.3 and 1.4 are a factual record of what each version added" -->Version 1.3 added the citation check. <b>HAPPI/1.4 added pre-registered
+              commitments</b> &mdash; the fourth record above.<!-- /happi:frozen --> <!-- happi:frozen why="release history: what 1.5 added" -->HAPPI/1.5 added the <b>reasoning trace</b>, recorded as a diagnostic specimen and refused the power to settle anything.<!-- /happi:frozen --></p>
         </div>
         <div class="syscall">
           <figure>
@@ -353,8 +354,8 @@ one place to write the record</i></pre>
             than describe a private thing as open.</p>
         </div>
         <figure class="chainfig" style="border-color:var(--dark-line)">
-          <img src="/images/open-core-seam.svg" width="780" height="210"
-            alt="The open-core boundary. On the open side, free to clone today: HAPPI/1.4, the protocol, and GRASP under AGPL-3.0. On the other side, not yet open: HAL, which reaches any model, and GRIP, the working engine, used internally and by a small number of organisations while the release is prepared.">
+          <!-- happi:live --><img src="/images/open-core-seam.svg" width="780" height="210"
+            alt="The open-core boundary. On the open side, free to clone today: HAPPI/1.5, the protocol, and GRASP under AGPL-3.0. On the other side, not yet open: HAL, which reaches any model, and GRIP, the working engine, used internally and by a small number of organisations while the release is prepared."><!-- /happi:live -->
           <figcaption style="color:var(--dark-muted)">Where the line sits today. It moves in one direction
             only.</figcaption>
         </figure>
@@ -416,8 +417,8 @@ one place to write the record</i></pre>
               argument built on it.</span><span class="badge">Shipped</span></li>
           <li><span><b>Post-quantum signing is parity, not an advantage.</b> It is available. It is not a
               reason to pick us.</span><span class="badge provisioned">Provisioned</span></li>
-          <li><span><b>Anchoring to Bitcoin is a proven pilot, not continuous production.</b> One block,
-              956992. Not a running service.</span><span class="badge pilot">Pilot</span></li>
+          <li><span><b>Anchoring to Bitcoin is a proven pilot, not continuous production.</b> One root,
+              attested by OpenTimestamps in blocks 956991 and 956992. Not a running service.</span><span class="badge pilot">Pilot</span></li>
           <li><span><b>The self-check demonstration is one machine checking its own chain.</b> Single node,
               no network, not anchored.</span><span class="badge">Shipped</span></li>
         </ul>
@@ -444,7 +445,7 @@ one place to write the record</i></pre>
               <tr><td>GRASP published as an open reference implementation under AGPL-3.0</td><td><span class="badge">Shipped</span></td></tr>
               <tr><td>Congruent Continuity: the recorder</td><td><span class="badge">Shipped</span></td></tr>
               <tr><td>Congruent Continuity: settlement, predictors and the pre-flight watcher</td><td><span class="badge inbuild">In build</span></td></tr>
-              <tr><td>Bitcoin anchor of a pilot chain (block 956992)</td><td><span class="badge pilot">Pilot</span></td></tr>
+              <tr><td>Bitcoin anchor of a pilot chain (blocks 956991 and 956992)</td><td><span class="badge pilot">Pilot</span></td></tr>
               <tr><td>Per-tenant Ed25519 signing path</td><td><span class="badge provisioned">Provisioned</span></td></tr>
               <tr><td>Post-quantum dual signing for finance (ML-DSA-65)</td><td><span class="badge provisioned">Provisioned</span></td></tr>
               <tr><td>Continuous production anchoring to Bitcoin</td><td><span class="badge roadmap">Roadmap</span></td></tr>
@@ -562,6 +563,41 @@ one place to write the record</i></pre>
             <p>HAPPI in motion rather than on paper &mdash; a place to see what the envelope and the event
               stream actually look like.</p>
             <p class="links"><a href="https://happiverse.grip-web.com">Open happiverse</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="papers" class="reveal">
+      <div class="wrap grid">
+        <div class="sec-head">
+          <p class="label"><span class="kicker">10</span> &mdash; the papers</p>
+          <h2>Published before review, not after.</h2>
+        </div>
+        <div class="sec-body">
+          <p>A preprint is work in progress put where it can be attacked. Each paper here states
+            plainly what it has <em>not</em> established, and carries the observation that would
+            prove it wrong. Download the file and check its hash against the one printed beside
+            it &mdash; the same discipline the rest of this site asks you to apply to everything
+            else on it.</p>
+        </div>
+        <div class="cards">
+          <article class="card lead">
+            <p class="n">Preprint</p>
+            <h3>Cryptographic Causation</h3>
+            <p class="claim">tamper-evident provenance &middot; 69 pages &middot; not peer-reviewed</p>
+            <p>What an agent decided, on what belief, and whether every claim it made is true to
+              its sources &mdash; recorded so that a third party can check the record without
+              trusting the agent or its operator. The paper is deliberate about its limits: the
+              default authentication profile needs a shared secret and is not publicly
+              verifiable, a self-verification release of the paper itself is still future work,
+              and the commercial claim that this combination is a moat is withdrawn in the text
+              rather than defended.</p>
+            <p class="links"><a href="papers/cryptographic-causation-2026-09-22.pdf">Read the
+                preprint (PDF, 69pp)</a></p>
+            <p class="clone" tabindex="0" role="button"><span class="sigil"
+                aria-hidden="true">$</span>shasum -a 256 cryptographic-causation-2026-09-22.pdf</p>
+            <p class="digest">6caaa244a742174251d8a2fcaf8a14d852de81fd9506e52eb3522af47486d6be</p>
           </article>
         </div>
       </div>

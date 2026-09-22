@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img"
-  aria-label="CodeTonight. Do not trust the AI, witness it. HAPPI/1.4, GRASP, GRIP and HAL. Deeds, not words. Cape Town, South Africa.">
+<!-- happi:live --><svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img"
+  aria-label="CodeTonight. Do not trust the AI, witness it. HAPPI/1.5, GRASP, GRIP and HAL. Deeds, not words. Cape Town, South Africa."><!-- /happi:live -->
   <!-- Black canvas, one orange accent, system fonts, sharp corners. No gradients. -->
   <rect width="1200" height="630" fill="#000000"/>
   <rect x="0" y="0" width="240" height="8" fill="#f97316"/>
@@ -18,7 +18,7 @@
   <rect x="88" y="500" width="1024" height="1" fill="#6a6a6a"/>
 
   <text x="88" y="556" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="24"
-    fill="#e8e8ea" letter-spacing="2">HAPPI/1.4&#160;&#160;&#183;&#160;&#160;GRASP&#160;&#160;&#183;&#160;&#160;GRIP + HAL</text>
+    fill="#e8e8ea" letter-spacing="2"><!-- happi:live -->HAPPI/1.5<!-- /happi:live -->&#160;&#160;&#183;&#160;&#160;GRASP&#160;&#160;&#183;&#160;&#160;GRIP + HAL</text>
   <text x="1112" y="556" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
     font-size="22" fill="#a3a3a3">Cape Town, South Africa</text>
 </svg>
