@@ -24,8 +24,15 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 
-const DEFAULT_SPEC = '/Users/void/.hal/happi.md';
-const DEFAULT_RUNTIME = '/Users/void/.grip/lib/precog/idr.py';
+// Resolved from the running user's home, never written out. An absolute path
+// with a username in it is wrong on every other machine AND publishes whose
+// machine this was built on -- in a public repository that is a real leak, not
+// a tidiness point. Both are overridable by environment variable below.
+const HOME = process.env.HOME || process.env.USERPROFILE || '';
+const DEFAULT_SPEC = HOME ? path.join(HOME, '.hal', 'happi.md') : '';
+const DEFAULT_RUNTIME = HOME ? path.join(HOME, '.grip', 'lib', 'precog', 'idr.py') : '';
+const SPEC_DISPLAY = '~/.hal/happi.md';
+const RUNTIME_DISPLAY = '~/.grip/lib/precog/idr.py';
 
 const SCAN_EXTENSIONS = new Set(['.html', '.svg', '.js', '.css']);
 const SKIP_DIRECTORIES = new Set(['node_modules', '.git', 'dist']);
@@ -77,8 +84,8 @@ function usageText() {
     '  happi-version --help',
     '',
     'environment:',
-    `  HAPPI_SPEC     shell script that owns the spec (default ${DEFAULT_SPEC})`,
-    `  HAPPI_RUNTIME  runtime file holding HAPPI_VERSION (default ${DEFAULT_RUNTIME})`,
+    `  HAPPI_SPEC     shell script that owns the spec (default ${SPEC_DISPLAY})`,
+    `  HAPPI_RUNTIME  runtime file holding HAPPI_VERSION (default ${RUNTIME_DISPLAY})`,
   ].join('\n');
 }
 
