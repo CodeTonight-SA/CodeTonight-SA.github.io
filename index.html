@@ -23,7 +23,7 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <!-- happi:live --><meta property="og:image:alt"
-    content="CodeTonight — Do not trust the AI. Witness it. HAPPI/1.5, GRASP, GRIP and HAL. Deeds, not words."><!-- /happi:live -->
+    content="CodeTonight — Do not trust the AI. Witness it. HAPPI/1.6, GRASP, GRIP and HAL. Deeds, not words."><!-- /happi:live -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://codetonight.co.za/images/og-card.png">
 
@@ -83,7 +83,7 @@
             <dt>Context</dt>
             <dd>Cryptographic causation</dd>
             <dt>Protocol</dt>
-            <dd><!-- happi:live -->HAPPI/1.5<!-- /happi:live --></dd>
+            <dd><!-- happi:live -->HAPPI/1.6<!-- /happi:live --></dd>
             <dt>Engine</dt>
             <dd>Many providers</dd>
             <dt>Status</dt>
@@ -106,7 +106,7 @@
             <a class="btn" href="https://grasp-web-chi.vercel.app/#break">Break the chain yourself</a>
             <a class="btn ghost" href="https://www.happi.md">Read the protocol</a>
           </div>
-          <p class="trust"><span>AGPL-3.0</span><span><!-- happi:live -->HAPPI/1.5<!-- /happi:live --></span><span>Cape Town, ZA</span><span>Bitcoin
+          <p class="trust"><span>AGPL-3.0</span><span><!-- happi:live -->HAPPI/1.6<!-- /happi:live --></span><span>Cape Town, ZA</span><span>Bitcoin
               blocks 956991&ndash;956992 (pilot)</span></p>
         </div>
       </div>
@@ -251,7 +251,7 @@
         <div class="sec-head">
           <p class="label"><span class="kicker">04</span> &mdash; the protocol</p>
           <h2>HAPPI: talking to a model should be one call.</h2>
-          <p class="label" style="margin-top:1rem">Open standard &middot; version 1.4</p>
+          <p class="label" style="margin-top:1rem">Open standard &middot; version 1.6</p>
         </div>
         <div class="sec-body">
           <p>Every AI provider has its own way of being asked a question, and every one of them changes it.
@@ -261,9 +261,9 @@
           <p>That sounds like plumbing, and mostly it is. It matters here for one reason: because every
             request and every reply passes through the same shape, the same shape is where the record gets
             written. Swapping the model underneath does not change what gets recorded.</p>
-          <p>Versions 1.0 through 1.4 are all accepted, so something written against an earlier one still
+          <p>Versions 1.0 through 1.6 are all accepted, so something written against an earlier one still
             works today. <!-- happi:frozen why="release history: 1.3 and 1.4 are a factual record of what each version added" -->Version 1.3 added the citation check. <b>HAPPI/1.4 added pre-registered
-              commitments</b> &mdash; the fourth record above.<!-- /happi:frozen --> <!-- happi:frozen why="release history: what 1.5 added" -->HAPPI/1.5 added the <b>reasoning trace</b>, recorded as a diagnostic specimen and refused the power to settle anything.<!-- /happi:frozen --></p>
+              commitments</b> &mdash; the fourth record above.<!-- /happi:frozen --> <!-- happi:frozen why="release history: what 1.5 added" -->HAPPI/1.5 added the <b>reasoning trace</b>, recorded as a diagnostic specimen and refused the power to settle anything.<!-- /happi:frozen --> <!-- happi:frozen why="release history: what 1.6 added" -->HAPPI/1.6 added <b>typed decisions</b>, in the library only.<!-- /happi:frozen --></p>
         </div>
         <div class="syscall">
           <figure>
@@ -301,7 +301,7 @@ one place to write the record</i></pre>
       <div class="wrap grid">
         <div class="sec-head">
           <p class="label"><span class="kicker">05</span> &mdash; the open proof layer</p>
-          <h2>GRASP is the moat, given away.</h2>
+          <h2>GRASP: the part you can check without us.</h2>
           <p class="label" style="margin-top:1rem">AGPL-3.0</p>
         </div>
         <div class="sec-body">
@@ -311,15 +311,13 @@ one place to write the record</i></pre>
           <p>So the checker is a separate small program you can run yourself, on our records or on anyone
             else's. It does not call us and it does not need our permission. If our own chain were ever
             tampered with, our own tool would say so.</p>
-          <p>The format is written up as an individual Internet-Draft at the IETF, because a receipt format
-            owned by one company is a receipt format that can be quietly changed. Being clear about what that
-            is: an individual draft is a submission, not an approval. No working group has adopted it and the
-            IETF has endorsed nothing.</p>
+          <p>GRASP publishes example claims in TMIF, a format drafted at the IETF by Ben Laurie and
+            co-authors. It is their draft, not ours. Our own Internet-Draft is written and not yet posted.</p>
           <div class="cta-row" style="margin-top:1.5rem">
             <a class="btn" href="https://github.com/CodeTonight-SA/grasp">Source on GitHub</a>
             <a class="btn ghost" href="https://github.com/CodeTonight-SA/grasp/blob/main/tools/grasp-verify-receipt">The
               checker</a>
-            <a class="btn ghost" href="https://datatracker.ietf.org/doc/draft-laurie-tmif/">IETF draft</a>
+            <a class="btn ghost" href="https://datatracker.ietf.org/doc/draft-laurie-tmif/">TMIF draft (Laurie et al.)</a>
           </div>
           <p class="cap">More on the site: <a href="https://grasp-web-chi.vercel.app/">grasp-web-chi.vercel.app</a>
             &mdash; including the parts we are careful not to overclaim.</p>
@@ -355,7 +353,7 @@ one place to write the record</i></pre>
         </div>
         <figure class="chainfig" style="border-color:var(--dark-line)">
           <!-- happi:live --><img src="/images/open-core-seam.svg" width="780" height="210"
-            alt="The open-core boundary. On the open side, free to clone today: HAPPI/1.5, the protocol, and GRASP under AGPL-3.0. On the other side, not yet open: HAL, which reaches any model, and GRIP, the working engine, used internally and by a small number of organisations while the release is prepared."><!-- /happi:live -->
+            alt="The open-core boundary. On the open side, free to clone today: HAPPI/1.6, the protocol, and GRASP under AGPL-3.0. On the other side, not yet open: HAL, which reaches any model, and GRIP, the working engine, used internally and by a small number of organisations while the release is prepared."><!-- /happi:live -->
           <figcaption style="color:var(--dark-muted)">Where the line sits today. It moves in one direction
             only.</figcaption>
         </figure>
@@ -417,8 +415,9 @@ one place to write the record</i></pre>
               argument built on it.</span><span class="badge">Shipped</span></li>
           <li><span><b>Post-quantum signing is parity, not an advantage.</b> It is available. It is not a
               reason to pick us.</span><span class="badge provisioned">Provisioned</span></li>
-          <li><span><b>Anchoring to Bitcoin is a proven pilot, not continuous production.</b> One root,
-              attested by OpenTimestamps in blocks 956991 and 956992. Not a running service.</span><span class="badge pilot">Pilot</span></li>
+          <li><span><b>Anchoring to Bitcoin ran as a pilot and is paused.</b> 23 roots were attested through
+              OpenTimestamps between July and September 2026, the last on 25 September. Publishing stopped
+              because its redaction filter is incomplete on the machine that publishes.</span><span class="badge pilot">Pilot</span></li>
           <li><span><b>The self-check demonstration is one machine checking its own chain.</b> Single node,
               no network, not anchored.</span><span class="badge">Shipped</span></li>
         </ul>

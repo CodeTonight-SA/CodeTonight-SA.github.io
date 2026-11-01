@@ -103,10 +103,11 @@ for phrase in BANNED:
 check(not EMOJI.search(INDEX), "no emoji in the page")
 check("HAPPI/1.4" in INDEX and "HAPPI/1.3" not in INDEX,
       "HAPPI version label is 1.4 (1.3 appears nowhere)")
-check('og:image:alt' in INDEX and "HAPPI/1.4" in re.search(
-      r'property="og:image:alt"\s+content="([^"]*)"', INDEX).group(1)
-      if re.search(r'property="og:image:alt"\s+content="([^"]*)"', INDEX) else False,
-      "og:image:alt names HAPPI/1.4")
+# The version itself is enforced by tools/happi-version.mjs --check, so this check
+# stops going stale at every release: it asks only that the alt text names one.
+_alt = re.search(r'property="og:image:alt"\s+content="([^"]*)"', INDEX)
+check(bool(_alt and re.search(r"HAPPI/\d+\.\d+", _alt.group(1))),
+      "og:image:alt names a HAPPI version")
 
 # --- Overclaims a reviewing council found and blocked on ------------------
 # Each of these was on the page once. They are checked here so they cannot
