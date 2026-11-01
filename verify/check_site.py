@@ -26,11 +26,11 @@ ROBOTS = (ROOT / "robots.txt").read_text(encoding="utf-8")
 # breaks a link somewhere we cannot see, so all of them must survive.
 LEGACY_IDS = [
     "main-content", "hero", "engine", "happi", "grasp", "open-work",
-    "flagships", "pro-bono", "not-do", "team", "contact", "cta",
+    "flagships", "team", "contact", "cta",
     "email", "interest", "message",
 ]
-# The moat sections this rebuild adds.
-NEW_IDS = ["moat", "legs", "break", "continuity", "honesty"]
+# Sections in the approved home page structure.
+NEW_IDS = ["names", "grip-rules", "grip-score", "grip-memory", "honesty", "papers"]
 
 # Phrases the page promises never to use (they appear once, struck through,
 # inside the ban list itself).
@@ -90,11 +90,26 @@ check("focus-visible" in CSS, "focus-visible outline defined")
 for i in LEGACY_IDS:
     check(f'id="{i}"' in INDEX, f"legacy id #{i} present")
 for i in NEW_IDS:
-    check(f'id="{i}"' in INDEX, f"moat id #{i} present")
+    check(f'id="{i}"' in INDEX, f"section id #{i} present")
 check('action="https://formspree.io/f/mrbnkdjd"' in INDEX,
       "contact form still posts to the same Formspree endpoint")
 check("grasp-chi.vercel.app" not in INDEX.replace("grasp-web-chi.vercel.app", ""),
       "never references grasp-chi.vercel.app (a stranger's site)")
+
+# Each approved section offers a public route to its evidence or work.
+sections = re.findall(r'<section id="([^"]+)"[^>]*>(.*?)</section>', INDEX, re.S)
+check([ident for ident, _ in sections] == [
+    "hero", "names", "grip-rules", "grip-score", "grip-memory", "engine",
+    "happi", "grasp", "honesty", "open-work", "papers", "flagships", "team",
+], "approved sections appear in order")
+check(all(re.search(r'href="(?:https://|mailto:|papers/)', content)
+          for _, content in sections), "every section links to a public destination")
+check("grasp-web-chi.vercel.app" not in INDEX,
+      "GRASP links use the public domain")
+ids = re.findall(r'\bid="([^"]+)"', INDEX)
+check(len(ids) == len(set(ids)), "page ids are distinct")
+check(all(target in ids for target in re.findall(r'href="#([^"]+)"', INDEX)),
+      "internal links resolve")
 
 # --- Copy rules ------------------------------------------------------------
 body = outside_ban_chips(INDEX)
