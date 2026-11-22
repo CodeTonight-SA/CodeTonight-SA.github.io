@@ -317,3 +317,10 @@ table.ledger td:last-child { white-space: nowrap; }
   word-break: break-all;
   margin-top: 0.35rem;
 }
+
+/* ---- "Check it in ten minutes": three .leg items, full width, reusing .leg ---- */
+.steps { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(12, 1fr); gap: clamp(1rem, 3vw, 2.5rem); margin-top: 1.5rem; }
+.steps > .leg { grid-column: span 4; }
+.steps .not-proven { font-family: var(--mono); font-size: 0.74rem; color: var(--dark-ink); border-top: 1px dashed var(--dark-line); padding-top: 0.6rem; margin-top: 0.8rem; line-height: 1.5; }
+@media (max-width: 1000px) { .steps > .leg { grid-column: span 6; } }
+@media (max-width: 640px) { .steps > .leg { grid-column: 1 / -1; } }
